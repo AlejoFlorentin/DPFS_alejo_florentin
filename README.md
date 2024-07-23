@@ -14,22 +14,22 @@ Estoy en busqueda de mi primer trabajo para poder desarrollarme como profesional
 
 ## Referencias
 
-- https://blackmambo.com.ar/
+- **https://blackmambo.com.ar/**
 
 Se selecciono este sitio por su sobriedad con los colores y su buena dinamica.
 
-- https://tussy.com.ar/
+- **https://tussy.com.ar/**
 
 Este sitio se destaca por su calidad de ropa y sus excelentes diseños en su estampado.
 
- - https://samples.com.ar/
+ - **https://samples.com.ar/**
 
 Gran diseño de indumentaria y una pagina web bien dinamico , con excelenes fotos.
 
- - https://www.mankioficial.com/
+ - **https://www.mankioficial.com/**
 
 Sitio web muy facil de encontrar lo que se quiere buscar y con un excelente responsive.
 
- - https://www.bullbenny.com.ar/
+ - **https://www.bullbenny.com.ar/**
 
 Excelente diseño minimalista y colores sobrios , ademas de su calidad de ropa.
