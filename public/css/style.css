@@ -6,11 +6,11 @@
     list-style: none;
 }
 
-p,a,h2,h3,h4,h5,h6{
+p,a,h3,h4,h5,h6{
     font-family: "Roboto Condensed", sans-serif;
 }
 
-h1,li{
+h1,h2,li{
     font-family: "Anton SC", sans-serif;
 }
 
@@ -389,7 +389,7 @@ main .productDetail .itemCount{
     
 }
 
-main h1{
+main h2{
     margin-top: 100px;
     text-align: center;
 }
@@ -410,11 +410,75 @@ main .interes a{
 /* CARRITO */
 
 .mainCart{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.mainCart .productsCart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    
+
+}
+
+.mainCart .productsCart .productCart{
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
+
+.mainCart .productsCart .productCart img{
+    width: 150px;
+    height: 150px;
+}
+
+.mainCart .productsCart .productCart .infoProductCart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+    width: 60%;
+}
+
+.mainCart .cartProductsTotal {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 300px;
+    
+    
+}
+
+.mainCart .cartProductsTotal .resume{
+    border-top: solid 1px rgb(214, 214, 214);
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    width: 200px;
+}
+
+.mainCart .cartProductsTotal .resumeUno{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.mainCart .cartProductsTotal .resumeDos{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+}
+
+
 
 
 
