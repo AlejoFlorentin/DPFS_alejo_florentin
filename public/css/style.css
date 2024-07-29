@@ -6,7 +6,7 @@
     list-style: none;
 }
 
-p,a,h3,h4,h5,h6{
+p,a,h3,h4,h5,h6,label,input{
     font-family: "Roboto Condensed", sans-serif;
 }
 
@@ -477,6 +477,96 @@ main .interes a{
     flex-direction: column;
     width: 100px;
 }
+
+/* LOGIN */
+
+.formLog{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formLog h1{
+    margin-top: 75px;
+}
+
+.formLog form {
+    margin-top: 25px;
+    height: 400px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.formLog form p{
+    text-align: center;
+    font-size: 15px;
+}
+
+.formLog form input{
+    height: 40px;
+    border: solid 0.5px rgb(196, 196, 196);
+    padding: 10px;
+    font-size: 15px;
+}
+
+.formLog form button{
+    height: 40px;
+    border: solid 1px black;
+    background-color: black;
+    color: white;
+}
+
+.formLog form button:hover{
+    background-color:rgb(56, 56, 56);
+}
+
+/* REGISTER */
+
+.formRegister {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formRegister h1 {
+    margin-top: 75px;
+}
+
+.formRegister form {
+    margin-top: 25px;
+    height: 650px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.formRegister form p {
+    text-align: center;
+    font-size: 15px;
+}
+
+.formRegister form input {
+    height: 40px;
+    border: solid 0.5px rgb(196, 196, 196);
+    padding: 10px;
+    font-size: 15px;
+}
+
+.formRegister form button {
+    height: 40px;
+    border: solid 1px black;
+    background-color: black;
+    color: white;
+}
+
+.formRegister form button:hover {
+    background-color: rgb(56, 56, 56);
+}
+
+
 
 
 
