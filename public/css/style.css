@@ -33,6 +33,10 @@ header{
     background-color: black;
 }
 
+.menuBtn{
+    display: none;
+}
+
 .logoContainer{
     width: 33%;
     display: flex;
@@ -341,13 +345,14 @@ footer .copy{
 }
 
 .bxl-whatsapp{
-    color: rgb(21, 247, 0);
+    color: white;
     position: fixed;
     bottom: 50px;
     right: 15px;
     font-size: 50px;
-    background-color: black;
+    background-color: rgb(46, 185, 33);
     border-radius: 30px;
+    padding: 5px;
 }
 
 /* PRODUCT DETAIL */
@@ -565,6 +570,243 @@ main .interes a{
 .formRegister form button:hover {
     background-color: rgb(56, 56, 56);
 }
+
+/* Media queries */
+
+
+
+@media screen and (max-width:400px){
+
+/* HEADER */
+   
+    header{
+        height: 75px;
+    }
+
+    .menuBtn{
+        display: block;
+        background-color: black;
+        color: white;
+        border: none;
+        font-size: 2rem;
+    }
+
+
+    .logoContainer {
+        justify-content: space-around;
+        }
+    
+    .logoContainer img {
+         width: 80px;
+        height: 50px;
+        }
+    
+    .logoContainer h1 {
+        font-size: 1.2rem;
+        margin-top: 8px;
+        }
+
+    nav{
+        display: none;
+    }
+ 
+    .cartAndLogFont .cartFont {
+       
+        margin-right: 10px;
+        font-size: 20px;
+    }
+    
+    .cartAndLogFont .cartFont p {
+        font-size: 15px;
+        margin-left: 5px;
+    }
+    
+    .cartAndLogFont a .bx-user {
+        color: white;
+        margin-right: 0px;
+        font-size: 20px;
+    }
+
+    /* FOOTER */
+
+    footer .footerData {
+        flex-direction: column;
+        height: 1000px;
+        }
+
+    footer .footerData .socialRed {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        }
+    
+    footer .footerData .socialRed a i {
+        font-size: 20px;
+        }
+
+    footer .footerData .paymentMethod {
+        width: 380px;
+        }
+    
+    footer .footerData .paymentMethod .method {
+        margin-top: 10px;
+        }
+    
+    footer .footerData .contacts {
+         width: 380px;
+        }   
+    
+    footer .footerData .ubication iframe {
+         width: 300px;
+         height: 200px;
+        }
+    
+    footer .copy {
+         height: 95px;
+        }
+
+    /* INDEX */
+
+    .carousel{
+        height: 300px;
+    }
+
+    .carousel .carousel-inner .carousel-item img{
+        height: 300px;
+    }
+
+    .productsContainer {
+        margin-right: 0px;
+        margin-left: 0px;
+        }
+    
+    .product img {
+        width: 350px;
+        height: 400px;
+        }
+    
+    .productPrice {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        }
+    
+    .categories {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        }
+    
+    .categories article img {
+            width: 370px;
+            height: 600px;
+    
+        }
+
+    /* LOGIN */
+
+    .formLog form {
+        width: 90%;
+       }
+    
+     /* REGISTER */
+
+    .formRegister form {
+        width: 90%;
+        }
+
+    /* PRODUCT DETAIL */
+
+    .detail {
+        flex-direction: column;
+        gap: 0px;
+        margin-top: 0px;
+        }
+    
+    .detail img {
+        width: 380px;
+        height: 450px;
+        }
+    
+    main .productDetail {
+        margin-top: -60px;
+        width: 90%;
+        }
+
+    main .productDetail .addAndCount .btn {
+        width: 170px;
+        }
+
+    /* CARRITO */
+
+    .mainCart {
+        margin-top: 30px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        }
+        
+    .mainCart .productsCart {
+        width: 100%;
+        padding: 10px;
+        }
+
+    .mainCart .productsCart .productCart img {
+        width: 125px;
+        height: 125px;
+        }
+        
+    .mainCart .productsCart .productCart .infoProductCart .subtotal{
+        display: none;
+    }
+        
+    .mainCart .cartProductsTotal {
+         width: 100%;
+    }
+
+    .mainCart .cartProductsTotal h4{
+        text-align: center;
+    }
+        
+    .mainCart .cartProductsTotal .resume {
+         width: 380px;
+    }
+        
+    .mainCart .cartProductsTotal .resumeUno {
+        width: 190px;
+        margin-left: 35px;
+        
+    }
+        
+    .mainCart .cartProductsTotal .resumeDos {
+        align-items:end;
+        width: 190px;
+        margin-right: 35px;
+    }
+
+    .mainCart .cartProductsTotal .cartButtons{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        
+    }
+    
+        
+    
+        
+
+
+    
+}
+
+
 
 
 
