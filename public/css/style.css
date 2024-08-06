@@ -104,6 +104,14 @@ nav .navbar{
     margin-top: 35px;
 }
 
+nav .navbar img {
+    display: none;
+}
+
+nav .navbar .exitMenu{
+    display: none;
+}
+
 nav .navbar .navItem a{
     text-decoration: none;
     color: white;
@@ -571,6 +579,69 @@ main .interes a{
     background-color: rgb(56, 56, 56);
 }
 
+/* FAQ */
+
+.faq{
+    text-align: center;
+}
+
+/* PRODUCT */
+
+.filterBtn{
+   visibility: hidden;
+}
+
+.mainProduct{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.mainProduct .productFilter{
+    width: 15%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-right: solid 1px rgb(209, 209, 209);
+    
+}
+
+.mainProduct .productFilter .bx-x{
+    display: none;
+}
+
+.mainProduct .productFilter h3 {
+    text-align: center;
+}
+
+.mainProduct .productFilter>div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.mainProduct .productShow{
+    overflow-y: scroll;
+    height: 1000px;
+    width: 84%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.mainProduct .productShow::-webkit-scrollbar{
+    display: none;
+}
+
+.mainProduct .productShow a{
+    text-decoration: none;
+    color: black;
+}
+
 /* Media queries */
 
 
@@ -607,6 +678,44 @@ main .interes a{
         }
 
     nav{
+        display: none;
+    }
+
+    nav .navbar img{
+        display: block;
+        width: 175px;
+        height: 100px;
+    }
+
+    nav .navbar {
+       position: absolute;
+       background-color: rgb(0, 0, 0);
+       height: 100vh;
+       display: flex;
+       flex-direction: column;
+       justify-content: start;
+       gap: 30px;
+       right: 0;
+       width: 400px;
+        
+        }
+
+    nav .navbar .navItem{
+        width: 300px;
+        text-align: center;
+        padding-bottom: 10px;
+        
+    }
+
+    nav .navbar .exitMenu {
+        display: block;
+        background-color: black;
+        color: white;
+        font-size: 40px;
+        border: none;
+        }
+
+    nav .search {
         display: none;
     }
  
@@ -796,6 +905,78 @@ main .interes a{
         justify-content: center;
         gap: 10px;
         
+    }
+
+    /* PRODUCT */
+
+    .mainProductos h1{
+        margin-top: 10px;
+    }
+
+    .filterBtn{
+        visibility: visible;
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        gap: 20px;
+        width: 380px;
+        border: none;
+        background-color: white;
+        border-bottom: solid 1px rgb(207, 207, 207);
+    }
+
+    .filterBtn .bx-filter-alt{
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    .filterBtn h4{
+        margin-top: 10px;
+    }
+
+    .mainProduct{
+        margin-top: 0px;
+    }
+
+    .mainProduct .productShow{
+        margin-top: 50px;
+        width: 400px;
+    }
+
+    .mainProduct .productFilter{
+        display: none;
+        position: absolute;
+        width: 400px;
+        background-color: rgba(0, 0, 0, 0.87);
+        color: white;
+        height:500px;
+
+
+    }
+
+    .mainProduct .productFilter .filterTitle{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mainProduct .productFilter .bx-x {
+        display: block;
+        font-size: 40px;
+        margin-right: 20px;
+    }
+
+
+    /* US */
+
+    .ceos img{
+        width: 360px;
+        height: 300px;
+    }
+
+    .team img{
+        width: 360px;
     }
     
         

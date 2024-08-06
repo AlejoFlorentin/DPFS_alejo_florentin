@@ -1,0 +1,36 @@
+.mainProduct {
+    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.mainProduct .productFilter {
+    position: fixed;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-right: solid 1px rgb(209, 209, 209);
+    background-color: red;
+}
+
+.mainProduct .productFilter h3 {
+    text-align: center;
+}
+
+.mainProduct .productFilter>div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+;
+
+
+.mainProduct .productShow {
+    width: 100%;
+    margin-left: 500px;
+}
