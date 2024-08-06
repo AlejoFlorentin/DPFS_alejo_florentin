@@ -1,0 +1,12 @@
+{
+  "name": "dpfs_alejo_florentin",
+  "version": "1.0.0",
+  "description": "Superlative es un e-commerce dedicado a la venta de indumentaria masculina oversize y boxy-fit dirigida hacia un publico de entre 15 a 30 años.\r Las prendas que se ofreceran seran pantalones , remeras , hoodies , bermudas , ropa interior y accesorios tales como collares , cadenas , \r pulseras , riñoneras y morrales.\r En lo personal creo que este sitio ofrece la moda que mas se utiliza hoy en dia y que se usara durante las proxima decadas , tambien se adaptara\r a los nuevos cambios a los que se enfrentada este rubro.Estara a precios accesible para que todo el mundo pueda disfrutar de la calidad\r y estilo de esta ropa.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
