@@ -512,6 +512,16 @@ main .interes a{
     justify-content: space-evenly;
 }
 
+.formLog form .rememberPassword{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.formLog form .rememberPassword input {
+    margin-right: 5px;
+}
+
 .formLog form p{
     text-align: center;
     font-size: 15px;
