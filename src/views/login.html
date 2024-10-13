@@ -18,7 +18,7 @@
 
     <header>
 
-        <button class="menuBtn"><i class='bx bx-menu'></i></button>
+        <button id="openMenu" class="menuBtn"><i class='bx bx-menu'></i></button>
     
         <div class="logoContainer">
     
@@ -49,7 +49,7 @@
                 <li class="navItem"><a href="./us.html">Nosotros</a></li>
                 <li class="navItem"><a href="./faq.html">Preguntas Frecuentes</a></li>
             
-                <button class="exitMenu"><i class='bx bx-exit'></i></button>
+                <button id="closeMenu" class="exitMenu"><i class='bx bx-exit'></i></button>
             
             </ul>
     
@@ -78,22 +78,26 @@
 
         <h1>Iniciar Sesion</h1>
 
-        <form action="">
+        <form id="formLogin" action="" novalidate>
 
             <label for="email">Email</label>
-            <input placeholder="ej: tuemail@email.com" type="email" name="email">
+            <input id="email" placeholder="ej: tuemail@email.com" type="email" name="email" autocomplete="off">
+            <div class="error" id="errorEmail"></div>
 
             <label for="password">Contraseña</label>
-            <input placeholder="ej: tucontraseña" type="password" name="password" id="">
+            <input id="password" placeholder="ej: tucontraseña" type="password" name="password" id="" autocomplete="off">
+            <span class="show-hide" id="show-hide">Show/Hide</span>
+            <div class="error" id="errorPassword"></div>
             
+
             <div class="rememberPassword">
-            <input type="checkbox" name="rememberPassword">
-            <label for="rememberPassword">Recordar Contraseña</label>
+            <input id="rememberPassword" type="checkbox" name="rememberPassword">
+            <label for="rememberAccount">Recordar cuenta</label>
             </div>
             
             <p><a href="">¿Olvidaste tu contraseña?</a></p>
 
-            <button type="submit">Iniciar Sesión</button>
+            <input type="submit" value="Inicia Sesion">
 
             <p>¿No tenés cuenta? <a href="./register.html">Crear cuenta</a></p>
 
@@ -184,6 +188,7 @@
     
     </footer>
 
-    
+    <script src="/public/js/login.js"></script>
+    <script src="/public/js/script.js"></script>
 </body>
 </html>
