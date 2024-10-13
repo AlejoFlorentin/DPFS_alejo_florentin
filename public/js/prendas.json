@@ -1,0 +1,130 @@
+[
+
+{
+    "id":"1",
+   "title":"Remera Oversize Negra",
+    "price":25000,
+    "category":"camisetas",
+    "img":"/public/img/camisetas/camisetaNegra.jpg"
+
+},
+{
+    "id":"2",
+   "title":"Musculosa Negra",
+    "price":25000,
+    "category":"camisetas",
+    "img":"/public/img/camisetas/musculosa.jpg"
+
+},
+{
+    "id":"3",
+   "title":"Polo Gris",
+    "price":25000,
+    "category":"camisetas",
+    "img":"/public/img/camisetas/poloGris.jpg"
+
+},
+{
+    "id":"4",
+   "title":"Remera Boxy Fit Gris",
+    "price":30000,
+    "category":"camisetas",
+    "img":"/public/img/camisetas/remeracat.jpg"
+
+},
+{
+    "id":"5",
+   "title":"Cargo Pana",
+    "price":60000,
+    "category":"pantalones",
+    "img":"/public/img/pantalones/cargoPana.jpg"
+
+},
+{
+    "id":"6",
+   "title":"Jean Relaxed",
+    "price":45000,
+    "category":"pantalones",
+    "img":"/public/img/pantalones/jeanRelaxed.jpg"
+
+},
+{
+    "id":"7",
+   "title":"Jean Straigth",
+    "price":50000,
+    "category":"pantalones",
+    "img":"/public/img/pantalones/jeanStraight.jpg"
+
+},
+{
+    "id":"8",
+   "title":"Jean Recto",
+    "price":47000,
+    "category":"pantalones",
+    "img":"/public/img/pantalones/pantalonescat.jpg"
+
+},
+{
+    "id":"9",
+   "title":"Bermuda de Jean",
+    "price":40000,
+    "category":"bermudas",
+    "img":"/public/img/bermudas/bermudasCat.jpg"
+
+},
+
+{
+    "id":"10",
+   "title":"Bermuda de Jean Negra",
+    "price":41000,
+    "category":"bermudas",
+    "img":"/public/img/bermudas/bermudanegra.webp"
+
+},
+
+{
+    "id":"11",
+   "title":"Bermuda Enzymatick",
+    "price":41000,
+    "category":"bermudas",
+    "img":"/public/img/bermudas/bermudaenzymatick.webp"
+
+},
+
+{
+    "id":"12",
+   "title":"Alexander Mqueen",
+    "price":180000,
+    "category":"zapatillas",
+    "img":"/public/img/zapatillas/zapatillascat.jpg"
+
+},
+
+{
+    "id":"13",
+   "title":"Air Force 07 White",
+    "price":180000,
+    "category":"zapatillas",
+    "img":"/public/img/zapatillas/airforce.webp"
+
+},
+{
+    "id":"14",
+   "title":"Dunk Bordeauz",
+    "price":180000,
+    "category":"zapatillas",
+    "img":"/public/img/zapatillas/dunkBordo.webp"
+
+},
+{
+    "id":"15",
+   "title":"Jordan Retro",
+    "price":180000,
+    "category":"zapatillas",
+    "img":"/public/img/zapatillas/jordan.webp"
+
+}
+
+
+
+]

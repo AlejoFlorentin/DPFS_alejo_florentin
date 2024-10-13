@@ -19,7 +19,7 @@
 
     <header>
 
-        <button class="menuBtn"><i class='bx bx-menu'></i></button>
+        <button id="openMenu" class="menuBtn"><i class='bx bx-menu'></i></button>
     
         <div class="logoContainer">
     
@@ -50,7 +50,7 @@
                 <li class="navItem"><a href="./us.html">Nosotros</a></li>
                 <li class="navItem"><a href="./faq.html">Preguntas Frecuentes</a></li>
 
-                <button class="exitMenu"><i class='bx bx-exit'></i></button>
+                <button id="closeMenu" class="exitMenu"><i class='bx bx-exit'></i></button>
     
             </ul>
     
@@ -65,8 +65,6 @@
     
             </div>
     
-    
-    
             <a href="./login.html"><i class='bx bx-user'></i></a>
     
         </div>
@@ -75,7 +73,7 @@
 
     
 
-    <button class="filterBtn">
+    <button id="filterBtn" class="filterBtn">
 
     <i class='bx bx-filter-alt'></i>
     <h4>Filtrar</h4>
@@ -90,302 +88,77 @@
 
         <div class="mainProduct">
 
-        <aside class="productFilter">
+            <aside id="filter" class="productFilter">
 
-            <div class="filterTitle">
-                <h3>Filtros</h3>
-                <i class='bx bx-x'></i>   
-            </div>
+                <div class="filterTitle">
+                    <h3>Filtros</h3>
+                    <i id="exitBtn" class='bx bx-x'></i>   
+                </div>
            
+                <div class="ms-5">
 
-            <div>
+                    <h5>Tipo de Prenda</h5>
 
-                <h5>Tipo de Prenda</h5>
+                    <div>
+                        <input class="checkCategory" id="camisetas" type="checkbox"> 
+                        <label for="prenda">Remeras</label>
+                    </div>
+                    <div>
+                        <input class="checkCategory" id="pantalones" type="checkbox">   
+                        <label for="prenda">Pantalones</label>
+                    </div>
+                    <div>
+                        <input class="checkCategory" id="bermudas" type="checkbox">    
+                        <label for="prenda">Bermudas</label>
+                    </div>
+                    <div>
+                        <input class="checkCategory" id="zapatillas" type="checkbox"> 
+                        <label for="prenda">Zapatillas</label>
+                    </div>
 
-                <div>
-                    <input type="checkbox"> 
-                    <label for="prenda">Remeras</label>
                 </div>
+
+                <div class="ms-5">
+            
+                    <h5>Precio</h5>
                 
-                <div>
-                    <input type="checkbox">   
-                    <label for="prenda">Pantalones</label>
+                    <div>
+                        <input class="checkPrice" id="priceOne" type="checkbox">
+                        <label for="prenda">$ 0 a $ 25.000</label>
+                    </div>
+                    <div>
+                        <input class="checkPrice" id="priceTwo" type="checkbox">  
+                        <label for="prenda">$ 25.000 - $ 75.000</label>
+                    </div>
+                    <div>
+                        <input class="checkPrice" id="priceThree" type="checkbox">  
+                        <label for="prenda">$ 75.000 - $ 150.000</label>
+                    </div>
+                
                 </div>
+
+                <div class="ms-5">
+            
+                    <h5>Sexo</h5>
                 
-                <div>
-                    <input type="checkbox">    
-                    <label for="prenda">Bermudas</label>
-                </div>
+                    <div>
+                        <input class="checkSex" id="sexMasc" type="checkbox">  
+                        <label for="prenda">Masculino</label>
+                    </div>
+                    <div>
+                        <input class="checkSex" id="sexFem" type="checkbox">   
+                        <label for="prenda">Femenino</label>
+                    </div>
                 
-                <div>
-                    <input type="checkbox"> 
-                    <label for="prenda">Zapatillas</label>
                 </div>
             
+            </aside>
+        
+            <div id="productsFiltered" class="productShow">
             </div>
-
-            <div>
-            
-                <h5>Precio</h5>
-                
-                <div>
-                    <input type="checkbox">
-                    <label for="prenda">$ 0 a $ 25.000</label>
-                </div>
-                <div>
-                    <input type="checkbox">  
-                    <label for="prenda">$ 25.000 - $ 75.000</label>
-                </div>
-                <div>
-                    <input type="checkbox">  
-                    <label for="prenda">$ 75.000 - $ 150.000</label>
-                </div>
-                
-            </div>
-
-            <div>
-            
-                <h5>Sexo</h5>
-                
-                <div>
-                    <input type="checkbox">  
-                    <label for="prenda">Masculino</label>
-                </div>
-                
-                <div>
-                    <input type="checkbox">   
-                    <label for="prenda">Femenino</label>
-                </div>
-                
-            </div>
-            
-        </aside>
-
-        <div class="productShow">
-            
-            <a href="./productDetail.html">
-            
-                <article class="product" >
-                    <img src="/public/img/camisetas/musculosa.jpg" alt="jeanStraight">
-            
-                    <div class="productInfo" >
-            
-                        <h4>Polo Gris</h4>
-                        <div class="productPrice">
-                            <p>$ 40.000,00</p>
-                            <p class="cuotas" ><b>3 cuotas sin interes de $ 10.000,00 </b></p>
-                        </div>
-            
-                    </div>
-                </article>
-            
-            </a>
-
-            <a href="./productDetail.html">
-            
-                <article class="product">
-                    <img src="/public/img/camisetas/remeracat.jpg" alt="jeanStraight">
-            
-                    <div class="productInfo">
-            
-                        <h4>Polo Gris</h4>
-                        <div class="productPrice">
-                            <p>$ 40.000,00</p>
-                            <p class="cuotas"><b>3 cuotas sin interes de $ 10.000,00 </b></p>
-                        </div>
-            
-                    </div>
-                </article>
-            
-            </a>
-
-            <a href="./productDetail.html">
-            
-                <article class="product">
-                    <img src="/public/img/camisetas/poloGris.jpg" alt="jeanStraight">
-            
-                    <div class="productInfo">
-            
-                        <h4>Polo Gris</h4>
-                        <div class="productPrice">
-                            <p>$ 40.000,00</p>
-                            <p class="cuotas"><b>3 cuotas sin interes de $ 10.000,00 </b></p>
-                        </div>
-            
-                    </div>
-                </article>
-            
-            </a>
-
-            <a href="./productDetail.html">
-            
-                <article class="product">
-                    <img src="/public/img/camisetas/poloGris.jpg" alt="jeanStraight">
-            
-                    <div class="productInfo">
-            
-                        <h4>Polo Gris</h4>
-                        <div class="productPrice">
-                            <p>$ 40.000,00</p>
-                            <p class="cuotas"><b>3 cuotas sin interes de $ 10.000,00 </b></p>
-                        </div>
-            
-                    </div>
-                </article>
-            
-            </a>
-
-            <a href="./productDetail.html">
-            
-                <article class="product">
-                    <img src="/public/img/camisetas/poloGris.jpg" alt="jeanStraight">
-            
-                    <div class="productInfo">
-            
-                        <h4>Polo Gris</h4>
-                        <div class="productPrice">
-                            <p>$ 40.000,00</p>
-                            <p class="cuotas"><b>3 cuotas sin interes de $ 10.000,00 </b></p>
-                        </div>
-            
-                    </div>
-                </article>
-            
-            </a>
-
-            <a href="./productDetail.html">
-            
-                <article class="product">
-                    <img src="/public/img/camisetas/poloGris.jpg" alt="jeanStraight">
-            
-                    <div class="productInfo">
-            
-                        <h4>Polo Gris</h4>
-                        <div class="productPrice">
-                            <p>$ 40.000,00</p>
-                            <p class="cuotas"><b>3 cuotas sin interes de $ 10.000,00 </b></p>
-                        </div>
-            
-                    </div>
-                </article>
-            
-            </a>
-
-            <a href="./productDetail.html">
-            
-                <article class="product">
-                    <img src="/public/img/camisetas/poloGris.jpg" alt="jeanStraight">
-            
-                    <div class="productInfo">
-            
-                        <h4>Polo Gris</h4>
-                        <div class="productPrice">
-                            <p>$ 40.000,00</p>
-                            <p class="cuotas"><b>3 cuotas sin interes de $ 10.000,00 </b></p>
-                        </div>
-            
-                    </div>
-                </article>
-            
-            </a>
-
-            <a href="./productDetail.html">
-            
-                <article class="product">
-                    <img src="/public/img/camisetas/poloGris.jpg" alt="jeanStraight">
-            
-                    <div class="productInfo">
-            
-                        <h4>Polo Gris</h4>
-                        <div class="productPrice">
-                            <p>$ 40.000,00</p>
-                            <p class="cuotas"><b>3 cuotas sin interes de $ 10.000,00 </b></p>
-                        </div>
-            
-                    </div>
-                </article>
-            
-            </a>
-
-            <a href="./productDetail.html">
-            
-                <article class="product">
-                    <img src="/public/img/camisetas/poloGris.jpg" alt="jeanStraight">
-            
-                    <div class="productInfo">
-            
-                        <h4>Polo Gris</h4>
-                        <div class="productPrice">
-                            <p>$ 40.000,00</p>
-                            <p class="cuotas"><b>3 cuotas sin interes de $ 10.000,00 </b></p>
-                        </div>
-            
-                    </div>
-                </article>
-            
-            </a>
-
-            <a href="./productDetail.html">
-            
-                <article class="product">
-                    <img src="/public/img/camisetas/poloGris.jpg" alt="jeanStraight">
-            
-                    <div class="productInfo">
-            
-                        <h4>Polo Gris</h4>
-                        <div class="productPrice">
-                            <p>$ 40.000,00</p>
-                            <p class="cuotas"><b>3 cuotas sin interes de $ 10.000,00 </b></p>
-                        </div>
-            
-                    </div>
-                </article>
-            
-            </a>
-
-            <a href="./productDetail.html">
-            
-                <article class="product">
-                    <img src="/public/img/camisetas/poloGris.jpg" alt="jeanStraight">
-            
-                    <div class="productInfo">
-            
-                        <h4>Polo Gris</h4>
-                        <div class="productPrice">
-                            <p>$ 40.000,00</p>
-                            <p class="cuotas"><b>3 cuotas sin interes de $ 10.000,00 </b></p>
-                        </div>
-            
-                    </div>
-                </article>
-            
-            </a>
-
-            <a href="./productDetail.html">
-            
-                <article class="product">
-                    <img src="/public/img/camisetas/poloGris.jpg" alt="jeanStraight">
-            
-                    <div class="productInfo">
-            
-                        <h4>Polo Gris</h4>
-                        <div class="productPrice">
-                            <p>$ 40.000,00</p>
-                            <p class="cuotas"><b>3 cuotas sin interes de $ 10.000,00 </b></p>
-                        </div>
-            
-                    </div>
-                </article>
-            
-            </a>
-            
-           
-
-        </div>
         
         </div>
 
-        
     </main>
 
     <footer>
@@ -430,8 +203,6 @@
     
             </section>
     
-    
-    
             <section class="ubication">
     
                 <iframe
@@ -464,10 +235,10 @@
     
         </div>
     
-    
     </footer>
 
-    <script src="./script.js"></script>
+    <script src="/public/js/products.js"></script>
+    <script src="/public/js/script.js"></script>
     
 </body>
 </html>
