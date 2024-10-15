@@ -662,13 +662,6 @@ main .interes a {
   justify-content: space-evenly;
 }
 
-.mainProduct .productShow .product {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .mainProduct .productShow::-webkit-scrollbar {
   display: none;
 }

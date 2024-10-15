@@ -12,7 +12,8 @@ fetch('/public/js/prendas.json')
       showproducts(clothes);
     }
   });
-
+const numerito = document.querySelector('#numerito');
+const checkCategory = document.querySelectorAll('.checkCategory');
 // Mostrar productos en el DOM
 function showproducts(products) {
   productsFiltered.innerHTML = ''; // Limpiar productos previos
@@ -41,23 +42,7 @@ function showproducts(products) {
   });
 
   // Después de mostrar los productos, agregamos los eventos de clic a todos los botones "Agregar al carrito"
-  addEventToButtons();
-}
-
-let carrito = [];
-// Agregar eventos de clic a los botones de "Agregar al carrito"
-function addEventToButtons() {
-  let btnAddProduct = document.querySelectorAll('.btnAddProduct'); // Seleccionar todos los botones
-
-  btnAddProduct.forEach(button => {
-    button.addEventListener('click', addProduct); // Llamar a la función para agregar producto;
-  });
-
-  // Función para manejar el clic en el botón de agregar producto
-  function addProduct(e) {
-    const productId = e.target.id; // Obtener el ID del producto
-    console.log('Producto agregado con ID:', productId);
-  }
+  btnAdds();
 }
 
 const productsFiltered = document.getElementById('productsFiltered');
@@ -70,9 +55,8 @@ function showProductsCategoriesIndex(products) {
   localStorage.removeItem('categorySelected');
 }
 
-const checkCategory = document.querySelectorAll('.checkCategory');
-
 // Manejar el cambio de categoría por checkbox
+
 checkCategory.forEach(check => check.addEventListener('change', applyFilter));
 
 function applyFilter(e) {
@@ -99,4 +83,66 @@ function applyFilter(e) {
 
   const productFilter = allProducts.filter(product => mapedCategory.includes(product.category));
   showproducts(productFilter);
+}
+
+let cart;
+
+//Esto sirve por si elimine algun producto en la parte de carrito traerme el carrito actualizado y asi modificar
+let productsCartLS = localStorage.getItem('carrito');
+if (productsCartLS) {
+  cart = JSON.parse(productsCartLS); //j)Si hay productos guardado  parsearlos y guardarlos en carrito y luego actualizar el numerito
+  actualizarNumerito();
+} else {
+  cart = []; //k)Sino dejarlo vacio y no actualizar
+}
+// Agregar eventos de clic a los botones de "Agregar al carrito"
+function btnAdds() {
+  let btnAddProduct = document.querySelectorAll('.btnAddProduct'); // Seleccionar todos los botones
+
+  btnAddProduct.forEach(button => {
+    button.addEventListener('click', addProduct); // Llamar a la función para agregar producto;
+  });
+
+  // Función para manejar el clic en el botón de agregar producto
+  function addProduct(e) {
+    const idBtn = e.target.id; // Obtener el ID del producto
+    const addedProduct = clothes.find(product => product.id === idBtn); // Encontrar el producto que se quiere agregar
+    const searchProductCart = cart.some(product => product.id === idBtn); // Se busca si existe el producto agregado en el carrito
+    //Si la prenda existe  en el carrito
+    if (searchProductCart) {
+      const itemIndex = cart.findIndex(prenda => prenda.id === idBtn); //Buscamos el index en el carrito q coincida con el id del btn agregar
+      cart[itemIndex].cantidad++; //Le sumamos 1 en la cantidad
+      console.log(cart);
+    } else {
+      //Si no existe el producto en el carrito
+      addedProduct.cantidad = 1; // Le agregamos al producto agregado la propiedad cantidad con valor 1 por si desp se
+      // se agrega un producto igual se sume solo la cantidad
+      cart.push(addedProduct); // Lo agregamos al carrito
+      console.log(cart);
+    }
+    actualizarNumerito();
+
+    localStorage.setItem('carrito', JSON.stringify(cart)); //Se guardan los productos del carrito en el localstorage
+  }
+}
+
+function actualizarNumerito() {
+  let nuevoNumerito = cart.reduce((acc, prenda) => acc + prenda.cantidad, 0);
+
+  numerito.innerHTML = nuevoNumerito;
+}
+const filterBtn = document.querySelector('#filterBtn');
+const filter = document.querySelector('#filter');
+const filterExitBtn = document.querySelector('#exitBtn');
+
+filterBtn.addEventListener('click', openFilter);
+
+function openFilter() {
+  filter.style.display = 'block';
+}
+
+filterExitBtn.addEventListener('click', closeFilter);
+
+function closeFilter() {
+  filter.style.display = 'none';
 }
