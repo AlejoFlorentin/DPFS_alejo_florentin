@@ -1,107 +1,102 @@
-let clothes = []
+let clothes = [];
 
-
-
+// Cargar los datos de las prendas
 fetch('/public/js/prendas.json')
-.then(res => res.json())
-.then(data => {
-    clothes = data
-    
+  .then(res => res.json())
+  .then(data => {
+    clothes = data;
+
     if (categorySelected) {
-        showProductsCategoriesIndex(clothes)
-
+      showProductsCategoriesIndex(clothes);
     } else {
-        showproducts(clothes)
+      showproducts(clothes);
     }
+  });
 
-})
+// Mostrar productos en el DOM
+function showproducts(products) {
+  productsFiltered.innerHTML = ''; // Limpiar productos previos
 
+  products.forEach(product => {
+    const article = document.createElement('article');
+    article.classList.add('product');
+    article.innerHTML = `
+      <a href="./productDetail.html">   
+        <img src="${product.img}" alt="${product.title}">
+        <div class="productInfo">
+          <h4>${product.title}</h4>
+          <div class="productPrice">
+            <p>$ ${product.price}</p>
+            <p class="cuotas"><b>3 cuotas sin interes de $ ${Math.round(product.price / 3).toFixed(
+              2
+            )} </b></p>    
+          </div>
+        </div>
+      </a>
+      <button class='btnAddProduct mb-5 rounded-2 border-0 fs-6 bg-black text-white p-2' id=${
+        product.id
+      }>Agregar al carrito</button>
+    `;
+    productsFiltered.append(article);
+  });
 
-function showproducts (products) {
-
-    products.forEach(product => {
-        const article = document.createElement('article')
-        article.classList.add('product')
-        article.innerHTML = `
-                            <a href="./productDetail.html">   
-                                <img src="${product.img}" alt="${product.title}">
-                                <div class="productInfo">
-                                    <h4>${product.title}</h4>
-                                    <div class="productPrice">
-                                        <p>$ ${product.price}</p>
-                                        <p class="cuotas"><b>3 cuotas sin interes de $ ${Math.round(product.price/3).toFixed(2)} </b></p>    
-                                    </div>
-                                </div>
-                             </a>
-                            `
-        productsFiltered.append(article)
-    })
-
+  // Después de mostrar los productos, agregamos los eventos de clic a todos los botones "Agregar al carrito"
+  addEventToButtons();
 }
 
+let carrito = [];
+// Agregar eventos de clic a los botones de "Agregar al carrito"
+function addEventToButtons() {
+  let btnAddProduct = document.querySelectorAll('.btnAddProduct'); // Seleccionar todos los botones
 
-const productsFiltered = document.getElementById('productsFiltered')
+  btnAddProduct.forEach(button => {
+    button.addEventListener('click', addProduct); // Llamar a la función para agregar producto;
+  });
 
+  // Función para manejar el clic en el botón de agregar producto
+  function addProduct(e) {
+    const productId = e.target.id; // Obtener el ID del producto
+    console.log('Producto agregado con ID:', productId);
+  }
+}
+
+const productsFiltered = document.getElementById('productsFiltered');
 const categorySelected = localStorage.getItem('categorySelected');
 
-// Funcion para mostrar los productos cuando selecciono por categoria en la pagina INDEX
+// Mostrar productos filtrados por categoría
 function showProductsCategoriesIndex(products) {
-    
-    const filteredProducts = products.filter(product => product.category === categorySelected);
-    
-    showproducts(filteredProducts)
-
-    localStorage.removeItem('categorySelected')
+  const filteredProducts = products.filter(product => product.category === categorySelected);
+  showproducts(filteredProducts);
+  localStorage.removeItem('categorySelected');
 }
 
+const checkCategory = document.querySelectorAll('.checkCategory');
 
-const checkCategory = document.querySelectorAll('.checkCategory')
+// Manejar el cambio de categoría por checkbox
+checkCategory.forEach(check => check.addEventListener('change', applyFilter));
 
-
-//Funcion para mostrar los productos del checkbox
-
-checkCategory.forEach(check => check.addEventListener('change',applyFilter))
-
-    
 function applyFilter(e) {
-     
-    let allProducts = clothes;
+  let allProducts = clothes;
 
-    //Filtrar por categoria
-    const clickedCheckbox = e.currentTarget; // Checkbox que fue clicado
+  const clickedCheckbox = e.currentTarget;
 
-    checkCategory.forEach(check => {
-        if (check !== clickedCheckbox) {    //Condicional para que cuando hay un check seleccionado se deseleccione los otros
-            check.checked = false;
-        }
-    });
-
-    productsFiltered.innerHTML = "";   
-
-    // Obtenemos los IDs de los checkbox seleccionados y los almacenamos en un array
-    const selectedCategory = [...checkCategory].filter(checkbox => checkbox.checked)
-    console.log(selectedCategory)
-    const mapedCategory = selectedCategory.map(checkbox => checkbox.id);
-    console.log(mapedCategory)
-    // Si no hay ninguna categoría seleccionada, muestra todos los productos
-    if (mapedCategory.length === 0) {
-        showproducts(allProducts);
-        return;
+  // Deseleccionar otros checkboxes
+  checkCategory.forEach(check => {
+    if (check !== clickedCheckbox) {
+      check.checked = false;
     }
+  });
 
-    // Filtra los productos basados en las categorías seleccionadas
-    const productFilter = allProducts.filter(product => 
-        mapedCategory.includes(product.category)
-    );
+  productsFiltered.innerHTML = '';
 
-    // Muestra los productos filtrados
-    showproducts(productFilter);
+  const selectedCategory = [...checkCategory].filter(checkbox => checkbox.checked);
+  const mapedCategory = selectedCategory.map(checkbox => checkbox.id);
 
-    
+  if (mapedCategory.length === 0) {
+    showproducts(allProducts);
+    return;
+  }
+
+  const productFilter = allProducts.filter(product => mapedCategory.includes(product.category));
+  showproducts(productFilter);
 }
-
-
-
-
-
-   
