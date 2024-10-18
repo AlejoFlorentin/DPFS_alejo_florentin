@@ -22,7 +22,7 @@ function showproducts(products) {
     const article = document.createElement('article');
     article.classList.add('product');
     article.innerHTML = `
-      <a href="./productDetail.html">   
+      <a class="text-decoration-none text-black" href="./productDetail.html">   
         <img src="${product.img}" alt="${product.title}">
         <div class="productInfo">
           <h4>${product.title}</h4>

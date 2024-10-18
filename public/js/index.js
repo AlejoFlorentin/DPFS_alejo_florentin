@@ -16,14 +16,17 @@ function showSomeProducts(clothesSelected) {
   randomClothes.forEach(cloth => {
     const article = document.createElement('article');
     article.classList.add('product');
+    article.classList.add('col-lg-3');
+    article.classList.add('col-md-4');
+    article.classList.add('col-sm-6');
     article.innerHTML = `
-                            <a href="./productDetail.html">   
-                                <img src="${cloth.img}" alt="${cloth.title}">
-                                <div class="productInfo">
-                                    <h4>${cloth.title}</h4>
-                                    <div class="productPrice">
+                            <a class='text-black text-decoration-none' href="./productDetail.html">   
+                                <img  src="${cloth.img}" alt="${cloth.title}">
+                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                    <h4 class='text-center'>${cloth.title}</h4>
+                                    <div class="d-flex flex-column align-items-center">
                                         <p>$ ${cloth.price}</p>
-                                        <p class="cuotas"><b>3 cuotas sin interes de $ ${Math.round(
+                                        <p class="border border-danger border-2 p-1 text-danger text-center"><b>3 cuotas sin interes de $ ${Math.round(
                                           cloth.price / 3
                                         ).toFixed(2)} </b></p>    
                                     </div>
