@@ -22,10 +22,10 @@ function loadCartProducts() {
 
       article.innerHTML = `
         <img src="${product.img}" alt="${product.title}" />
-        <div class="infoProductCart">
+        <div class="d-flex flex-row justify-content-evenly align-items-center w-100">
           <div>
             <p>Cantidad</p>
-            <p>${product.cantidad}</p>
+            <p class="text-center">${product.cantidad}</p>
           </div>
           <div>
             <p>Precio</p>
@@ -65,6 +65,21 @@ function deleteItem(deleteBtns) {
   });
 
   function deleteProduct(e) {
+    Toastify({
+      text: 'Producto Eliminado',
+      duration: 2000,
+      gravity: 'top', // `top` or `bottom`
+      position: 'right', // `left`, `center` or `right`
+      offset: {
+        x: 20, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+        y: 150, // vertical axis - can be a number or a string indicating unity. eg: '2em'
+      },
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: 'black',
+      },
+      onClick: function () {}, // Callback after click
+    }).showToast();
     const btnId = e.target.id;
 
     // Filtrar todos los productos diferentes al id del btn eliminar y devuelve un array con ellos

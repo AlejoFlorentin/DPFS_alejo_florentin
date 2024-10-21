@@ -22,47 +22,55 @@
   </head>
   <body>
     <header>
-      <button id="openMenu" class="menuBtn"><i class="bx bx-menu"></i></button>
-
-      <div class="logoContainer">
-        <a href="./index.html"><img src="/public/img/logos/superlativeLogo.jpg" alt="Logo" /> </a>
-
-        <a href="./index.html">
-          <h1>Superlative</h1>
-        </a>
-      </div>
-
-      <nav>
-        <div class="search">
-          <i class="bx bx-search"></i>
-          <input placeholder="Busca tu prenda..." type="text" />
+      <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container-fluid">
+          <a class="navbar-brand d-flex align-items-center fs-1" href="#">
+            <img
+              src="../../public/img/logos/superlativeLogo.jpg"
+              alt="Logo"
+              width="180"
+              height="100"
+              class="d-inline-block align-text-top"
+            />
+            Superlative </a
+          ><button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse ps-5" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="./product.html">Productos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="./us.html">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="./faq.html">Preguntas Frecuentes</a>
+              </li>
+            </ul>
+            <div class="iconsHeader">
+              <a class="fs-3 text-white me-3" href="./login.html"><i class="bx bx-user"></i></a>
+              <div class="d-flex flex-row align-items-center me-2">
+                <a class="fs-3 text-white" href="./cart.html"><i class="bx bx-cart"></i></a>
+                <p class="text-white" id="numerito" class="numerito"></p>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <ul class="navbar">
-          <img src="/public/img/logos/superlativeLogo.jpg" alt="" />
-
-          <li class="navItem"><a href="./index.html">Inicio</a></li>
-          <li class="navItem"><a href="./product.html">Productos</a></li>
-          <li class="navItem"><a href="./us.html">Nosotros</a></li>
-          <li class="navItem"><a href="./faq.html">Preguntas Frecuentes</a></li>
-
-          <button id="closeMenu" class="exitMenu"><i class="bx bx-exit"></i></button>
-        </ul>
       </nav>
-
-      <div class="cartAndLogFont">
-        <div class="cartFont">
-          <a href="./cart.html"><i class="bx bx-cart"></i></a>
-          <p>10</p>
-        </div>
-
-        <a href="./login.html"><i class="bx bx-user"></i></a>
-      </div>
     </header>
-
     <main>
-      <h2>Nosotros</h2>
-
       <div class="p-5 d-flex flex-column justify-content-center align-items-center">
         <div>
           <p>
@@ -108,23 +116,33 @@
     </main>
 
     <footer>
-      <div class="footerData">
-        <section class="socialRed">
+      <div
+        class="xd w-100 p-3 mt-3 bg-black d-flex flex-row flex-wrap justify-content-evenly align-items-center bottom-0"
+      >
+        <section class="p-3 d-flex flex-column justify-content-center align-items-center">
           <div class="Ig">
-            <a href=""><i class="bx bxl-instagram-alt"></i> superlative_</a>
+            <a class="text-decoration-none text-white" href=""
+              ><i class="bx bxl-instagram-alt fs-2"></i> superlative_</a
+            >
           </div>
           <div class="fb">
-            <a href=""><i class="bx bxl-facebook-circle"></i> SuperlativeTM</a>
+            <a class="text-decoration-none text-white" href=""
+              ><i class="bx bxl-facebook-circle fs-2"></i> SuperlativeTM</a
+            >
           </div>
           <div class="tiktok">
-            <a href=""><i class="bx bxl-tiktok"></i> _superlative</a>
+            <a class="text-decoration-none text-white" href=""
+              ><i class="bx bxl-tiktok fs-3"></i> _superlative</a
+            >
           </div>
         </section>
 
-        <section class="paymentMethod">
+        <section
+          class="p-3 payments d-flex flex-column justify-content-center align-items-center text-white"
+        >
           <h4>Medios de Pago</h4>
 
-          <div class="method">
+          <div class="method d-flex flex-row flex-wrap justify-content-evenly align-items-center">
             <img src="/public/img/logos/visa.png" alt="visa" />
             <img src="/public/img/logos/mastercard.jpg" alt="mastercard" />
             <img src="/public/img/logos/amex.svg" alt="amex" />
@@ -135,7 +153,7 @@
           </div>
         </section>
 
-        <section class="ubication">
+        <section class="p-3 ubi d-flex flex-column justify-content-center align-items-center">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.577970067169!2d-58.433169423504076!3d-34.58954375675093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb5885b90631d%3A0xd853651841450b3e!2sGorriti%204955%2C%20C1414BJO%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1720729893198!5m2!1ses!2sar"
             width="600"
@@ -143,20 +161,25 @@
             style="border: 0"
             allowfullscreen=""
             loading="lazy"
+            class="rounded-2 img-fluid"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </section>
 
-        <section class="contacts">
+        <section
+          class="p-3 d-flex flex-column justify-content-center align-items-center text-white"
+        >
           <h6>superlative2024@gmail.com</h6>
           <div class="wsp">
-            <a href=""><i class="bx bxl-whatsapp-square"></i> 1150620957</a>
+            <a class="text-decoration-none text-white" href="https://web.whatsapp.com/"
+              ><i class="bx bxl-whatsapp-square text-success"></i> 1150620957</a
+            >
           </div>
           <h6>Gorriti 4955, C1414BJO CABA.</h6>
         </section>
       </div>
 
-      <div class="copy">
+      <div class="copy p-2 text-center">
         <p>
           Copyright Superlative - 30718039947 - 2024. Todos los derechos reservados. Defensa de las
           y los consumidores. Para reclamos
@@ -165,6 +188,12 @@
       </div>
     </footer>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
     <script src="/public/js/script.js"></script>
+    <script src="/public/js/products.js"></script>
   </body>
 </html>

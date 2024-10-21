@@ -21,12 +21,15 @@ function showproducts(products) {
   products.forEach(product => {
     const article = document.createElement('article');
     article.classList.add('product');
+    article.classList.add('col-lg-3');
+    article.classList.add('col-md-4');
+    article.classList.add('col-sm-6');
     article.innerHTML = `
-      <a class="text-decoration-none text-black" href="./productDetail.html">   
+      <a class="d-flex flex-column align-items-center justify-content-center text-decoration-none text-black" href="./productDetail.html">   
         <img src="${product.img}" alt="${product.title}">
-        <div class="productInfo">
-          <h4>${product.title}</h4>
-          <div class="productPrice">
+        <div>
+          <h4 class="text-center">${product.title}</h4>
+          <div class="d-flex flex-column align-items-center">
             <p>$ ${product.price}</p>
             <p class="cuotas"><b>3 cuotas sin interes de $ ${Math.round(product.price / 3).toFixed(
               2
@@ -105,6 +108,21 @@ function btnAdds() {
 
   // Función para manejar el clic en el botón de agregar producto
   function addProduct(e) {
+    Toastify({
+      text: 'Producto Agregado',
+      duration: 2000,
+      gravity: 'top', // `top` or `bottom`
+      position: 'right', // `left`, `center` or `right`
+      offset: {
+        x: 20, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+        y: 150, // vertical axis - can be a number or a string indicating unity. eg: '2em'
+      },
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: 'black',
+      },
+      onClick: function () {}, // Callback after click
+    }).showToast();
     const idBtn = e.target.id; // Obtener el ID del producto
     const addedProduct = clothes.find(product => product.id === idBtn); // Encontrar el producto que se quiere agregar
     const searchProductCart = cart.some(product => product.id === idBtn); // Se busca si existe el producto agregado en el carrito
