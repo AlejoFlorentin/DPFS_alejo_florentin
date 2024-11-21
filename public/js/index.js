@@ -1,16 +1,17 @@
-let clothes = [];
+let clothesIndex = [];
 
 fetch('/public/js/prendas.json')
   .then(res => res.json())
   .then(data => {
-    clothes = data;
-    showSomeProducts(clothes);
+    clothesIndex = data;
+    showSomeProducts(clothesIndex);
   });
 
 const productsContainer = document.getElementById('productsContainer');
 
 function showSomeProducts(clothesSelected) {
   const shuffledClothes = [...clothesSelected].sort(() => 0.5 - Math.random()); // Aquie mezclamos el array clothes
+  console.log(shuffledClothes);
   const randomClothes = shuffledClothes.slice(0, 8); // Tomamos solo 10 prendas del array mezclado con .slice
 
   randomClothes.forEach(cloth => {
