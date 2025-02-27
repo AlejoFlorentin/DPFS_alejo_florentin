@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/header') %>
+
+    <button
+      id="filterBtn"
+      class="filterBtns w-100 border-0 border-bottom bg-dark-subtle">
+      <div class="d-flex justify-content-center p-2">
+        <i class="bx bx-filter-alt fs-3"></i>
+        <h4 class="text-center ms-1">Filtrar</h4>
+      </div>
+    </button>
+
+    <main class="mt-5 mb-5">
+      <div class="mainProduct">
+        <aside id="filter" class="border-end border-2 pe-5 pb-3">
+          <div class="filterTitle mt-3 ps-5">
+            <h3>Filtros</h3>
+            <i id="exitBtn" class="exitFilterBtn bx bx-x fs-1"></i>
+          </div>
+
+          <div class="check ms-5 mt-3">
+            <h5>Tipo de Prenda</h5>
+
+            <div>
+              <input class="checkCategory" id="camisetas" type="checkbox" />
+              <label for="prenda">Remeras</label>
+            </div>
+            <div>
+              <input class="checkCategory" id="pantalones" type="checkbox" />
+              <label for="prenda">Pantalones</label>
+            </div>
+            <div>
+              <input class="checkCategory" id="bermudas" type="checkbox" />
+              <label for="prenda">Bermudas</label>
+            </div>
+            <div>
+              <input class="checkCategory" id="zapatillas" type="checkbox" />
+              <label for="prenda">Zapatillas</label>
+            </div>
+          </div>
+        </aside>
+
+        <div
+          id="productsFiltered"
+          class="productFiltered row gap-5 d-flex flex-wrap justify-content-center"></div>
+      </div>
+    </main>
+
+    <%- include('../partials/footer') %> <%- include('../partials/wsp') %><%-
+    include('../partials/script') %>
+  </body>
+</html>

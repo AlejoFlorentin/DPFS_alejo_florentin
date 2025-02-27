@@ -1,11 +1,109 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+<html lang="en">
+  <%- include('partials/head') %>
+
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <%- include('partials/header') %>
+    <main class="mainIndex">
+      <div
+        id="carouselExampleInterval"
+        class="carousel slide"
+        data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="5000">
+            <img
+              src="/img/logos/carouse-1.webp"
+              class="d-block w-100"
+              alt="carousel-img" />
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img
+              src="/img/logos/carouse-2.webp"
+              class="d-block w-100"
+              alt="carousel-img" />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleInterval"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleInterval"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <section class="container mt-5">
+        <h2 class="text-center mb-3">Destacados - Superlative</h2>
+
+        <div id="productsContainer" class="row"></div>
+      </section>
+
+      <section
+        class="categories p-3 mt-4 d-flex flex-row flex-wrap justify-content-center align-items-center">
+        <article class="d-flex flex-column align-items-center">
+          <a
+            id="camisetas"
+            class="category text-decoration-none"
+            href="./product.html">
+            <h4 class="text-center position-relative">Remeras</h4>
+            <img
+              class="img-fluid"
+              src="/img/camisetas/remeracat.jpg"
+              alt="remeras" />
+          </a>
+        </article>
+
+        <article class="d-flex flex-column align-items-center">
+          <a
+            id="bermudas"
+            class="category text-decoration-none"
+            href="./product.html">
+            <h4 class="text-center position-relative">Bermudas</h4>
+            <img
+              class="img-fluid"
+              src="/img/bermudas/bermudasCat.jpg"
+              alt="bermudas" />
+          </a>
+        </article>
+
+        <article class="d-flex flex-column align-items-center">
+          <a
+            id="pantalones"
+            class="category text-decoration-none"
+            href="./product.html">
+            <h4 class="text-center position-relative">Pantalones</h4>
+            <img
+              class="img-fluid"
+              src="/img/pantalones/pantalonescat.jpg"
+              alt="pantalones" />
+          </a>
+        </article>
+
+        <article class="d-flex flex-column align-items-center">
+          <a
+            id="zapatillas"
+            class="category text-decoration-none"
+            href="./product.html">
+            <h4 class="text-center position-relative">Zapatillas</h4>
+            <img
+              class="img-fluid"
+              src="/img/zapatillas/zapatillascat.jpg"
+              alt="zapatillas" />
+          </a>
+        </article>
+      </section>
+    </main>
+
+    <%- include('partials/footer') %> <%- include('partials/wsp') %>
+    <%-include('partials/scripts') %>
   </body>
 </html>

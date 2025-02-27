@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head') %>
+  <body>
+    <%- include('partials/header') %>
+
+    <main>
+      <div
+        class="mt-4 d-flex flex-column justify-content-center align-items-center">
+        <h1>Iniciar Sesion</h1>
+
+        <form
+          class="mt-2 d-flex flex-column justify-content-center w-25"
+          id="formLogin"
+          action=""
+          novalidate>
+          <div class="mb-2">
+            <label class="form-label" for="email">Email</label>
+            <input
+              class="form-control"
+              id="email"
+              placeholder="ej: tuemail@email.com"
+              type="email"
+              name="email"
+              autocomplete="off" />
+          </div>
+          <div class="text-danger" id="errorEmail"></div>
+
+          <div class="mb-1">
+            <label class="form-label" for="password">Contraseña</label>
+            <input
+              class="form-control mb-1"
+              id="password"
+              placeholder="ej: tucontraseña"
+              type="password"
+              name="password"
+              id=""
+              autocomplete="off" />
+          </div>
+          <div class="d-flex flex-row justify-content-between">
+            <span class="show-hide" id="show-hide">Show/Hide</span>
+            <p><a href="">¿Olvidaste tu contraseña?</a></p>
+          </div>
+
+          <div class="text-danger" id="errorPassword"></div>
+
+          <div class="mb-2">
+            <input
+              id="rememberPassword"
+              type="checkbox"
+              name="rememberPassword" />
+            <label for="rememberAccount">Recordar cuenta</label>
+          </div>
+
+          <input class="mb-2" type="submit" value="Inicia Sesion" />
+
+          <p class="text-center">
+            ¿No tenés cuenta? <a href="./register.html">Crear cuenta</a>
+          </p>
+        </form>
+      </div>
+    </main>
+
+    <%- include('partials/footer') %> <%- include('partials/wsp') %> <%-
+    include('partials/scripts') %>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head') %>
+  <body>
+    <%- include('partials/header') %>
+
+    <main class="container mt-5">
+      <div class="row">
+        <div class="productsCart col-md-8"></div>
+
+        <div class="cartProductsTotal col-md-4 flex-column align-items-center">
+          <h4 class="border-bottom p-2">Resumen de compra</h4>
+
+          <div class="d-flex flex-row justify-content-between w-50">
+            <div class="resumeUno">
+              <p>Productos</p>
+              <p>Envio</p>
+              <p>Total</p>
+            </div>
+
+            <div class="resumeDos">
+              <p id="cantidad" class="text-center">3</p>
+              <p id="shipment" class="text-center">Gratis</p>
+              <b id="totalBuy" class="text-center"></b>
+            </div>
+          </div>
+
+          <div class="cartButtons d-flex">
+            <button id="buyCart" type="button" class="btn btn-dark m-1">
+              Checkout
+            </button>
+            <button id="deleteCart" type="button" class="btn btn-dark m-1">
+              Vaciar Carrito
+            </button>
+          </div>
+        </div>
+
+        <div class="noProduct mt-5 col">
+          <div class="text-center">
+            <i class="bx bxs-sad text-danger fs-1"></i>
+            <h1>¡No hay productos!</h1>
+          </div>
+        </div>
+      </div>
+    </main>
+    <%- include('partials/footer') %> <%- include('partials/wsp') %> <%-
+    include('partials/scripts') %>
+  </body>
+</html>

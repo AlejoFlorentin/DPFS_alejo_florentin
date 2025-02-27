@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head') %>
+  <body>
+    <%- include('partials/header') %>
+
+    <main class="container">
+      <section
+        class="row w-100 p-3 d-flex justify-content-center align-items-center">
+        <img
+          class="col-md-6 imgDetail"
+          src="/img/camisetas/camisetaNegra.jpg"
+          alt="" />
+
+        <div
+          class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+          <h2>Camiseta Negra Lisa</h2>
+          <p>
+            Descubre la versatilidad y el estilo atemporal de nuestra Camiseta
+            Negra Lisa. Diseñada para ofrecer comodidad y elegancia en cualquier
+            ocasión, esta prenda básica se convertirá en un elemento esencial de
+            tu guardarropa.
+          </p>
+          <h5>$ 40.000</h5>
+          <p><b>$ 35.000</b> con Transferencia bancaria</p>
+          <p>6 cuotas sin interes de $ 6.666,67</p>
+
+          <div class="addAndCount">
+            <div
+              class="btn-group itemCount"
+              role="group"
+              aria-label="Basic example">
+              <button type="button" class="btn btn-dark">+</button>
+              <button type="button" class="btn btn-light">0</button>
+              <button type="button" class="btn btn-dark">-</button>
+            </div>
+
+            <button type="button" class="btn btn-dark">
+              Agregar al carrito
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <%- include('partials/footer') %><%- include('partials/wsp') %> <%-
+    include('partials/scripts') %>
+  </body>
+</html>
