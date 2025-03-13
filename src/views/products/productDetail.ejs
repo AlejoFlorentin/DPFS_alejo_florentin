@@ -7,23 +7,20 @@
     <main class="container">
       <section
         class="row w-100 p-3 d-flex justify-content-center align-items-center">
-        <img
-          class="col-md-6 imgDetail"
-          src="/img/camisetas/camisetaNegra.jpg"
-          alt="" />
-
-        <div
+       <img class="col-md-6 imgDetail" src="<%= producto.img %>" alt="Imagen del producto" />
+       <div
           class="col-md-6 d-flex flex-column align-items-center justify-content-center">
-          <h2>Camiseta Negra Lisa</h2>
+          <h2><%= producto.title %></h2>
           <p>
             Descubre la versatilidad y el estilo atemporal de nuestra Camiseta
             Negra Lisa. Diseñada para ofrecer comodidad y elegancia en cualquier
             ocasión, esta prenda básica se convertirá en un elemento esencial de
             tu guardarropa.
           </p>
-          <h5>$ 40.000</h5>
-          <p><b>$ 35.000</b> con Transferencia bancaria</p>
-          <p>6 cuotas sin interes de $ 6.666,67</p>
+          <h5>$ <%= producto.price.toFixed(2) %></h5>
+          <p><b>$ <%= (producto.price * 0.1).toFixed(2) %></b> con Transferencia bancaria</p>
+          <p>6 cuotas sin interes de $ <%= (producto.price / 6).toFixed(2) %>
+</p>
 
           <div class="addAndCount">
             <div

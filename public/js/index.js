@@ -21,7 +21,9 @@ function showSomeProducts(clothesSelected) {
     article.classList.add("col-md-4");
     article.classList.add("col-sm-6");
     article.innerHTML = `
-                            <a class='text-black text-decoration-none' href="/productos/detalle">   
+                            <a class='text-black text-decoration-none' href="/productos/detalle/${
+                              cloth.id
+                            }">   
                                 <img  src="${cloth.img}" alt="${cloth.title}">
                                 <div class="d-flex flex-column align-items-center justify-content-center">
                                     <h4 class='text-center'>${cloth.title}</h4>

@@ -1,17 +1,13 @@
 var express = require("express");
 var router = express.Router();
 
+let productsController = require("../controllers/productsController");
+
 /* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.render("products/product", { title: "Superlative | Productos" });
-});
+router.get("/", productsController.productos);
 
-router.get("/carrito", function (req, res, next) {
-  res.render("products/cart", { title: "Superlative | Carrito" });
-});
+router.get("/carrito", productsController.carrito);
 
-router.get("/detalle", function (req, res, next) {
-  res.render("products/productDetail", { title: "Superlative | Detalle" });
-});
+router.get("/detalle/:id", productsController.detalle);
 
 module.exports = router;

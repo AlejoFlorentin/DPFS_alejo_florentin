@@ -1,13 +1,10 @@
 var express = require("express");
 var router = express.Router();
 
-/* GET users listing. */
-router.get("/login", function (req, res, next) {
-  res.render("users/login", { title: "Superlative | Login" });
-});
+let usersController = require("../controllers/usersController");
 
-router.get("/registro", function (req, res, next) {
-  res.render("users/register", { title: "Superlative | Registro" });
-});
+router.get("/login", usersController.login);
+
+router.get("/registro", usersController.registro);
 
 module.exports = router;

@@ -25,7 +25,9 @@ function showproducts(products) {
     article.classList.add("col-md-4");
     article.classList.add("col-sm-6");
     article.innerHTML = `
-      <a class="d-flex flex-column align-items-center justify-content-center text-decoration-none text-black" href="/productos/detalle">   
+      <a class="d-flex flex-column align-items-center justify-content-center text-decoration-none text-black" href="/productos/detalle/${
+        product.id
+      }">   
         <img src="${product.img}" alt="${product.title}">
         <div>
           <h4 class="text-center">${product.title}</h4>
