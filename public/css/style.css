@@ -14,13 +14,13 @@ h5,
 h6,
 label,
 input {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 h1,
 h2,
 li {
-  font-family: 'Anton SC', sans-serif;
+  font-family: "Anton SC", sans-serif;
 }
 
 main {
@@ -104,7 +104,7 @@ footer {
 .wspSticky {
   position: sticky;
   bottom: 70px;
-  left: 1500px;
+  left: 1800px;
   font-size: 50px;
   border-radius: 50px;
 }

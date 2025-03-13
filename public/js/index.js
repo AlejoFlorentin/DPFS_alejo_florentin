@@ -1,27 +1,27 @@
 let clothesIndex = [];
 
-fetch('/public/js/prendas.json')
-  .then(res => res.json())
-  .then(data => {
+fetch("/js/prendas.json")
+  .then((res) => res.json())
+  .then((data) => {
     clothesIndex = data;
     showSomeProducts(clothesIndex);
   });
 
-const productsContainer = document.getElementById('productsContainer');
+const productsContainer = document.getElementById("productsContainer");
 
 function showSomeProducts(clothesSelected) {
   const shuffledClothes = [...clothesSelected].sort(() => 0.5 - Math.random()); // Aquie mezclamos el array clothes
   console.log(shuffledClothes);
   const randomClothes = shuffledClothes.slice(0, 8); // Tomamos solo 10 prendas del array mezclado con .slice
 
-  randomClothes.forEach(cloth => {
-    const article = document.createElement('article');
-    article.classList.add('product');
-    article.classList.add('col-lg-3');
-    article.classList.add('col-md-4');
-    article.classList.add('col-sm-6');
+  randomClothes.forEach((cloth) => {
+    const article = document.createElement("article");
+    article.classList.add("product");
+    article.classList.add("col-lg-3");
+    article.classList.add("col-md-4");
+    article.classList.add("col-sm-6");
     article.innerHTML = `
-                            <a class='text-black text-decoration-none' href="./productDetail.html">   
+                            <a class='text-black text-decoration-none' href="/productos/detalle">   
                                 <img  src="${cloth.img}" alt="${cloth.title}">
                                 <div class="d-flex flex-column align-items-center justify-content-center">
                                     <h4 class='text-center'>${cloth.title}</h4>
@@ -38,11 +38,11 @@ function showSomeProducts(clothesSelected) {
   });
 }
 
-const categories = document.querySelectorAll('.category');
+const categories = document.querySelectorAll(".category");
 
-categories.forEach(category => {
-  category.addEventListener('click', e => {
+categories.forEach((category) => {
+  category.addEventListener("click", (e) => {
     const categorySelected = e.currentTarget.id;
-    localStorage.setItem('categorySelected', categorySelected);
+    localStorage.setItem("categorySelected", categorySelected);
   });
 });

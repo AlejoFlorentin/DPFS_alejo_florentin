@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('partials/head') %>
+  <%- include('../partials/head') %>
   <body>
-    <%- include('partials/header') %>
+    <%- include('../partials/header') %>
 
     <main class="container mt-5">
       <div class="row">
@@ -43,7 +43,16 @@
         </div>
       </div>
     </main>
-    <%- include('partials/footer') %> <%- include('partials/wsp') %> <%-
-    include('partials/scripts') %>
+
+    <%- include('../partials/footer') %> <%- include('../partials/wsp') %>
+    <script src="/js/cart.js"></script>
+    <script src="/js/products.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>
