@@ -39,9 +39,12 @@ function showproducts(products) {
           </div>
         </div>
       </a>
-      <button class='btnAddProduct mb-5 rounded-2 border-0 fs-6 bg-black text-white p-2' id=${
+      <div class="d-flex gap-2"><button class='btnAddProduct mb-5 rounded-2 border-0 fs-6 bg-black text-white p-2' id=${
         product.id
       }>Agregar al carrito</button>
+      <a href="/productos/editar"><Button id="btnEdit" title="Editar" class="bg-black text-white rounded-2 border-0 p-2 mb-5"><i class='bx bxs-pencil'></i></Button></a></div>
+      
+      
     `;
     productsFiltered.append(article);
   });

@@ -2,6 +2,80 @@
 <html lang="en">
   <%- include('../partials/head') %>
   <body>
-    <%- include('../partials/header') %> <%- include('../partials/footer') %>
+    <%- include('../partials/header') %>
+
+    <main>
+      <div
+        class="mt-5 mb-5 d-flex flex-column justify-content-center align-items-center container">
+        <h1>Editar Producto</h1>
+        <form
+          class="row mt-4 w-50 d-flex align-items-center justify-content-center">
+          <div class="col-md-12 mb-3">
+            <label for="name" class="form-label">Nombre del Producto</label>
+            <input
+              value="Remera Negra"
+              placeholder="Ejemplo: Pantalon de Jean"
+              type="text"
+              class="form-control"
+              id="name"
+              name="name" />
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="price" class="form-label">Precio</label>
+            <input
+              value="$ 55.000"
+              placeholder="Ejemplo: $ 5000"
+              type="number"
+              class="form-control"
+              id="price"
+              name="price" />
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="quantity" class="form-label">Cantidad</label>
+            <input
+              value="5"
+              placeholder="Ejemplo: 10"
+              type="number"
+              class="form-control"
+              id="quantity"
+              name="quantity" />
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="category" class="form-label">Categoria</label>
+            <select name="category" id="category" class="form-select">
+              <option selected value="camisetas">Camisetas</option>
+              <option value="pantalones">Pantalones</option>
+              <option value="bermudas">Bermudas</option>
+              <option value="zapatillas">Zapatillas</option>
+            </select>
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="size" class="form-label">Talle</label>
+            <select name="size" id="category" class="form-select">
+              <option selected>-- Seleccionar Talle --</option>
+              <option value="s">S</option>
+              <option selected value="m">M</option>
+              <option value="l">L</option>
+              <option value="xl">XL</option>
+            </select>
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea
+              placeholder="Breve Descripción"
+              type="text"
+              rows="4"
+              class="form-control"
+              id="description"
+              name="description">
+Remera Negra 100% de seda con corte en v Oversize</textarea
+            >
+          </div>
+          <button type="submit" class="btn btn-dark w-25">Editar</button>
+        </form>
+      </div>
+    </main>
+
+    <%- include('../partials/footer') %>
   </body>
 </html>
