@@ -12,7 +12,8 @@
         <form
           class="mt-2 d-flex flex-column justify-content-center w-25"
           id="formLogin"
-          action=""
+          action="/usuarios/dataLog"
+          method="post"
           novalidate>
           <div class="mb-2">
             <label class="form-label" for="email">Email</label>
@@ -62,6 +63,7 @@
     </main>
 
     <%- include('../partials/footer') %> <%- include('../partials/wsp') %>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/login.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -36,6 +36,20 @@ const productsController = {
       return res.status(500).send("Error interno del servidor");
     }
   },
+  dataNew: function (req, res, next) {
+    let product = req.body;
+    return res.redirect("/productos/");
+    return res.send(product);
+  },
+
+  dataEdit: function (req, res, next) {
+    let product = req.body;
+
+    return setTimeout(() => {
+      res.redirect("/productos/");
+      // res.send(product);
+    }, 1500);
+  },
 };
 
 module.exports = productsController;
