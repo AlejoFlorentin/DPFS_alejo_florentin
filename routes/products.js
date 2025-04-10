@@ -18,4 +18,6 @@ router.post("/dataNewProd", productsController.dataNew);
 
 router.post("/dataEditProd", productsController.dataEdit);
 
+router.delete("/:id", productsController.delete);
+
 module.exports = router;

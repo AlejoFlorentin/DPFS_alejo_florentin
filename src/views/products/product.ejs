@@ -16,36 +16,66 @@
     <main class="mt-5 mb-5">
       <div class="mainProduct">
         <aside id="filter" class="border-end border-2 pe-5 pb-3">
-          <div class="filterTitle mt-3 ps-5">
-            <h3>Filtros</h3>
-            <i id="exitBtn" class="exitFilterBtn bx bx-x fs-1"></i>
+  <div class="filterTitle mt-3 ps-5">
+    <h3>Filtros</h3>
+    <i id="exitBtn" class="exitFilterBtn bx bx-x fs-1"></i>
+  </div>
+
+  <form method="get" action="/productos" class="ms-5 mt-3">
+    <h5>Tipo de Prenda</h5>
+
+    <div>
+      <input onchange="this.form.submit()" type="radio" name="categoria" value="camisetas" <%= (req.query.categoria === 'camisetas') ? 'checked' : '' %> />
+      <label for="camisetas">Camisetas</label>
+    </div>
+    <div>
+      <input onchange="this.form.submit()" type="radio" name="categoria" value="pantalones" <%= (req.query.categoria === 'pantalones') ? 'checked' : '' %> />
+      <label for="pantalones">Pantalones</label>
+    </div>
+    <div>
+      <input onchange="this.form.submit()" type="radio" name="categoria" value="bermudas" <%= (req.query.categoria === 'bermudas') ? 'checked' : '' %> />
+      <label for="bermudas">Bermudas</label>
+    </div>
+    <div>
+      <input onchange="this.form.submit()" type="radio" name="categoria" value="zapatillas" <%= (req.query.categoria === 'zapatillas') ? 'checked' : '' %> />
+      <label for="zapatillas">Zapatillas</label>
+    </div>
+  </form>
+</aside>
+
+
+        <div id="productsFiltered" class="productFiltered row gap-5 d-flex flex-wrap justify-content-center">
+  <% products.forEach(product => { %>
+    <article class="product col-lg-3 col-md-4 col-sm-6">
+      <a class="d-flex flex-column align-items-center justify-content-center text-decoration-none text-black"
+        href="/productos/detalle/<%= product.id %>">
+        <img src="<%= product.img %>" alt="<%= product.title %>">
+        <div>
+          <h4 class="text-center"><%= product.title %></h4>
+          <div class="d-flex flex-column align-items-center">
+            <p>$ <%= product.price %></p>
+            <p class="cuotas"><b>3 cuotas sin interés de $ <%= (product.price / 3).toFixed(2) %></b></p>
           </div>
+        </div>
+      </a>
+      <div class="d-flex gap-2">
+        <button class='btnAddProduct mb-5 rounded-2 border-0 fs-6 bg-black text-white p-2' id="<%= product.id %>">
+          Agregar al carrito
+        </button>
+        <a href="/productos/editar">
+          <button id="btnEdit" title="Editar" class="bg-black text-white rounded-2 border-0 p-2 mb-5">
+            <i class='bx bxs-pencil'></i>
+          </button>
+        </a>
+        <form action="/productos/<%= product.id %>?_method=DELETE" method="POST" onsubmit="return confirm('¿Estás seguro de que querés eliminar este producto?')">
+  <button class="bg-danger text-white rounded-2 border-0 p-2 mb-5" type="submit"><i class='bx bxs-trash'></i></button>
+</form>
 
-          <div class="check ms-5 mt-3">
-            <h5>Tipo de Prenda</h5>
+      </div>
+    </article>
+  <% }) %>
+</div>
 
-            <div>
-              <input class="checkCategory" id="camisetas" type="checkbox" />
-              <label for="prenda">Remeras</label>
-            </div>
-            <div>
-              <input class="checkCategory" id="pantalones" type="checkbox" />
-              <label for="prenda">Pantalones</label>
-            </div>
-            <div>
-              <input class="checkCategory" id="bermudas" type="checkbox" />
-              <label for="prenda">Bermudas</label>
-            </div>
-            <div>
-              <input class="checkCategory" id="zapatillas" type="checkbox" />
-              <label for="prenda">Zapatillas</label>
-            </div>
-          </div>
-        </aside>
-
-        <div
-          id="productsFiltered"
-          class="productFiltered row gap-5 d-flex flex-wrap justify-content-center"></div>
       </div>
     </main>
 

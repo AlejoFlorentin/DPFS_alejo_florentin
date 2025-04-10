@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
     } else {
       event.preventDefault();
-      rememberAccount();
+
       alert("Ingresaste con exito");
     }
   }
@@ -38,16 +38,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const passwordValue = passwordInput.value.trim();
 
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-
-    const userFind = users.find((user) => user.email === emailValue);
-
     if (passwordValue.length < 6) {
       errorPassword.innerHTML =
         "Ingresa una contraseña de al menos 6 caracteres";
-      validation = false;
-    } else if (userFind.password != passwordValue) {
-      errorPassword.innerHTML = "Contraseña incorrecta";
       validation = false;
     } else {
       errorPassword.innerHTML = "";
@@ -63,41 +56,4 @@ document.addEventListener("DOMContentLoaded", function () {
       passwordInput.type = "password";
     }
   });
-
-  function saveToLocalStorage() {
-    const user = {
-      email: emailInput.value.trim(),
-      password: passwordInput.value.trim(),
-    };
-
-    // Recuperar el array de usuarios del localStorage o crear uno nuevo si no existe
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-
-    // Añadir el nuevo usuario al array
-    users.push(user);
-
-    // Guardar el array actualizado en el localStorage
-    localStorage.setItem("users", JSON.stringify(users));
-    console.log("Usuarios guardados:", users);
-  }
-
-  //Funcion para recordar cuenta
-  function rememberAccount() {
-    if (rememberAccountInput.checked) {
-      saveToLocalStorage();
-    }
-  }
-
-  //Funcion para validar si las credenciales ingresadas son correctas
-  function loadSavedCredentials() {
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-
-    // Usar forEach con una función flecha para recorrer cada usuario guardado
-    users.forEach((user) => {
-      if (user.email) {
-        emailInput.value = user.email;
-        passwordInput.value = user.password;
-      }
-    });
-  }
 });

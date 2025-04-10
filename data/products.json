@@ -1,0 +1,152 @@
+[
+  {
+    "id": "1",
+    "title": "Remera Oversize Negra",
+    "price": 131253,
+    "size": "L",
+    "stock": 18,
+    "category": "camisetas",
+    "img": "/img/camisetas/camisetaNegra.jpg",
+    "description": "Inspirado en la moda contemporánea. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  },
+  {
+    "id": "2",
+    "title": "Musculosa Negra",
+    "price": 110228,
+    "size": "S",
+    "stock": 7,
+    "category": "camisetas",
+    "img": "/img/camisetas/musculosa.jpg",
+    "description": "Perfecto para combinar con tu outfit favorito. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  },
+  {
+    "id": "3",
+    "title": "Polo Gris",
+    "price": 142473,
+    "size": "L",
+    "stock": 8,
+    "category": "camisetas",
+    "img": "/img/camisetas/poloGris.jpg",
+    "description": "Ideal para toda ocasión con estilo único. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  },
+  {
+    "id": "4",
+    "title": "Remera Boxy Fit Gris",
+    "price": 134071,
+    "size": "L",
+    "stock": 19,
+    "category": "camisetas",
+    "img": "/img/camisetas/remeracat.jpg",
+    "description": "Diseño moderno y versátil para el día a día. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  },
+  {
+    "id": "5",
+    "title": "Cargo Pana",
+    "price": 118000,
+    "size": "M",
+    "stock": 6,
+    "category": "pantalones",
+    "img": "/img/pantalones/cargoPana.jpg",
+    "description": "Ideal para toda ocasión con estilo único. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  },
+  {
+    "id": "6",
+    "title": "Jean Relaxed",
+    "price": 100652,
+    "size": "S",
+    "stock": 10,
+    "category": "pantalones",
+    "img": "/img/pantalones/jeanRelaxed.jpg",
+    "description": "Estilo oversize con personalidad. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  },
+  {
+    "id": "7",
+    "title": "Jean Straigth",
+    "price": 179254,
+    "size": "L",
+    "stock": 12,
+    "category": "pantalones",
+    "img": "/img/pantalones/jeanStraight.jpg",
+    "description": "Perfecto para combinar con tu outfit favorito. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  },
+  {
+    "id": "8",
+    "title": "Jean Recto",
+    "price": 26348,
+    "size": "S",
+    "stock": 10,
+    "category": "pantalones",
+    "img": "/img/pantalones/pantalonescat.jpg",
+    "description": "Comodidad sin perder elegancia. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  },
+  {
+    "id": "9",
+    "title": "Bermuda de Jean",
+    "price": 155960,
+    "size": "L",
+    "stock": 12,
+    "category": "bermudas",
+    "img": "/img/bermudas/bermudasCat.jpg",
+    "description": "Diseño moderno y versátil para el día a día. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  },
+  {
+    "id": "10",
+    "title": "Bermuda de Jean Negra",
+    "price": 132031,
+    "size": "M",
+    "stock": 18,
+    "category": "bermudas",
+    "img": "/img/bermudas/bermudanegra.webp",
+    "description": "Diseño moderno y versátil para el día a día. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  },
+  {
+    "id": "11",
+    "title": "Bermuda Enzymatick",
+    "price": 171405,
+    "size": "XL",
+    "stock": 19,
+    "category": "bermudas",
+    "img": "/img/bermudas/bermudaenzymatick.webp",
+    "description": "Ideal para toda ocasión con estilo único. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  },
+  {
+    "id": "12",
+    "title": "Alexander Mqueen",
+    "price": 85648,
+    "size": "XL",
+    "stock": 15,
+    "category": "zapatillas",
+    "img": "/img/zapatillas/zapatillascat.jpg",
+    "description": "Perfecto para combinar con tu outfit favorito. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  },
+  {
+    "id": "13",
+    "title": "Air Force 07 White",
+    "price": 99553,
+    "size": "XL",
+    "stock": 18,
+    "category": "zapatillas",
+    "img": "/img/zapatillas/airforce.webp",
+    "description": "Inspirado en la moda contemporánea. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  },
+  {
+    "id": "14",
+    "title": "Dunk Bordeauz",
+    "price": 175763,
+    "size": "M",
+    "stock": 18,
+    "category": "zapatillas",
+    "img": "/img/zapatillas/dunkBordo.webp",
+    "description": "Ideal para toda ocasión con estilo único. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  },
+  {
+    "id": "15",
+    "title": "Jordan Retro",
+    "price": 139644,
+    "size": "M",
+    "stock": 10,
+    "category": "zapatillas",
+    "img": "/img/zapatillas/jordan.webp",
+    "description": "Estilo urbano con toques clásicos. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  }
+]

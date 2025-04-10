@@ -15,7 +15,7 @@
           action="/usuarios/dataLog"
           method="post"
           novalidate>
-          <div class="mb-2">
+          <div>
             <label class="form-label" for="email">Email</label>
             <input
               class="form-control"
@@ -25,9 +25,9 @@
               name="email"
               autocomplete="off" />
           </div>
-          <div class="text-danger" id="errorEmail"></div>
+          <div class="error text-danger" id="errorEmail"></div>
 
-          <div class="mb-1">
+          <div class="mt-2">
             <label class="form-label" for="password">Contraseña</label>
             <input
               class="form-control mb-1"
@@ -38,14 +38,13 @@
               id=""
               autocomplete="off" />
           </div>
-          <div class="d-flex flex-row justify-content-between">
+          <div class="error text-danger" id="errorPassword"></div>
+          <div class="mt-2 d-flex flex-row justify-content-between">
             <span class="show-hide" id="show-hide">Show/Hide</span>
             <p><a href="">¿Olvidaste tu contraseña?</a></p>
           </div>
 
-          <div class="text-danger" id="errorPassword"></div>
-
-          <div class="mb-2">
+          <div class="mt-2">
             <input
               id="rememberPassword"
               type="checkbox"

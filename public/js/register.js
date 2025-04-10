@@ -1,3 +1,4 @@
+
 document.querySelector("form").addEventListener("submit", submitFunction);
 
 function submitFunction(event) {
@@ -8,21 +9,12 @@ function submitFunction(event) {
 
     alert(
       "Los datos enviados fueron: \n" +
-        "Nombre: " +
-        document.getElementById("name").value +
-        "\n" +
-        "Apellido: " +
-        document.getElementById("lastName").value +
-        "\n" +
-        "Telefono: " +
-        document.getElementById("phone").value +
-        "\n" +
-        "Email: " +
-        document.getElementById("email").value +
-        "\n" +
-        "Contraseña: " +
-        document.getElementById("password").value +
-        "\n"
+        "Nombre: " + document.getElementById("name").value + "\n" +
+        "Apellido: " + document.getElementById("lastName").value + "\n" +
+        "Telefono: " + document.getElementById("phone").value + "\n" +
+        "Email: " + document.getElementById("email").value + "\n" +
+        "Contraseña: " + document.getElementById("password").value + "\n" +
+        "Categoría: " + document.getElementById("category").value
     );
   }
 }
@@ -34,6 +26,8 @@ function formValidation() {
   const inputPassword = document.getElementById("password");
   const inputRepeatPassword = document.getElementById("repeatPassword");
   const inputTerms = document.getElementById("termsAccept");
+  const inputCategory = document.getElementById("category");
+  const inputImage = document.getElementById("image");
 
   let validation = true;
 
@@ -42,10 +36,10 @@ function formValidation() {
       "error" + field.id.charAt(0).toUpperCase() + field.id.slice(1)
     );
 
-    if (field.value.length == "") {
+    if (field.value === "") {
       errorField.innerHTML = "Campo incompleto";
       validation = false;
-    } else if (field.value.length > 0 && field.value.length < 3) {
+    } else if (field.value.length < 3) {
       errorField.innerHTML = "Se necesita al menos 3 caracteres";
       validation = false;
     } else {
@@ -54,17 +48,17 @@ function formValidation() {
   });
 
   const errorEmail = document.getElementById("errorEmail");
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputEmail.value)) {
+  if (emailRegex.test(inputEmail.value)) {
     errorEmail.innerHTML = "";
   } else {
-    errorEmail.innerHTML = "Ingrese un correo electronico valido";
+    errorEmail.innerHTML = "Ingrese un correo electrónico válido";
     validation = false;
   }
 
   const errorRepeatEmail = document.getElementById("errorRepeatEmail");
-
-  if (inputRepeatEmail.value.length == "") {
+  if (inputRepeatEmail.value === "") {
     errorRepeatEmail.innerHTML = "Campo incompleto";
     validation = false;
   } else if (inputRepeatEmail.value !== inputEmail.value) {
@@ -85,22 +79,11 @@ function formValidation() {
     !/[0-9]/.test(inputPassword.value) ||
     !/[!@#$%^&*(),.?":{}|<>]/.test(inputPassword.value)
   ) {
-    let errorMessage =
-      "La contraseña debe cumplir con los siguientes requisitos:<br>";
-
-    if (inputPassword.value.length < 10) {
-      errorMessage += "Debe contener al menos 10 caracteres.<br>";
-    }
-    if (!/[A-Z]/.test(inputPassword.value)) {
-      errorMessage += "Debe contener al menos una letra mayúscula.<br>";
-    }
-    if (!/[0-9]/.test(inputPassword.value)) {
-      errorMessage += "Debe contener al menos un número.<br>";
-    }
-    if (!/[!@#$%^&*(),.?":{}|<>]/.test(inputPassword.value)) {
-      errorMessage += "Debe contener al menos un carácter especial.<br>";
-    }
-
+    let errorMessage = "La contraseña debe cumplir con los siguientes requisitos:<br>";
+    if (inputPassword.value.length < 10) errorMessage += "Debe tener al menos 10 caracteres.<br>";
+    if (!/[A-Z]/.test(inputPassword.value)) errorMessage += "Debe contener una letra mayúscula.<br>";
+    if (!/[0-9]/.test(inputPassword.value)) errorMessage += "Debe contener un número.<br>";
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(inputPassword.value)) errorMessage += "Debe contener un carácter especial.<br>";
     errorPassword.innerHTML = errorMessage;
     validation = false;
   } else {
@@ -108,8 +91,7 @@ function formValidation() {
   }
 
   const errorRepeatPassword = document.getElementById("errorRepeatPassword");
-
-  if (inputRepeatPassword.value.length == "") {
+  if (inputRepeatPassword.value === "") {
     errorRepeatPassword.innerHTML = "Campo incompleto";
     validation = false;
   } else if (inputRepeatPassword.value !== inputPassword.value) {
@@ -120,12 +102,19 @@ function formValidation() {
   }
 
   const errorTerms = document.getElementById("errorTerms");
-
   if (!inputTerms.checked) {
     errorTerms.innerHTML = "¡Debes aceptar los términos y condiciones!";
     validation = false;
   } else {
     errorTerms.innerHTML = "";
+  }
+
+  const errorCategory = document.getElementById("errorCategory");
+  if (!inputCategory.value) {
+    errorCategory.innerHTML = "Debes seleccionar una categoría";
+    validation = false;
+  } else {
+    errorCategory.innerHTML = "";
   }
 
   return validation;

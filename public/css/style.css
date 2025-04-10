@@ -169,6 +169,12 @@ aside {
   height: 100px;
 }
 
+/* LOGIN REGISTER*/
+
+.error {
+  font-size: 13px;
+}
+
 @media (max-width: 768px) {
   .mainProduct {
     flex-direction: column;
