@@ -1,47 +1,12 @@
 [
   {
     "id": 1,
-    "firstName": "Alejo",
+    "firstName": "Alejo Augusto",
     "lastName": "Florentin",
-    "email": "alejo@example.com",
-    "password": "alejo123",
+    "telefono": "1150620957",
+    "email": "alejoflorentin@gmail.com",
+    "password": "$2b$10$m.nZ7wkjGkwKtwyqrsgfE.oFqoZOg8ytmVOtVmlHgquUsVczQm/pq",
     "category": "admin",
-    "image": "/img/users/user1.jpg"
-  },
-  {
-    "id": 2,
-    "firstName": "Juan",
-    "lastName": "Gomez",
-    "email": "juan@example.com",
-    "password": "juan123",
-    "category": "user",
-    "image": "/img/users/user2.jpg"
-  },
-  {
-    "id": 3,
-    "firstName": "Lucia",
-    "lastName": "Martinez",
-    "email": "lucia@example.com",
-    "password": "lucia123",
-    "category": "user",
-    "image": "/img/users/user3.jpg"
-  },
-  {
-    "id": 4,
-    "firstName": "Pedro",
-    "lastName": "Lopez",
-    "email": "pedro@example.com",
-    "password": "pedro123",
-    "category": "user",
-    "image": "/img/users/user4.jpg"
-  },
-  {
-    "id": 5,
-    "firstName": "Sofia",
-    "lastName": "Ramirez",
-    "email": "sofia@example.com",
-    "password": "sofia123",
-    "category": "admin",
-    "image": "/img/users/user5.jpg"
+    "image": "/img/users/user-1745272235621-418719920.png"
   }
 ]

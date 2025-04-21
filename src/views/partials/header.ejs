@@ -35,12 +35,14 @@
           </li>
         </ul>
         <div class="iconsHeader">
+          <% if(locals.lastUser && locals.lastUser.category == 'admin') { %>
           <a class="fs-3 text-white me-3" href="/productos/crear"
-            ><i class="bx bxs-add-to-queue"></i
-          ></a>
+            ><i class="bx bxs-add-to-queue"></i></a
+          ><%}%> <%if(locals.lastUser == undefined) {%>
           <a class="fs-3 text-white me-3" href="/usuarios/login"
             ><i class="bx bx-user"></i
           ></a>
+          <% } %>
           <div class="d-flex flex-row align-items-center me-2">
             <a class="fs-3 text-white" href="/productos/carrito"
               ><i class="bx bx-cart"></i

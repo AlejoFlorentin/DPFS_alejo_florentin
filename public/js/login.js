@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // El evento DOMContentLoaded es un evento en JavaScript que se dispara cuando el documento HTML inicial ha sido completamente cargado y analizado por el navegador,
-  //  sin esperar a que se carguen por completo las hojas de estilo, imágenes y subframes.
   const formLogin = document.getElementById("formLogin");
   const emailInput = document.getElementById("email");
   const passwordInput = document.getElementById("password");
@@ -11,16 +9,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   formLogin.addEventListener("submit", submitLog);
 
-  loadSavedCredentials();
-
   function submitLog(event) {
+    const query = new URLSearchParams(window.location.search);
+    const error = query.get("error");
+
     if (!formValidation()) {
       event.preventDefault();
-    } else {
-      event.preventDefault();
-
-      alert("Ingresaste con exito");
+      return;
     }
+
+    if (error) return;
   }
 
   function formValidation() {
@@ -57,3 +55,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+const query = new URLSearchParams(window.location.search);
+const error = query.get("error");
+
+if (error === "email") {
+  Swal.fire({
+    icon: "error",
+    title: "Usuario no encontrado",
+    text: "Verificá tu email e intentá de nuevo",
+    timer: 1500,
+    showConfirmButton: false,
+  });
+}
+
+if (error === "pass") {
+  Swal.fire({
+    icon: "error",
+    title: "Contraseña incorrecta",
+    text: "La contraseña que ingresaste no es válida",
+    timer: 1500,
+    showConfirmButton: false,
+  });
+}

@@ -41,6 +41,11 @@ header {
 
 /* INDEX */
 
+.imgUser {
+  height: 100px;
+  width: 90px;
+}
+
 .product {
   display: flex;
   flex-direction: column;

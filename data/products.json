@@ -6,7 +6,7 @@
     "size": "L",
     "stock": 18,
     "category": "camisetas",
-    "img": "/img/camisetas/camisetaNegra.jpg",
+    "img": "/img/products/camisetas/camisetaNegra.jpg",
     "description": "Inspirado en la moda contemporánea. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
   },
   {
@@ -16,7 +16,7 @@
     "size": "S",
     "stock": 7,
     "category": "camisetas",
-    "img": "/img/camisetas/musculosa.jpg",
+    "img": "/img/products/camisetas/musculosa.jpg",
     "description": "Perfecto para combinar con tu outfit favorito. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
   },
   {
@@ -26,7 +26,7 @@
     "size": "L",
     "stock": 8,
     "category": "camisetas",
-    "img": "/img/camisetas/poloGris.jpg",
+    "img": "/img/products/camisetas/poloGris.jpg",
     "description": "Ideal para toda ocasión con estilo único. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
   },
   {
@@ -36,7 +36,7 @@
     "size": "L",
     "stock": 19,
     "category": "camisetas",
-    "img": "/img/camisetas/remeracat.jpg",
+    "img": "/img/products/camisetas/remeracat.jpg",
     "description": "Diseño moderno y versátil para el día a día. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
   },
   {
@@ -46,7 +46,7 @@
     "size": "M",
     "stock": 6,
     "category": "pantalones",
-    "img": "/img/pantalones/cargoPana.jpg",
+    "img": "/img/products/pantalones/cargoPana.jpg",
     "description": "Ideal para toda ocasión con estilo único. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
   },
   {
@@ -56,7 +56,7 @@
     "size": "S",
     "stock": 10,
     "category": "pantalones",
-    "img": "/img/pantalones/jeanRelaxed.jpg",
+    "img": "/img/products/pantalones/jeanRelaxed.jpg",
     "description": "Estilo oversize con personalidad. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
   },
   {
@@ -66,7 +66,7 @@
     "size": "L",
     "stock": 12,
     "category": "pantalones",
-    "img": "/img/pantalones/jeanStraight.jpg",
+    "img": "/img/products/pantalones/jeanStraight.jpg",
     "description": "Perfecto para combinar con tu outfit favorito. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
   },
   {
@@ -76,7 +76,7 @@
     "size": "S",
     "stock": 10,
     "category": "pantalones",
-    "img": "/img/pantalones/pantalonescat.jpg",
+    "img": "/img/products/pantalones/pantalonescat.jpg",
     "description": "Comodidad sin perder elegancia. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
   },
   {
@@ -86,7 +86,7 @@
     "size": "L",
     "stock": 12,
     "category": "bermudas",
-    "img": "/img/bermudas/bermudasCat.jpg",
+    "img": "/img/products/bermudas/bermudasCat.jpg",
     "description": "Diseño moderno y versátil para el día a día. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
   },
   {
@@ -96,7 +96,7 @@
     "size": "M",
     "stock": 18,
     "category": "bermudas",
-    "img": "/img/bermudas/bermudanegra.webp",
+    "img": "/img/products/bermudas/bermudanegra.webp",
     "description": "Diseño moderno y versátil para el día a día. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
   },
   {
@@ -106,7 +106,7 @@
     "size": "XL",
     "stock": 19,
     "category": "bermudas",
-    "img": "/img/bermudas/bermudaenzymatick.webp",
+    "img": "/img/products/bermudas/bermudaenzymatick.webp",
     "description": "Ideal para toda ocasión con estilo único. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
   },
   {
@@ -116,7 +116,7 @@
     "size": "XL",
     "stock": 15,
     "category": "zapatillas",
-    "img": "/img/zapatillas/zapatillascat.jpg",
+    "img": "/img/products/zapatillas/zapatillascat.jpg",
     "description": "Perfecto para combinar con tu outfit favorito. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
   },
   {
@@ -126,7 +126,7 @@
     "size": "XL",
     "stock": 18,
     "category": "zapatillas",
-    "img": "/img/zapatillas/airforce.webp",
+    "img": "/img/products/zapatillas/airforce.webp",
     "description": "Inspirado en la moda contemporánea. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial.\r\n            "
   },
   {
@@ -136,7 +136,7 @@
     "size": "M",
     "stock": 18,
     "category": "zapatillas",
-    "img": "/img/zapatillas/dunkBordo.webp",
+    "img": "/img/products/zapatillas/dunkBordo.webp",
     "description": "Ideal para toda ocasión con estilo único. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
   },
   {
@@ -146,7 +146,7 @@
     "size": "M",
     "stock": 10,
     "category": "zapatillas",
-    "img": "/img/zapatillas/jordan.webp",
+    "img": "/img/products/apatillas/jordan.webp",
     "description": "Estilo urbano con toques clásicos. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
   }
 ]

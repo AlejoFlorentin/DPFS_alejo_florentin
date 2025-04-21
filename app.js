@@ -24,16 +24,44 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/data", express.static(path.join(__dirname, "data")));
 app.use(
-  session({ secret: "superlative", resave: false, saveUninitialized: true })
+  session({
+    secret: "superlative",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: false, //  hace que se elimine al cerrar el navegador
+    },
+  })
 );
-app.use(function (req, res, next) {
-  //console.log(req.cookies.user); obtener la cookie que queremos conseguir
-  if (req.session.lastUser !== undefined) {
-    res.locals.lastUser = req.session.lastUser; // esto es para poder usar lo guardado en la session en todas las vistas
-  }
 
-  return next(); // para agregar en el medio de req y res
-}); //middleware= eslabon entre el req y el res de ahi el termino middleware
+app.use(async (req, res, next) => {
+  if (!req.session.lastUser && req.cookies.recordame) {
+    const filePath = path.join(__dirname, "data/users.json");
+    const data = await fs.promises.readFile(filePath, "utf8");
+    const users = JSON.parse(data);
+
+    const user = users.find(
+      (user) => user.email === decodeURIComponent(req.cookies.recordame)
+    );
+    if (user) {
+      req.session.lastUser = {
+        id: user.id,
+        name: user.firstName,
+        email: user.email,
+        category: user.category,
+        image: user.image,
+      };
+    }
+  }
+  next();
+});
+
+app.use(function (req, res, next) {
+  if (req.session.lastUser !== undefined) {
+    res.locals.lastUser = req.session.lastUser; // para poder usar los datos en todas las vistas
+  }
+  return next();
+});
 
 app.use("/", indexRouter);
 app.use("/usuarios", usersRouter);
