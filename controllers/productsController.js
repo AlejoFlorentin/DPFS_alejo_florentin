@@ -101,7 +101,7 @@ const productsController = {
         size: req.body.size,
         stock: parseInt(req.body.stock),
         category: req.body.category,
-        img: "/img/placeholder.jpg",
+        img: `/img/products/${req.body.category}/${req.file.filename}`,
         description: req.body.description,
       };
 
@@ -135,6 +135,9 @@ const productsController = {
       products[index].size = req.body.size;
       products[index].stock = parseInt(req.body.stock);
       products[index].category = req.body.category;
+      products[
+        index
+      ].img = `/img/products/${req.body.category}/${req.file.filename}`;
       products[index].description = req.body.description;
 
       // Si más adelante sumás imagen, también podrías actualizarla acá.

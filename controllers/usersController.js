@@ -32,12 +32,12 @@ const usersControllers = {
           category: user.category,
           image: user.image,
         };
-
+        console.log("Cookie creada: ", user.email);
         //  Si se marco "recordar", guardamos cookie por 7 días
         if (req.body.remember) {
           res.cookie("recordame", user.email, {
             maxAge: 1000 * 60 * 60 * 24 * 7,
-          }); // 7 días
+          });
         }
 
         return res.redirect("/");

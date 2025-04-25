@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+const upload = require("../services/uploadProduct");
 
 let productsController = require("../controllers/productsController");
 
@@ -13,9 +14,13 @@ router.get("/crear", productsController.crear);
 
 router.get("/editar/:id", productsController.editar);
 
-router.post("/dataNewProd", productsController.dataNew);
+router.post("/dataNewProd", upload.single("image"), productsController.dataNew);
 
-router.put("/dataEditProd/:id", productsController.dataEdit);
+router.put(
+  "/dataEditProd/:id",
+  upload.single("image"),
+  productsController.dataEdit
+);
 
 router.delete("/:id", productsController.delete);
 

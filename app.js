@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 let session = require("express-session");
+const fs = require("fs").promises;
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -35,14 +36,20 @@ app.use(
 );
 
 app.use(async (req, res, next) => {
+  console.log("🟡 Middleware recordame activo");
+  console.log("Session actual:", req.session.lastUser);
+  console.log("Cookie recordame:", req.cookies.recordame);
   if (!req.session.lastUser && req.cookies.recordame) {
     const filePath = path.join(__dirname, "data/users.json");
-    const data = await fs.promises.readFile(filePath, "utf8");
+    const data = await fs.readFile(filePath, "utf8");
     const users = JSON.parse(data);
-
+    console.log(req.cookies.recordame);
     const user = users.find(
-      (user) => user.email === decodeURIComponent(req.cookies.recordame)
+      (user) =>
+        user.email ===
+        decodeURIComponent(req.cookies.recordame).trim().toLowerCase()
     );
+    console.log("🔎 Usuario encontrado por cookie:", user);
     if (user) {
       req.session.lastUser = {
         id: user.id,
