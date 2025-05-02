@@ -1,15 +1,5 @@
 [
   {
-    "id": "1",
-    "title": "Remera Oversize Negra",
-    "price": 131253,
-    "size": "L",
-    "stock": 18,
-    "category": "camisetas",
-    "img": "/img/camisetas/camisetaNegra.jpg",
-    "description": "Inspirado en la moda contemporánea. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
-  },
-  {
     "id": "2",
     "title": "Musculosa Negra",
     "price": 110228,
@@ -132,21 +122,11 @@
   {
     "id": "14",
     "title": "Dunk Bordeauz",
-    "price": 175763,
+    "price": 190000,
     "size": "M",
     "stock": 18,
     "category": "zapatillas",
     "img": "/img/zapatillas/dunkBordo.webp",
-    "description": "Ideal para toda ocasión con estilo único. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
-  },
-  {
-    "id": "15",
-    "title": "Jordan Retro",
-    "price": 139644,
-    "size": "M",
-    "stock": 10,
-    "category": "zapatillas",
-    "img": "/img/zapatillas/jordan.webp",
-    "description": "Estilo urbano con toques clásicos. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+    "description": "Ideal para toda ocasión con estilo único. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial.\r\n            "
   }
 ]
