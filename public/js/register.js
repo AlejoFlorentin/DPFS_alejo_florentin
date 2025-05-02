@@ -1,22 +1,19 @@
-
 document.querySelector("form").addEventListener("submit", submitFunction);
 
 function submitFunction(event) {
   if (!formValidation()) {
-    event.preventDefault();
-  } else {
-    event.preventDefault();
-
-    alert(
-      "Los datos enviados fueron: \n" +
-        "Nombre: " + document.getElementById("name").value + "\n" +
-        "Apellido: " + document.getElementById("lastName").value + "\n" +
-        "Telefono: " + document.getElementById("phone").value + "\n" +
-        "Email: " + document.getElementById("email").value + "\n" +
-        "Contraseña: " + document.getElementById("password").value + "\n" +
-        "Categoría: " + document.getElementById("category").value
-    );
+    event.preventDefault(); //  se evita el envío si hay errores
   }
+
+  Swal.fire({
+    title: "Registro Exitoso!",
+    text: "Fuiste registrado con exito!",
+    icon: "success",
+    timer: 1500,
+    showConfirmButton: false,
+  }).then(() => {
+    this.submit(); // Envía el formulario después de la alerta
+  });
 }
 
 function formValidation() {
@@ -27,7 +24,6 @@ function formValidation() {
   const inputRepeatPassword = document.getElementById("repeatPassword");
   const inputTerms = document.getElementById("termsAccept");
   const inputCategory = document.getElementById("category");
-  const inputImage = document.getElementById("image");
 
   let validation = true;
 
@@ -79,11 +75,16 @@ function formValidation() {
     !/[0-9]/.test(inputPassword.value) ||
     !/[!@#$%^&*(),.?":{}|<>]/.test(inputPassword.value)
   ) {
-    let errorMessage = "La contraseña debe cumplir con los siguientes requisitos:<br>";
-    if (inputPassword.value.length < 10) errorMessage += "Debe tener al menos 10 caracteres.<br>";
-    if (!/[A-Z]/.test(inputPassword.value)) errorMessage += "Debe contener una letra mayúscula.<br>";
-    if (!/[0-9]/.test(inputPassword.value)) errorMessage += "Debe contener un número.<br>";
-    if (!/[!@#$%^&*(),.?":{}|<>]/.test(inputPassword.value)) errorMessage += "Debe contener un carácter especial.<br>";
+    let errorMessage =
+      "La contraseña debe cumplir con los siguientes requisitos:<br>";
+    if (inputPassword.value.length < 10)
+      errorMessage += "Debe tener al menos 10 caracteres.<br>";
+    if (!/[A-Z]/.test(inputPassword.value))
+      errorMessage += "Debe contener una letra mayúscula.<br>";
+    if (!/[0-9]/.test(inputPassword.value))
+      errorMessage += "Debe contener un número.<br>";
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(inputPassword.value))
+      errorMessage += "Debe contener un carácter especial.<br>";
     errorPassword.innerHTML = errorMessage;
     validation = false;
   } else {

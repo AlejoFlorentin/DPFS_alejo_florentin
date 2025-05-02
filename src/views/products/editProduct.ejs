@@ -10,6 +10,7 @@
         <form
           action="/productos/dataEditProd/<%=product.id %>?_method=PUT"
           method="POST"
+          enctype="multipart/form-data"
           id="editProductForm"
           class="row mt-4 w-50 d-flex align-items-center justify-content-center"
         >
@@ -54,6 +55,16 @@
               <option value="bermudas" <%=product.category == "bermudas" ? 'selected' : '' %> >Bermudas</option>
               <option value="zapatillas" <%=product.category == "zapatillas" ? 'selected' : '' %> >Zapatillas</option>
             </select>
+          </div>
+          <div class="col-md-12 mb-3">
+            <label class="form-label" for="image">Foto de Producto</label>
+            <input
+              required
+              class="form-control"
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*" />
           </div>
           <div class="col-md-12 mb-3">
             <label for="size" class="form-label">Talle</label>
