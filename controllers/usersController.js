@@ -9,6 +9,9 @@ const usersControllers = {
   registro: function (req, res, next) {
     return res.render("users/register", { title: "Superlative | Registro" });
   },
+  perfil: function (req, res, next) {
+    return res.render("users/profile", { title: "Superlative | Perfil" });
+  },
   dataLog: async (req, res, next) => {
     try {
       //Me traigo todos los usuarios ya registrados
@@ -28,6 +31,8 @@ const usersControllers = {
         req.session.lastUser = {
           id: user.id,
           name: user.firstName,
+          lastName: user.lastName,
+          phone: user.telefono,
           email: user.email,
           category: user.category,
           image: user.image,
