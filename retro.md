@@ -14,8 +14,8 @@ Un Sprint donde a traves de Express se logra una estructuracion mas simple y lim
 
 # Sprint 4
 
-En este sprint se le dio mayor dinamismo al sitio , puediendo mostrar , crear ,editar y eliminar productos. Se logro mayor velocidad en la realizacion de tares y mucha mas prolijidad en el codigo.
+En este sprint se le dio mayor dinamismo al sitio , puediendo mostrar , crear ,editar y eliminar productos. Se logro mayor velocidad en la realizacion de tareas y mucha mas prolijidad en el codigo.
 
 # Sprint 5
 
-Este ultimo sprint termino de darle dinamismo al sitio , donde los usuarios ya pueden crear su cuenta , logearse y empezar a interactuar con el. Creo que se viene avanzando con rapidez pero siendo cauteloso y prolijo.
+En este sprint se logro la creacion y logeo de usuarios , se separo las rutas de los usuarios logeados y sin logear terminando de dar formato al sitio.
