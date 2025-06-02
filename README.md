@@ -10,7 +10,16 @@ y estilo de esta ropa.
 ## Sobre mi
 
 Mi nombre es Alejo Florentin , tengo 25 años , estudie la carrera de Desarrollador Front End en CoderHouse y actualmente me encuentro estudiando el curso de Desarrollador Web Full Stack en Digital House.
-Estoy en busqueda de mi primer trabajo para poder desarrollarme como profesional.
+Actualmente trabajo como desarrollador Front End en Grupo Taraborelli en el cual me dedico a:
+
+- Crear y mantener aplicaciones web (MySQL, Express.js, React.js, Node.js).
+- Desarrollar y consumir APIs RESTful para la comunicación entre el frontend y el backend.
+- Diseñar, implementar y optimizar bases de datos MySQL para almacenar y gestionar la información del concesionario.
+- Crear interfaces de usuario dinámicas y responsivas con React.js, mejorando la experiencia del usuario.
+- Identificar y solucionar problemas en el código, realizando pruebas y optimizaciones para garantizar el correcto funcionamiento de las aplicaciones.
+- Gestionar el despliegue de aplicaciones en entornos de producción y realizar monitoreo continuo para asegurar la disponibilidad y el rendimiento.
+- Registro de dominios, subdominios y hostings.
+- Creación de carpetas iniciales en los proyectos dentro del hosting, compartiendo FTP a los colaboradores.
 
 ## Referencias
 
