@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const alias = "Orders";
+  const alias = 'Orders';
 
   const cols = {
     id: {
@@ -7,14 +7,14 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    date_create: {
+    dateCreate: {
       type: DataTypes.DATE, // TIMESTAMP en la base
     },
     user: {
       type: DataTypes.INTEGER,
       references: {
-        model: "users",
-        key: "id",
+        model: 'users',
+        key: 'id',
       },
     },
     total: {
@@ -26,10 +26,20 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   const config = {
-    tableName: "orders",
+    tableName: 'orders',
     timestamps: false,
+    underscored: true,
   };
 
   const Orders = sequelize.define(alias, cols, config);
+
+  Orders.associate = function (models) {
+    Orders.belongsToMany(models.Products, {
+      as: 'products',
+      through: 'orders_details',
+      foreignKey: 'orders',
+      otherKey: 'product',
+    });
+  };
   return Orders;
 };

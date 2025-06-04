@@ -138,5 +138,15 @@
     "category": "zapatillas",
     "img": "/img/products/zapatillas/dunkBordo.webp",
     "description": "Ideal para toda ocasión con estilo único. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial."
+  },
+  {
+    "id": "15",
+    "title": "Remera Nike",
+    "price": 20000,
+    "size": "xl",
+    "stock": 10,
+    "category": "zapatillas",
+    "img": "/img/products/zapatillas/product-1748977956947-795833766.webp",
+    "description": "Remera Nike de algodon."
   }
 ]

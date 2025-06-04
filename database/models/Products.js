@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const alias = "Products";
+  const alias = 'Products';
 
   const cols = {
     id: {
@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     category: {
       type: DataTypes.INTEGER,
       references: {
-        model: "products_categories", // nombre exacto de la tabla referenciada
-        key: "id",
+        model: 'products_categories', // nombre exacto de la tabla referenciada
+        key: 'id',
       },
     },
     img: {
@@ -32,17 +32,31 @@ module.exports = (sequelize, DataTypes) => {
     size: {
       type: DataTypes.INTEGER,
       references: {
-        model: "sizes", // nombre exacto de la tabla referenciada
-        key: "id",
+        model: 'sizes', // nombre exacto de la tabla referenciada
+        key: 'id',
       },
     },
   };
 
   const config = {
-    tableName: "products",
+    tableName: 'products',
     timestamps: false, // si no tienes createdAt/updatedAt
   };
 
   const Products = sequelize.define(alias, cols, config);
+  Products.associate = function (models) {
+    //Relación entre las tablas products y products_categories
+    Products.belongsTo(models.ProductsCategories, {
+      as: 'ProductCategory',
+      foreignKey: 'category', // campo de la tabla products que es FK
+    });
+
+    Products.belongsToMany(models.Orders, {
+      as: 'orders',
+      through: 'orders_details',
+      foreignKey: 'product',
+      otherKey: 'orders',
+    });
+  };
   return Products;
 };
