@@ -40,6 +40,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'orders',
       otherKey: 'product',
     });
+    Orders.belongsTo(models.Users, {
+      as: 'UserOrder',
+      foreingKey: 'user',
+    });
   };
   return Orders;
 };

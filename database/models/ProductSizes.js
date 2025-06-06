@@ -29,5 +29,14 @@ module.exports = (sequelize, DataTypes) => {
 
   const ProductSizes = sequelize.define(alias, cols, config);
 
+  ProductSizes.associate = function (models) {
+    ProductSizes.belongsTo(models.Sizes, {
+      foreignKey: 'size',
+    });
+    ProductSizes.belongsTo(models.Products, {
+      foreignKey: 'product',
+    });
+  };
+
   return ProductSizes;
 };

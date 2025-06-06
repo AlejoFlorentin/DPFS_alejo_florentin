@@ -51,6 +51,13 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'category', // campo de la tabla products que es FK
     });
 
+    Products.belongsToMany(models.Sizes, {
+      as: 'sizes',
+      through: 'product_sizes',
+      foreignKey: 'product',
+      otherKey: 'size',
+    });
+
     Products.belongsToMany(models.Orders, {
       as: 'orders',
       through: 'orders_details',
