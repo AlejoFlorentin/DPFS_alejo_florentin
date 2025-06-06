@@ -32,7 +32,14 @@ const productsController = {
 
       // Si hay categoría, filtrar
       if (categoria) {
-        products = await db.Products.findAll({ where: [{ category: categoria }] });
+        products = await db.Products.findAll({
+          include: [
+            {
+              association: 'ProductCategory',
+            },
+          ],
+          where: { '$ProductCategory.name$': categoria },
+        });
       } else {
         products = await db.Products.findAll();
       }

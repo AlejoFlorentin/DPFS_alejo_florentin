@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(100), // VARCHAR(100)
     },
     price: {
-      type: DataTypes.FLOAT, // O DECIMAL, según prefieras
+      type: DataTypes.FLOAT, // O DECIMAL
     },
     stock: {
       type: DataTypes.INTEGER,
@@ -24,23 +24,16 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     img: {
-      type: DataTypes.STRING(100), // VARCHAR(100)
+      type: DataTypes.STRING(100),
     },
     description: {
-      type: DataTypes.STRING(400), // VARCHAR(400)
-    },
-    size: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'sizes', // nombre exacto de la tabla referenciada
-        key: 'id',
-      },
+      type: DataTypes.STRING(400),
     },
   };
 
   const config = {
     tableName: 'products',
-    timestamps: false, // si no tienes createdAt/updatedAt
+    timestamps: false,
   };
 
   const Products = sequelize.define(alias, cols, config);

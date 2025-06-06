@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   const config = {
     tableName: 'sizes',
-    timestamps: false, // si no tienes createdAt/updatedAt
+    timestamps: false,
   };
   const Sizes = sequelize.define(alias, cols, config);
 

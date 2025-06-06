@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
 
   const config = {
     tableName: 'product_sizes',
+    timestamps: false,
   };
 
   const ProductSizes = sequelize.define(alias, cols, config);

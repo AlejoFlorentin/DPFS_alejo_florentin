@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   const config = {
     tableName: 'users',
-    timestamps: false, // si no tienes createdAt/updatedAt
+    timestamps: false,
   };
   const Users = sequelize.define(alias, cols, config);
 
