@@ -16,10 +16,11 @@ const usersControllers = {
   dataLog: async (req, res, next) => {
     try {
       //Me traigo todos los usuarios ya registrados
-      const filePath = path.join(__dirname, '../data/users.json');
-      const data = await fs.readFile(filePath, 'utf8');
-      const users = JSON.parse(data);
 
+      const users = await db.Users.findAll({
+        include: [{ association: 'UserCategory', attributes: ['name'] }],
+      });
+      console.log(users);
       const user = users.find(user => user.email == req.body.email);
 
       if (!user) {
@@ -35,7 +36,7 @@ const usersControllers = {
           lastName: user.lastName,
           phone: user.telefono,
           email: user.email,
-          category: user.category,
+          category: user.UserCategory.name,
           image: user.image,
         };
         console.log('Cookie creada: ', user.email);

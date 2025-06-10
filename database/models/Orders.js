@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     });
     Orders.belongsTo(models.Users, {
       as: 'UserOrder',
-      foreingKey: 'user',
+      foreignKey: 'user',
     });
   };
   return Orders;

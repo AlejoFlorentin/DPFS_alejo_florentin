@@ -1,16 +1,24 @@
 const fs = require('fs').promises;
 const path = require('path');
 let db = require('../database/models');
-const { where } = require('sequelize');
 
 const productsController = {
   editar: async function (req, res, next) {
     let id = req.params.id;
     try {
-      const filePath = path.join(__dirname, '../data/products.json');
-      const data = await fs.readFile(filePath, 'utf8');
-      let products = JSON.parse(data);
-      let product = products.find(product => product.id == id);
+      let product = await db.Products.findByPk(id, {
+        include: [
+          {
+            association: 'ProductCategory',
+            attributes: ['name'],
+          },
+          {
+            association: 'sizes',
+            through: { attributes: [] }, // Excluir atributos de la tabla intermedia
+          },
+        ],
+      });
+      console.log('Producto encontrado:', product);
       return res.render('products/editProduct', {
         title: 'Superlative',
         product,
@@ -76,11 +84,16 @@ const productsController = {
   },
   detalle: async function (req, res, next) {
     try {
-      const filePath = path.join(__dirname, '../data/products.json'); //obtener la ruta absoluta
-      const data = await fs.readFile(filePath, 'utf8'); // leer el json de manera asincronica
-      const products = JSON.parse(data);
+      let product;
 
-      let product = products.find(product => product.id == req.params.id);
+      product = await db.Products.findByPk(req.params.id, {
+        include: [
+          {
+            association: 'sizes',
+            through: { attributes: [] },
+          },
+        ],
+      });
       if (!product) {
         return res.status(404).send('Producto no encontrado');
       }

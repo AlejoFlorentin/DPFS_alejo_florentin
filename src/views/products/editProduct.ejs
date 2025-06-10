@@ -50,10 +50,10 @@
           <div class="col-md-12 mb-3">
             <label for="category" class="form-label">Categoria</label>
             <select name="category" id="category" class="form-select">
-              <option value="camisetas" <%= product.category === 'camisetas' ? 'selected' : '' %>>Camisetas</option>
-              <option value="pantalones" <%= product.category == "pantalones" ? 'selected' : '' %> >Pantalones</option>
-              <option value="bermudas" <%=product.category == "bermudas" ? 'selected' : '' %> >Bermudas</option>
-              <option value="zapatillas" <%=product.category == "zapatillas" ? 'selected' : '' %> >Zapatillas</option>
+              <option value="camisetas" <%= product.ProductCategory.name === 'camisetas' ? 'selected' : '' %>>Camisetas</option>
+              <option value="pantalones" <%= product.ProductCategory.name == "pantalones" ? 'selected' : '' %> >Pantalones</option>
+              <option value="bermudas" <%=product.ProductCategory.name == "bermudas" ? 'selected' : '' %> >Bermudas</option>
+              <option value="zapatillas" <%=product.ProductCategory.name == "zapatillas" ? 'selected' : '' %> >Zapatillas</option>
             </select>
           </div>
           <div class="col-md-12 mb-3">
@@ -69,11 +69,14 @@
           <div class="col-md-12 mb-3">
             <label for="size" class="form-label">Talle</label>
             <select name="size" id="size" class="form-select">
-              <option selected>-- Seleccionar Talle --</option>
-              <option value="S" <%= product.size === 'S' ? 'selected' : '' %>>S</option>
-              <option value="M" <%= product.size === 'M' ? 'selected' : '' %>>M</option>
-              <option value="L" <%= product.size === 'L' ? 'selected' : '' %>>L</option>
-              <option value="XL" <%= product.size === 'XL' ? 'selected' : '' %>>XL</option>
+              
+              <% product.sizes.forEach(size => { %>
+              <option value=<%= size.size %> <%= size.size === 'S' ? 'selected' : '' %>>S</option>
+              <option value=<%= size.size %> <%= size.size === 'M' ? 'selected' : '' %>>M</option>
+              <option value=<%= size.size %> <%= size.size === 'L' ? 'selected' : '' %>>L</option>
+              <option value=<%= size.size %> <%= size.size === 'XL' ? 'selected' : '' %>>XL</option>
+          <% }) %>
+              
             </select>
           </div>
           <div class="col-md-12 mb-3">
