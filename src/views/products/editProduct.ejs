@@ -59,9 +59,8 @@
           <div class="col-md-12 mb-3">
             <label class="form-label" for="image">Foto de Producto</label>
             <input
-              required
               class="form-control"
-              type="file"
+              type="file"  
               id="image"
               name="image"
               accept="image/*" />
@@ -71,10 +70,10 @@
             <select name="size" id="size" class="form-select">
               
               <% product.sizes.forEach(size => { %>
-              <option value=<%= size.size %> <%= size.size === 'S' ? 'selected' : '' %>>S</option>
-              <option value=<%= size.size %> <%= size.size === 'M' ? 'selected' : '' %>>M</option>
-              <option value=<%= size.size %> <%= size.size === 'L' ? 'selected' : '' %>>L</option>
-              <option value=<%= size.size %> <%= size.size === 'XL' ? 'selected' : '' %>>XL</option>
+              <option value='S' <%= size.size === 'S' ? 'selected' : '' %>>S</option>
+              <option value='M' <%= size.size === 'M' ? 'selected' : '' %>>M</option>
+              <option value='L' <%= size.size === 'L' ? 'selected' : '' %>>L</option>
+              <option value='XL' <%= size.size === 'XL' ? 'selected' : '' %>>XL</option>
           <% }) %>
               
             </select>

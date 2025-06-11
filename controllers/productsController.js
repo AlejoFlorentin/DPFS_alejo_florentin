@@ -109,26 +109,29 @@ const productsController = {
   },
   dataNew: async function (req, res, next) {
     try {
-      const filePath = path.join(__dirname, '../data/products.json');
-      const data = await fs.readFile(filePath, 'utf8');
-      const products = JSON.parse(data);
+      const categoria = await db.ProductsCategories.findOne({
+        where: { name: req.body.category },
+      });
 
-      const lastId = products.length > 0 ? parseInt(products[products.length - 1].id) : 0;
+      const size = await db.Sizes.findOne({
+        where: { size: req.body.size },
+      });
 
       const nuevoProducto = {
-        id: (lastId + 1).toString(),
         title: req.body.name,
         price: parseFloat(req.body.price),
-        size: req.body.size,
         stock: parseInt(req.body.stock),
-        category: req.body.category,
+        category: categoria.id,
         img: `/img/products/${req.body.category}/${req.file.filename}`,
         description: req.body.description,
       };
 
-      products.push(nuevoProducto);
+      const productoCreado = await db.Products.create(nuevoProducto);
 
-      await fs.writeFile(filePath, JSON.stringify(products, null, 2), 'utf8');
+      await db.ProductSizes.create({
+        product: productoCreado.id,
+        size: size.id,
+      });
 
       return res.redirect('/productos');
     } catch (error) {
@@ -139,29 +142,39 @@ const productsController = {
 
   dataEdit: async function (req, res, next) {
     try {
-      const filePath = path.join(__dirname, '../data/products.json');
-      const data = await fs.readFile(filePath, 'utf8');
-      let products = JSON.parse(data);
+      const categoria = await db.ProductsCategories.findOne({
+        where: { name: req.body.category },
+      });
+      const product = await db.Products.findByPk(req.params.id);
+      const size = await db.Sizes.findOne({
+        where: { size: req.body.size },
+      });
+      console.log('Talle encontrada:', size);
 
-      const id = req.params.id;
-      const index = products.findIndex(product => product.id == id);
+      await db.Products.update(
+        {
+          title: req.body.name,
+          price: parseFloat(req.body.price),
+          stock: parseInt(req.body.stock),
+          category: categoria.id,
+          img: req.file ? `/img/products/${req.body.category}/${req.file.filename}` : product.img,
+          description: req.body.description,
+        },
+        {
+          where: {
+            id: req.params.id,
+          },
+        }
+      );
 
-      if (index === -1) {
-        return res.status(404).send('Producto no encontrado');
-      }
-
-      // Actualizamos los campos
-      products[index].title = req.body.name;
-      products[index].price = parseFloat(req.body.price);
-      products[index].size = req.body.size;
-      products[index].stock = parseInt(req.body.stock);
-      products[index].category = req.body.category;
-      products[index].img = `/img/products/${req.body.category}/${req.file.filename}`;
-      products[index].description = req.body.description;
-
-      // Si más adelante sumás imagen, también podrías actualizarla acá.
-
-      await fs.writeFile(filePath, JSON.stringify(products, null, 2), 'utf8');
+      await db.ProductSizes.update(
+        { size: size.id },
+        {
+          where: {
+            product: req.params.id,
+          },
+        }
+      );
 
       return res.redirect('/productos');
     } catch (err) {
@@ -172,14 +185,16 @@ const productsController = {
 
   delete: async function (req, res) {
     try {
-      const filePath = path.join(__dirname, '../data/products.json');
-      const data = await fs.readFile(filePath, 'utf8');
-      let products = JSON.parse(data);
-
-      const id = req.params.id;
-      products = products.filter(product => product.id !== id);
-
-      await fs.writeFile(filePath, JSON.stringify(products, null, 2), 'utf8');
+      await db.ProductSizes.destroy({
+        where: {
+          product: req.params.id,
+        },
+      });
+      await db.Products.destroy({
+        where: {
+          id: req.params.id,
+        },
+      });
 
       return res.redirect('/productos');
     } catch (err) {
