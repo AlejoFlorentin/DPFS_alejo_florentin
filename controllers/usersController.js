@@ -1,5 +1,3 @@
-const fs = require('fs').promises;
-const path = require('path');
 const bcrypt = require('bcrypt');
 let db = require('../database/models');
 
@@ -40,7 +38,7 @@ const usersControllers = {
         };
 
         if (req.body.remember) {
-          res.cookie('recordame', user.email, {
+          res.cookie('recordame', user.id, {
             maxAge: 1000 * 60 * 60 * 24 * 7,
           });
         }

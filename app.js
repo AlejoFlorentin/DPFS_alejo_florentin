@@ -4,12 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 let session = require('express-session');
-const fs = require('fs').promises;
+// Asegúrate de que la ruta sea correcta
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 const methodOverride = require('method-override');
+const sessionMiddleware = require('./middlewares/sessionMiddleware');
 
 var app = express();
 
@@ -35,35 +36,7 @@ app.use(
   })
 );
 
-app.use(async (req, res, next) => {
-  if (!req.session.lastUser && req.cookies.recordame) {
-    const filePath = path.join(__dirname, 'data/users.json');
-    const data = await fs.readFile(filePath, 'utf8');
-    const users = JSON.parse(data);
-    console.log(req.cookies.recordame);
-    const user = users.find(
-      user => user.email === decodeURIComponent(req.cookies.recordame).trim().toLowerCase()
-    );
-    console.log('🔎 Usuario encontrado por cookie:', user);
-    if (user) {
-      req.session.lastUser = {
-        id: user.id,
-        name: user.firstName,
-        email: user.email,
-        category: user.category,
-        image: user.image,
-      };
-    }
-  }
-  next();
-});
-
-app.use(function (req, res, next) {
-  if (req.session.lastUser !== undefined) {
-    res.locals.lastUser = req.session.lastUser; // para poder usar los datos en todas las vistas
-  }
-  return next();
-});
+app.use(sessionMiddleware);
 
 app.use('/', indexRouter);
 app.use('/usuarios', usersRouter);
