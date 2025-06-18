@@ -9,9 +9,10 @@ let session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
+var cartRouter = require('./routes/cart');
 const methodOverride = require('method-override');
 const sessionMiddleware = require('./middlewares/sessionMiddleware');
-
+const cartMiddleware = require('./middlewares/cartMiddleware');
 var app = express();
 
 // view engine setup
@@ -37,10 +38,12 @@ app.use(
 );
 
 app.use(sessionMiddleware);
+app.use(cartMiddleware);
 
 app.use('/', indexRouter);
 app.use('/usuarios', usersRouter);
 app.use('/productos', productsRouter);
+app.use('/carrito', cartRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

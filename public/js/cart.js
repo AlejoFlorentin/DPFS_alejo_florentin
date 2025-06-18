@@ -1,5 +1,4 @@
 let cart = JSON.parse(localStorage.getItem('carrito') || []);
-console.log(cart);
 
 const productsCart = document.querySelector('.productsCart');
 const CartProductsTotal = document.querySelector('.cartProductsTotal');

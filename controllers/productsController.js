@@ -76,10 +76,6 @@ const productsController = {
       return res.status(500).send('Error interno del servidor');
     }
   },
-
-  carrito: function (req, res, next) {
-    return res.render('products/cart', { title: 'Superlative | Carrito' });
-  },
   detalle: async function (req, res, next) {
     try {
       let product;
