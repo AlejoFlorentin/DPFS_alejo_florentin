@@ -143,7 +143,6 @@ const productsController = {
       const size = await db.Sizes.findOne({
         where: { size: req.body.size },
       });
-      console.log('Talle encontrada:', size);
 
       await db.Products.update(
         {

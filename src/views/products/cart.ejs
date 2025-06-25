@@ -25,7 +25,15 @@
                 <p>$ <%= producto.price * producto.cantidad %></p>
               </div>
             </div>
-            <i id="<%= producto.id %>" class="deleteBtn bx bxs-trash-alt"></i>
+            <form
+              action="/carrito/eliminarItem/<%= producto.id %>?_method=DELETE"
+              method="POST"
+              onsubmit="return confirm('¿Estás seguro de que querés eliminar este producto?')"
+            >
+              <button type="submit" class="border-0 bg-white">
+                <i id="<%= producto.id %>" class="deleteBtn bx bxs-trash-alt text-danger"></i>
+              </button>
+            </form>
           </article>
           <% }) %>
         </div>
@@ -76,8 +84,7 @@
     </main>
 
     <%- include('../partials/footer') %> <%- include('../partials/wsp') %>
-    <!-- <script src="/js/cart.js"></script> -->
-    <!-- <script src="/js/products.js"></script> -->
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

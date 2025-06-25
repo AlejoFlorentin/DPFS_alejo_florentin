@@ -49,6 +49,9 @@
     <article class="product col-lg-3 col-md-4 col-sm-6">
       <a class="d-flex flex-column align-items-center justify-content-center text-decoration-none text-black"
         href="/productos/detalle/<%= product.id %>">
+        <% if(product.stock == 0) { %>
+        <p class="text-danger fw-bold stock">Sin Stock</p>
+        <%}%>
         <img src="<%= product.img %>" alt="<%= product.title %>">
         <div>
           <h4 class="text-center"><%= product.title %></h4>
@@ -60,7 +63,7 @@
       </a>
       <div class="d-flex gap-2">
         <form action="/carrito/agregar/<%= product.id %>" method="POST">
-          <button class='btnAddProduct mb-5 rounded-2 border-0 fs-6 bg-black text-white p-2' id="<%= product.id %>">
+          <button <%= product.stock === 0 ? 'disabled' : '' %>  class="btnAddProduct btn btn-dark" id="<%= product.id %>">
             Agregar al carrito
           </button>
         </form>
@@ -72,7 +75,7 @@
           </button>
         </a>
         
-        <form action="/productos/<%= product.id %>?_method=DELETE" method="POST" onsubmit="return confirm('¿Estás seguro de que querés eliminar este producto?')">
+        <form class="formEliminarProducto" action="/productos/<%= product.id %>?_method=DELETE" method="POST" >
           <button class="bg-danger text-white rounded-2 border-0 p-2 mb-5" type="submit"><i class='bx bxs-trash'></i></button>
         </form>
       <%}%>
@@ -93,6 +96,7 @@
       <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
   </body>
 </html>

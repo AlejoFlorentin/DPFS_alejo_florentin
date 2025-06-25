@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         model: 'users',
         key: 'id',
       },
+      allowNull: true,
     },
     total: {
       type: DataTypes.FLOAT,
@@ -43,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
     Orders.belongsTo(models.Users, {
       as: 'UserOrder',
       foreignKey: 'user',
+      allowNull: true,
     });
   };
   return Orders;
