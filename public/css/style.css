@@ -53,6 +53,8 @@ header {
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease-in-out;
+  border: rgba(216, 216, 216, 0.829) solid 1px;
+  border-radius: 5px;
 }
 
 .product:hover {
@@ -62,6 +64,7 @@ header {
 .product img {
   height: 300px;
   width: 250px;
+  border-radius: 5px;
 }
 
 .categories article {
