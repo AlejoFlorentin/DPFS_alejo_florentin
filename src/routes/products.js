@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const upload = require('../services/uploadProduct');
+const upload = require('../middlewares/uploadProduct');
 const adminMiddleware = require('../middlewares/adminMiddleware');
 let productsController = require('../controllers/productsController');
 
@@ -12,7 +12,7 @@ router.get('/crear', adminMiddleware, productsController.crear);
 
 router.get('/editar/:id', adminMiddleware, productsController.editar);
 
-router.post('/dataNewProd', adminMiddleware, upload.single('image'), productsController.dataNew);
+router.post('/crear', adminMiddleware, upload.single('image'), productsController.dataNew);
 
 router.put('/dataEditProd/:id', upload.single('image'), productsController.dataEdit);
 
