@@ -3,7 +3,6 @@
   <%- include('../partials/head') %>
   <body>
     <%- include('../partials/header') %>
-
     <button
       id="filterBtn"
       class="filterBtns w-100 border-0 border-bottom bg-dark-subtle">
@@ -13,77 +12,70 @@
       </div>
     </button>
 
-    <main class="mt-5 mb-5">
-      <div class="mainProduct">
+    <main class="container mt-5 mb-5">
+      <div class="main-product">
         <aside id="filter" class="border-end border-2 pe-5 pb-3">
-  <div class="filterTitle mt-3 ps-5">
-    <h3>Filtros</h3>
-    <i id="exitBtn" class="exitFilterBtn bx bx-x fs-1"></i>
-  </div>
 
-  <form method="get" action="/productos" class="ms-5 mt-3">
-    <h5>Tipo de Prenda</h5>
-
-    <div>
-      <input onchange="this.form.submit()" type="radio" name="categoria" value="camisetas" <%= (req.query.categoria === 'camisetas') ? 'checked' : '' %> />
-      <label for="camisetas">Camisetas</label>
-    </div>
-    <div>
-      <input onchange="this.form.submit()" type="radio" name="categoria" value="pantalones" <%= (req.query.categoria === 'pantalones') ? 'checked' : '' %> />
-      <label for="pantalones">Pantalones</label>
-    </div>
-    <div>
-      <input onchange="this.form.submit()" type="radio" name="categoria" value="bermudas" <%= (req.query.categoria === 'bermudas') ? 'checked' : '' %> />
-      <label for="bermudas">Bermudas</label>
-    </div>
-    <div>
-      <input onchange="this.form.submit()" type="radio" name="categoria" value="zapatillas" <%= (req.query.categoria === 'zapatillas') ? 'checked' : '' %> />
-      <label for="zapatillas">Zapatillas</label>
-    </div>
-  </form>
-</aside>
-
-
-        <div id="productsFiltered" class="productFiltered row gap-5 d-flex flex-wrap justify-content-center">
-  <% products.forEach(product => { %>
-    <article class="product col-lg-3 col-md-4 col-sm-6">
-      <a class="d-flex flex-column align-items-center justify-content-center text-decoration-none text-black"
-        href="/productos/detalle/<%= product.id %>">
-        <% if(product.stock == 0) { %>
-        <p class="text-danger fw-bold stock">Sin Stock</p>
-        <%}%>
-        <img src="<%= product.img %>" alt="<%= product.title %>">
-        <div>
-          <h4 class="text-center"><%= product.title %></h4>
-          <div class="d-flex flex-column align-items-center">
-            <p><%= formatNumber(product.price)%></p>
-            <p class="cuotas"><b>3 cuotas sin interés de  <%= formatNumber((product.price / 3).toFixed(2))  %></b></p>
+            
+            <!--  <i id="exitBtn" class="exit-filter-btn bx bx-x fs-1"></i>-->
+          
+          <form method="get" action="/productos" class="ms-5">
+            <h5>Tipo de Prenda</h5>
+            <div>
+              <input onchange="this.form.submit()" type="radio" name="categoria" value="camisetas" <%= (req.query.categoria === 'camisetas') ? 'checked' : '' %> />
+              <label for="camisetas">Camisetas</label>
+            </div>
+            <div>
+              <input onchange="this.form.submit()" type="radio" name="categoria" value="pantalones" <%= (req.query.categoria === 'pantalones') ? 'checked' : '' %> />
+              <label for="pantalones">Pantalones</label>
+            </div>
+            <div>
+              <input onchange="this.form.submit()" type="radio" name="categoria" value="bermudas" <%= (req.query.categoria === 'bermudas') ? 'checked' : '' %> />
+              <label for="bermudas">Bermudas</label>
+            </div>
+            <div>
+              <input onchange="this.form.submit()" type="radio" name="categoria" value="zapatillas" <%= (req.query.categoria === 'zapatillas') ? 'checked' : '' %> />
+              <label for="zapatillas">Zapatillas</label>
+            </div>
+          </form>
+        </aside>
+        <div id="productsFiltered" class="product-filtered container p-1">
+          <% products.forEach(product => { %>
+          <article class="product d-flex flex-column align-items-center p-3">
+            <a class="d-flex flex-column align-items-center justify-content-center text-decoration-none text-black"
+              href="/productos/detalle/<%= product.id %>">
+              <% if(product.stock == 0) { %>
+              <p class="text-danger fw-bold stock">Sin Stock</p>
+              <%}%>
+              <img src="<%= product.img %>" alt="<%= product.title %>">
+              <div class="product-info">
+                <h6 class="text-center mt-2 mb-1"><%= product.title %></h6>
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                  <p class="price mb-1"><%= formatNumber(product.price)%></p>
+                  <p class="quotes border border-danger border-1 p-1 text-danger text-center"><b>3 x <%= formatNumber((product.price / 3).toFixed(2))  %> sin interés</b></p>
+                </div>
+              </div>
+            </a>
+          <div class="d-flex gap-2">
+            <form action="/carrito/agregar/<%= product.id %>" method="POST">
+              <button <%= product.stock === 0 ? 'disabled' : '' %>  class="btnAddProduct btn btn-dark" id="<%= product.id %>">
+                Agregar
+              </button>
+            </form>
+            <%if(locals.lastUser && locals.lastUser.category == 'admin') {%>
+            <a href="/productos/editar/<%= product.id %>">
+              <button id="btnEdit" title="Editar" class="bg-black text-white rounded-2 border-0 p-2 mb-5">
+              <i class='bx bxs-pencil'></i>
+              </button>
+            </a>
+            <form class="formEliminarProducto" action="/productos/<%= product.id %>?_method=DELETE" method="POST" >
+              <button class="bg-danger text-white rounded-2 border-0 p-2 mb-5" type="submit"><i class='bx bxs-trash'></i></button>
+            </form>
+            <%}%>
           </div>
+          </article>
+          <% }) %>
         </div>
-      </a>
-      <div class="d-flex gap-2">
-        <form action="/carrito/agregar/<%= product.id %>" method="POST">
-          <button <%= product.stock === 0 ? 'disabled' : '' %>  class="btnAddProduct btn btn-dark" id="<%= product.id %>">
-            Agregar
-          </button>
-        </form>
-
-        <%if(locals.lastUser && locals.lastUser.category == 'admin') {%>
-        <a href="/productos/editar/<%= product.id %>">
-          <button id="btnEdit" title="Editar" class="bg-black text-white rounded-2 border-0 p-2 mb-5">
-            <i class='bx bxs-pencil'></i>
-          </button>
-        </a>
-        
-        <form class="formEliminarProducto" action="/productos/<%= product.id %>?_method=DELETE" method="POST" >
-          <button class="bg-danger text-white rounded-2 border-0 p-2 mb-5" type="submit"><i class='bx bxs-trash'></i></button>
-        </form>
-      <%}%>
-      </div>
-    </article>
-  <% }) %>
-</div>
-
       </div>
     </main>
 

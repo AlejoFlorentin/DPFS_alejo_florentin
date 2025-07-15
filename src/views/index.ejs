@@ -48,15 +48,15 @@
         <h2 class="text-center mb-3">Destacados - Superlative</h2>
         <div class="product-container">
           <% destacados.forEach(cloth => { %>
-          <article>
+          <article class="p-3">
             <a class="text-black text-decoration-none" href="/productos/detalle/<%= cloth.id %>">
               <img src="<%= cloth.img %>" alt="<%= cloth.title %>" />
-              <div class="d-flex flex-column align-items-center justify-content-center">
+              <div class="product-info d-flex flex-column align-items-center justify-content-center">
                 <p class="text-center mt-2"><b><%= cloth.title %></b></p>
                 <div class="d-flex flex-column align-items-center">
                   <p>$ <%= cloth.price %></p>
                   <p class="quotes border border-danger border-1 p-1 text-danger text-center">
-                    <b>3 cuotas sin interés de $ <%= (cloth.price / 3).toFixed(2) %></b>
+                    <b>3 x $ <%= (cloth.price / 3).toFixed(2) %> sin interés</b>
                   </p>
                 </div>
               </div>
@@ -66,38 +66,36 @@
         </div>
       </section>
 
-      <section
-        class="categories p-3 mt-4 d-flex flex-row flex-wrap justify-content-center align-items-center"
-      >
-        <article class="d-flex flex-column align-items-center">
+      <section class="categories container mt-4 ">
+        <article>
           <a
             id="camisetas"
             class="category text-decoration-none"
             href="/productos?categoria=camisetas"
           >
-            <h4 class="text-center position-relative">Remeras</h4>
+            <h5>Remeras</h5>
             <img class="img-fluid" src="/img/products/camisetas/remeracat.jpg" alt="remeras" />
           </a>
         </article>
 
-        <article class="d-flex flex-column align-items-center">
+        <article>
           <a
             id="bermudas"
             class="category text-decoration-none"
             href="/productos?categoria=bermudas"
           >
-            <h4 class="text-center position-relative">Bermudas</h4>
+            <h5>Bermudas</h5>
             <img class="img-fluid" src="/img/products/bermudas/bermudasCat.jpg" alt="bermudas" />
           </a>
         </article>
 
-        <article class="d-flex flex-column align-items-center">
+        <article >
           <a
             id="pantalones"
             class="category text-decoration-none"
             href="/productos?categoria=pantalones"
           >
-            <h4 class="text-center position-relative">Pantalones</h4>
+            <h5>Pantalones</h5>
             <img
               class="img-fluid"
               src="/img/products/pantalones/pantalonescat.jpg"
@@ -106,13 +104,13 @@
           </a>
         </article>
 
-        <article class="d-flex flex-column align-items-center">
+        <article>
           <a
             id="zapatillas"
             class="category text-decoration-none"
             href="/productos?categoria=zapatillas"
           >
-            <h4 class="text-center position-relative">Zapatillas</h4>
+            <h5>Zapatillas</h5>
             <img
               class="img-fluid"
               src="/img/products/zapatillas/zapatillascat.jpg"
