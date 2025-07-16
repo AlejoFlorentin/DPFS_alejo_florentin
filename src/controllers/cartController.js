@@ -5,43 +5,6 @@ const cartController = {
     return res.render('products/cart', { title: 'Superlative | Carrito' });
   },
 
-  agregar: async function (req, res, next) {
-    let cart = req.cookies.carrito ? JSON.parse(req.cookies.carrito) : [];
-    const productoAgregado = await db.Products.findByPk(req.params.id, {
-      include: [
-        {
-          association: 'ProductCategory',
-          attributes: ['name'],
-        },
-        {
-          association: 'sizes',
-          through: { attributes: [] }, // Excluir atributos de la tabla intermedia
-        },
-      ],
-    });
-
-    const existingProduct = cart.find(product => product.id == req.params.id);
-
-    if (existingProduct) {
-      existingProduct.cantidad++;
-    } else {
-      const addedProduct = {
-        id: productoAgregado.id,
-        title: productoAgregado.title,
-        price: productoAgregado.price,
-        img: productoAgregado.img,
-        cantidad: 1,
-      };
-      cart.push(addedProduct);
-    }
-
-    res.cookie('carrito', JSON.stringify(cart), {
-      maxAge: 1000 * 60 * 60 * 24 * 7,
-    });
-
-    return res.redirect('/productos');
-  },
-
   agregarDetalle: async function (req, res, next) {
     let cart = req.cookies.carrito ? JSON.parse(req.cookies.carrito) : [];
     let contador = Number(req.body.contador);

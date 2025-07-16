@@ -5,21 +5,17 @@
     <%- include('../partials/header') %>
     <button
       id="filterBtn"
-      class="filterBtns w-100 border-0 border-bottom bg-dark-subtle">
+      class="filter-btns w-100 border-0 border-bottom bg-dark-subtle">
       <div class="d-flex justify-content-center p-2">
         <i class="bx bx-filter-alt fs-3"></i>
         <h4 class="text-center ms-1">Filtrar</h4>
       </div>
     </button>
 
-    <main class="container mt-5 mb-5">
-      <div class="main-product">
-        <aside id="filter" class="border-end border-2 pe-5 pb-3">
-
-            
-            <!--  <i id="exitBtn" class="exit-filter-btn bx bx-x fs-1"></i>-->
+    <main class="main-product mb-5">
+      <div><aside id="filter" class="border-end border-2 pb-3">
           
-          <form method="get" action="/productos" class="ms-5">
+          <form method="get" action="/productos">
             <h5>Tipo de Prenda</h5>
             <div>
               <input onchange="this.form.submit()" type="radio" name="categoria" value="camisetas" <%= (req.query.categoria === 'camisetas') ? 'checked' : '' %> />
@@ -39,7 +35,7 @@
             </div>
           </form>
         </aside>
-        <div id="productsFiltered" class="product-filtered container p-1">
+        <div id="productsFiltered" class="product-filtered container">
           <% products.forEach(product => { %>
           <article class="product d-flex flex-column align-items-center p-3">
             <a class="d-flex flex-column align-items-center justify-content-center text-decoration-none text-black"
@@ -48,20 +44,15 @@
               <p class="text-danger fw-bold stock">Sin Stock</p>
               <%}%>
               <img src="<%= product.img %>" alt="<%= product.title %>">
-              <div class="product-info">
-                <h6 class="text-center mt-2 mb-1"><%= product.title %></h6>
-                <div class="d-flex flex-column justify-content-center align-items-center">
-                  <p class="price mb-1"><%= formatNumber(product.price)%></p>
-                  <p class="quotes border border-danger border-1 p-1 text-danger text-center"><b>3 x <%= formatNumber((product.price / 3).toFixed(2))  %> sin interés</b></p>
+              <div class="product-info d-flex flex-column justify-content-center align-items-center gap-1">
+                <h6 class="text-center mt-2 mb-0"><%= product.title %></h6>
+                <div class="d-flex flex-column justify-content-center align-items-center gap-1">
+                  <p class="price m-0"><%= formatNumber(product.price)%></p>
+                  <p class="quotes border border-danger border-1 p-1 text-danger text-center m-0"><b>3 x <%= formatNumber((product.price / 3).toFixed(2))  %> sin interés</b></p>
                 </div>
               </div>
             </a>
           <div class="d-flex gap-2">
-            <form action="/carrito/agregar/<%= product.id %>" method="POST">
-              <button <%= product.stock === 0 ? 'disabled' : '' %>  class="btnAddProduct btn btn-dark" id="<%= product.id %>">
-                Agregar
-              </button>
-            </form>
             <%if(locals.lastUser && locals.lastUser.category == 'admin') {%>
             <a href="/productos/editar/<%= product.id %>">
               <button id="btnEdit" title="Editar" class="bg-black text-white rounded-2 border-0 p-2 mb-5">
