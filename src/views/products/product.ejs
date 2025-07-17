@@ -4,7 +4,7 @@
   <body>
     <%- include('../partials/header') %>
     <button
-      id="filterBtn"
+      id="filter-btn"
       class="filter-btns w-100 border-0 border-bottom bg-dark-subtle">
       <div class="d-flex justify-content-center p-2">
         <i class="bx bx-filter-alt fs-3"></i>
@@ -12,9 +12,9 @@
       </div>
     </button>
 
-    <main class="main-product mb-5">
-      <div><aside id="filter" class="border-end border-2 pb-3">
-          
+    <main class="main-product mb-5 animate__animated animate__slideInDown">
+      
+        <aside id="filter" class="border-end border-2 pb-3 animate__animated">
           <form method="get" action="/productos">
             <h5>Tipo de Prenda</h5>
             <div>
@@ -67,7 +67,7 @@
           </article>
           <% }) %>
         </div>
-      </div>
+      
     </main>
 
     <%- include('../partials/footer') %> <%- include('../partials/wsp') %>
