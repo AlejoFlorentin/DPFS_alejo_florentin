@@ -1,8 +1,6 @@
 // Agregar eventos de clic a los botones de "Agregar al carrito"
 document.addEventListener("DOMContentLoaded", () => {
   let btnAddProduct = document.querySelectorAll(".btnAddProduct");
-  const btnFilter = document.getElementById("filter-btn");
-  const filterMenu = document.getElementById("filter");
 
   btnAddProduct.forEach((button) => {
     button.addEventListener("click", addProduct);
