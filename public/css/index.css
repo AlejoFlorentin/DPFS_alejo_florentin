@@ -1,0 +1,104 @@
+/* INDEX */
+
+.imgUser {
+  height: 100px;
+  width: 90px;
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.product-container article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  border: rgba(216, 216, 216, 0.829) solid 1px;
+  border-radius: 5px;
+}
+
+.product-container article:hover {
+  transform: scale(1.01);
+}
+
+.product-container article a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-container article a .product-info div p {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.product-container article a .product-info div .quotes {
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+.product-container article img {
+  height: 200px;
+  width: 150px;
+  border-radius: 5px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.categories article {
+  position: relative;
+  transition: all 0.25s ease-in-out;
+}
+
+.categories article:hover {
+  transform: scale(1.01);
+}
+
+.categories article a h5 {
+  position: absolute;
+  left: 12px;
+  top: 5px;
+  color: rgb(121, 121, 121);
+}
+
+.categories article a img {
+  height: 350px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .product-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .imgDetail {
+    height: 400px;
+  }
+
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(2, 0.5fr);
+  }
+}
+
+@media (max-width: 320px) {
+  .product-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+  }
+
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -2,7 +2,7 @@ let db = require('../database/models');
 
 const cartController = {
   carrito: function (req, res, next) {
-    return res.render('products/cart', { title: 'Superlative | Carrito' });
+    return res.render('products/cart', { title: 'Superlative | Carrito', css: 'cart.css' });
   },
 
   agregarDetalle: async function (req, res, next) {

@@ -11,6 +11,7 @@ const indexController = {
       return res.render('index', {
         title: 'Superlative',
         destacados,
+        css: 'index.css',
       });
     } catch (error) {
       console.error('Error al leer productos:', error);
@@ -18,10 +19,10 @@ const indexController = {
     }
   },
   faq: function (req, res) {
-    return res.render('faq', { title: 'Superlative | Faq' });
+    return res.render('faq', { title: 'Superlative | Faq', css: 'faq.css' });
   },
   us: function (req, res) {
-    return res.render('us', { title: 'Superlative | Nosotros' });
+    return res.render('us', { title: 'Superlative | Nosotros', css: 'us.css' });
   },
 };
 

@@ -3,13 +3,13 @@ let db = require('../database/models');
 
 const usersControllers = {
   login: function (req, res, next) {
-    return res.render('users/login', { title: 'Superlative | Login' });
+    return res.render('users/login', { title: 'Superlative | Login', css: 'login.css' });
   },
   registro: function (req, res, next) {
-    return res.render('users/register', { title: 'Superlative | Registro' });
+    return res.render('users/register', { title: 'Superlative | Registro', css: 'register.css' });
   },
   perfil: function (req, res, next) {
-    return res.render('users/profile', { title: 'Superlative | Perfil' });
+    return res.render('users/profile', { title: 'Superlative | Perfil', css: 'profile.css' });
   },
   dataLog: async (req, res, next) => {
     try {
