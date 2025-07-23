@@ -5,9 +5,9 @@
     <%- include('../partials/header') %>
 
     <main class="container animate__animated animate__slideInDown">
-      <section class="row w-100 p-3 d-flex justify-content-center align-items-center">
-        <img class="col-md-6 imgDetail" src="<%= producto.img %>" alt="Imagen del producto" />
-        <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+      <section>
+        <img src="<%= producto.img %>" alt="Imagen del producto" />
+        <div class="d-flex flex-column align-items-center justify-content-center gap-0">
           <% if(producto.stock === 0) { %>
           <p class="text-danger fw-bold">Sin Stock</p>
           <%}%>
@@ -17,7 +17,7 @@
           <p><b>$ <%= (producto.price * 0.9).toFixed(2) %></b> con Transferencia bancaria</p>
           <p>6 cuotas sin interes de $ <%= (producto.price / 6).toFixed(2) %></p>
           <% producto.sizes.forEach(size => { %>
-          <p><b>Talle <%= size.size %></b></p>
+          <p class="size"><b>Talle <%= size.size %></b></p>
           <% }) %>
           <form action="/carrito/agregar/detalle/<%= producto.id %>" method="POST">
             <div class="d-flex flex-column gap-2">
