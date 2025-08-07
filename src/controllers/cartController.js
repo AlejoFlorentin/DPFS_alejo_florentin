@@ -1,8 +1,20 @@
-let db = require('../database/models');
+let db = require("../database/models");
 
 const cartController = {
+  createCategorie: async function (req, res, next) {
+    try {
+      const { name } = req.body;
+      const category = await db.UserCategorie.create({ name: name });
+      return res.status(201).json(category);
+    } catch (error) {
+      return res.status(500).send(error);
+    }
+  },
   carrito: function (req, res, next) {
-    return res.render('products/cart', { title: 'Superlative | Carrito', css: 'cart.css' });
+    return res.render("products/cart", {
+      title: "Superlative | Carrito",
+      css: "cart.css",
+    });
   },
 
   agregarDetalle: async function (req, res, next) {
@@ -11,17 +23,17 @@ const cartController = {
     const productoAgregado = await db.Products.findByPk(req.params.id, {
       include: [
         {
-          association: 'ProductCategory',
-          attributes: ['name'],
+          association: "ProductCategory",
+          attributes: ["name"],
         },
         {
-          association: 'sizes',
+          association: "sizes",
           through: { attributes: [] }, // Excluir atributos de la tabla intermedia
         },
       ],
     });
 
-    const existingProduct = cart.find(product => product.id == req.params.id);
+    const existingProduct = cart.find((product) => product.id == req.params.id);
 
     if (existingProduct) {
       existingProduct.cantidad += contador;
@@ -36,7 +48,7 @@ const cartController = {
       cart.push(addedProduct);
     }
 
-    res.cookie('carrito', JSON.stringify(cart), {
+    res.cookie("carrito", JSON.stringify(cart), {
       maxAge: 1000 * 60 * 60 * 24 * 7,
     });
 
@@ -50,7 +62,10 @@ const cartController = {
       const order = await db.Orders.create({
         dateCreate: new Date(),
         user: req.session.lastUser?.id || null,
-        total: cart.reduce((acc, product) => acc + product.price * product.cantidad, 0),
+        total: cart.reduce(
+          (acc, product) => acc + product.price * product.cantidad,
+          0
+        ),
         items: cart.reduce((acc, prenda) => acc + prenda.cantidad, 0),
       });
       for (const product of cart) {
@@ -68,27 +83,27 @@ const cartController = {
         );
       }
 
-      res.clearCookie('carrito');
-      res.redirect('/');
+      res.clearCookie("carrito");
+      res.redirect("/");
     } catch (error) {
-      console.error('Error al crear la orden:', error);
-      return res.status(500).send('Error interno del servidor');
+      console.error("Error al crear la orden:", error);
+      return res.status(500).send("Error interno del servidor");
     }
   },
 
   eliminar: function (req, res, next) {
-    res.clearCookie('carrito');
-    return res.redirect('/');
+    res.clearCookie("carrito");
+    return res.redirect("/");
   },
 
   eliminarItem: function (req, res, next) {
     let cart = req.cookies.carrito ? JSON.parse(req.cookies.carrito) : [];
-    const products = cart.filter(p => p.id != req.params.id);
-    res.clearCookie('carrito');
-    res.cookie('carrito', JSON.stringify(products), {
+    const products = cart.filter((p) => p.id != req.params.id);
+    res.clearCookie("carrito");
+    res.cookie("carrito", JSON.stringify(products), {
       maxAge: 1000 * 60 * 60 * 24 * 7,
     });
-    res.redirect('/carrito');
+    res.redirect("/carrito");
   },
 };
 
