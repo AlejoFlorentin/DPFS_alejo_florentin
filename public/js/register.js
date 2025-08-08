@@ -17,7 +17,6 @@ function formValidation() {
   const inputPassword = document.getElementById('password');
   const inputRepeatPassword = document.getElementById('repeatPassword');
   const inputTerms = document.getElementById('termsAccept');
-  const inputCategory = document.getElementById('category');
 
   let validation = true;
 
@@ -99,14 +98,6 @@ function formValidation() {
     validation = false;
   } else {
     errorTerms.innerHTML = '';
-  }
-
-  const errorCategory = document.getElementById('errorCategory');
-  if (!inputCategory.value) {
-    errorCategory.innerHTML = 'Debes seleccionar una categoría';
-    validation = false;
-  } else {
-    errorCategory.innerHTML = '';
   }
 
   return validation;

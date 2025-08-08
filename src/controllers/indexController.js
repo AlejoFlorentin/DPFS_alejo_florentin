@@ -3,8 +3,10 @@ let db = require('../database/models');
 const indexController = {
   index: async function (req, res) {
     try {
-      const products = await db.Products.findAll();
-
+      const products = await db.ProductImg.findAll({
+        include: [{ association: 'product', attributes: ['title', 'price', 'stock'] }],
+      });
+      console.log(products);
       // Mezclar productos y tomar los primeros 8
       const destacados = products.sort(() => 0.5 - Math.random()).slice(0, 8);
 

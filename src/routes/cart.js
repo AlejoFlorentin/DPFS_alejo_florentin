@@ -1,17 +1,15 @@
-var express = require("express");
+var express = require('express');
 var router = express.Router();
-const cartController = require("../controllers/cartController");
+const cartController = require('../controllers/cartController');
 
-router.get("/", cartController.carrito);
+router.get('/', cartController.carrito);
 
-router.post("/comprar", cartController.comprar);
+router.post('/comprar', cartController.comprar);
 
-router.post("/agregar/detalle/:id", cartController.agregarDetalle);
+router.post('/agregar/detalle/:id', cartController.agregarDetalle);
 
-router.delete("/eliminar", cartController.eliminar);
+router.delete('/eliminar', cartController.eliminar);
 
-router.delete("/eliminarItem/:id", cartController.eliminarItem);
-
-router.post("/crear/categoria", cartController.createCategorie);
+router.delete('/eliminarItem/:id', cartController.eliminarItem);
 
 module.exports = router;

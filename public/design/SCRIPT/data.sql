@@ -1,18 +1,6 @@
 USE superlative_db;
 
-INSERT INTO products_categories (id,name) VALUES
-(1,'camisetas'),
-(2,'pantalones'),
-(3,'bermudas'),
-(4,'zapatillas');
-
-INSERT INTO sizes (id,size) VALUES
-(1,'S'),
-(2,'M'),
-(3,'L'),
-(4,'XL');
-
-INSERT INTO products (id, title, price,stock, category, img, description) VALUES
+INSERT INTO products (title, price,stock, category, img, description) VALUES
 (1, 'Remera Oversize Negra', 131253, 18, 1, '/img/products/camisetas/camisetaNegra.jpg', 'Inspirado en la moda contemporánea. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial.'),
 (2, 'Musculosa Negra', 110228, 7, 1, '/img/products/camisetas/musculosa.jpg', 'Perfecto para combinar con tu outfit favorito. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial.'),
 (3, 'Polo Gris', 142473,  3, 1, '/img/products/camisetas/poloGris.jpg', 'Ideal para toda ocasión con estilo único. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial.'),
@@ -28,13 +16,8 @@ INSERT INTO products (id, title, price,stock, category, img, description) VALUES
 (13, 'Air Force 07 White', 150000, 18, 4, '/img/products/zapatillas/airforce.webp', 'Inspirado en la moda contemporánea. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial.'),
 (14, 'Dunk Bordeauz', 190000, 18, 4, '/img/products/zapatillas/dunkBordo.webp', 'Ideal para toda ocasión con estilo único. Confeccionado con materiales de primera calidad, garantiza durabilidad, confort y un ajuste perfecto. Pensado para quienes buscan estilo y funcionalidad en una sola prenda. Ideal para uso diario o para destacarte en una ocasión especial.');
 
-
-INSERT INTO user_categories (id,name) VALUES
-(1,'admin'),
-(2,'user');
-
-INSERT INTO users(id,firstName,lastName,telefono,email,password,category,image) VALUES 
-(1,'Alejo Augusto','Florentin','1150620957','alejoflorentin@gmail.com','$2b$10$m.nZ7wkjGkwKtwyqrsgfE.oFqoZOg8ytmVOtVmlHgquUsVczQm/pq',1,'/img/users/user-1745272235621-418719920.png');
+INSERT INTO product_imgs(product_id,url) VALUES
+(1,'/img/products/camisetas/camisetaNegra.jpg'),
 
 -- Camisetas (productos 1–4), todas las tallas
 INSERT INTO product_sizes (product, size) VALUES

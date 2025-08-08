@@ -15,8 +15,9 @@ const usersControllers = {
     try {
       //Me traigo todos los usuarios ya registrados
 
-      const users = await db.Users.findAll({
-        include: [{ association: 'UserCategory', attributes: ['name'] }],
+      const users = await db.User.findAll({
+        attributes: { exclude: ['password', 'category_id'] },
+        include: [{ association: 'category', attributes: { exclude: ['id'] } }],
       });
       const user = users.find(user => user.email == req.body.email);
 
@@ -75,7 +76,7 @@ const usersControllers = {
         telefono: req.body.telefono,
         email: req.body.email,
         password: hashedPassword,
-        category: category.id,
+        category: 'User',
         image: req.file ? '/img/users/' + req.file.filename : '/img/users/default.jpg',
       };
 
