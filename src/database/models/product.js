@@ -1,44 +1,39 @@
-'use strict';
-const { Model } = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
       this.belongsTo(models.ProductCategorie, {
-        foreignKey: 'category_id',
-        as: 'category',
+        foreignKey: "category_id",
+        as: "category",
       });
       this.hasMany(models.ProductImg, {
-        foreignKey: 'product_id',
-        as: 'images',
+        foreignKey: "product_id",
+        as: "images",
       });
       this.belongsToMany(models.Order, {
         through: models.OrderDetail,
-        foreignKey: 'product_id',
-        otherKey: 'order_id',
-        as: 'orders',
+        foreignKey: "product_id",
+        otherKey: "order_id",
+        as: "orders",
       });
 
       // Relación directa con OrderDetail
       this.hasMany(models.OrderDetail, {
-        foreignKey: 'product_id',
-        as: 'orderDetails',
+        foreignKey: "product_id",
+        as: "orderDetails",
       });
 
       this.belongsToMany(models.Size, {
         through: models.ProductSize,
-        foreignKey: 'product_id',
-        otherKey: 'size_id',
-        as: 'sizes',
+        foreignKey: "product_id",
+        otherKey: "size_id",
+        as: "sizes",
       });
 
       this.hasMany(models.ProductSize, {
-        foreignKey: 'product_id',
-        as: 'productSizes',
+        foreignKey: "product_id",
+        as: "productSizes",
       });
     }
   }
@@ -64,19 +59,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      createdAt: {
-        type: DataTypes.DATE,
-        field: 'created_at',
-      },
-      updatedAt: {
-        type: DataTypes.DATE,
-        field: 'updated_at',
-      },
     },
     {
       sequelize,
-      modelName: 'Product',
-      tableName: 'products',
+      modelName: "Product",
+      tableName: "products",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
     }
   );
 
