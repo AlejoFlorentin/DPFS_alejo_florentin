@@ -43,7 +43,7 @@
               <% if(product.stock == 0) { %>
               <p class="text-danger fw-bold stock">Sin Stock</p>
               <%}%>
-              <img src="<%= product.images[0].url %>" alt="<%= product.title %>">
+              <img src="<%= product.images[0] ? product.images[0].url : '/img/default.png' %>" alt="<%= product.title %>">
               <div class="product-info d-flex flex-column justify-content-center align-items-center gap-1">
                 <h6 class="text-center mt-2 mb-0"><%= product.title %></h6>
                 <div class="d-flex flex-column justify-content-center align-items-center gap-1">
@@ -53,7 +53,7 @@
               </div>
             </a>
           <div class="d-flex gap-2 mt-2">
-            <%if(locals.lastUser && locals.lastUser.category == 'admin') {%>
+            <%if(locals.lastUser && locals.lastUser.category == 'Admin') {%>
             <a href="/productos/editar/<%= product.id %>">
               <button title="Editar Producto" id="btnEdit" title="Editar" class="btnAdmin bg-black text-white rounded-2 border-0">
               <i class='bx bxs-pencil'></i>

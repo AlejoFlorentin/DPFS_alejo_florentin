@@ -1,36 +1,41 @@
-let db = require("../database/models");
+let db = require('../database/models');
 
 const productsController = {
   editar: async function (req, res, next) {
     let id = req.params.id;
     try {
-      let product = await db.Products.findByPk(id, {
+      let product = await db.Product.findByPk(id, {
         include: [
           {
-            association: "ProductCategory",
-            attributes: ["name"],
+            association: 'category',
+            attributes: ['name'],
           },
           {
-            association: "sizes",
-            through: { attributes: [] }, // Excluir atributos de la tabla intermedia
+            association: 'productSizes',
+            include: [
+              {
+                association: 'size',
+                attributes: ['size'],
+              },
+            ],
           },
         ],
       });
-      console.log("Producto encontrado:", product);
-      return res.render("products/editProduct", {
-        title: "Superlative",
-        css: "editProduct.css",
+      console.log('Producto encontrado:', product);
+      return res.render('products/editProduct', {
+        title: 'Superlative',
+        css: 'editProduct.css',
         product,
       });
     } catch (error) {
-      console.error("Error leyendo el archivo de productos:", error);
-      return res.status(500).send("Error interno del servidor");
+      console.error('Error leyendo el archivo de productos:', error);
+      return res.status(500).send('Error interno del servidor');
     }
   },
   crear: function (req, res, next) {
-    return res.render("products/createProduct", {
-      title: "Superlative",
-      css: "createProduct.css",
+    return res.render('products/createProduct', {
+      title: 'Superlative',
+      css: 'createProduct.css',
     });
   },
 
@@ -45,54 +50,54 @@ const productsController = {
         products = await db.Product.findAll({
           include: [
             {
-              association: "category",
+              association: 'category',
             },
             {
-              association: "images",
-              attributes: ["url"],
+              association: 'images',
+              attributes: ['url'],
             },
           ],
-          where: { "$category.name$": categoria },
+          where: { '$category.name$': categoria },
         });
       } else {
         products = await db.Product.findAll({
           attributes: {
-            exclude: ["category_id"],
+            exclude: ['category_id'],
           },
           include: [
             {
-              association: "images",
-              attributes: ["url"],
+              association: 'images',
+              attributes: ['url'],
             },
           ],
         });
       }
 
       function formatNumber(numero) {
-        let partes = numero.toString().split(".");
+        let partes = numero.toString().split('.');
         let parteEntera = partes[0];
-        let parteDecimal = partes.length > 1 ? partes[1] : "";
+        let parteDecimal = partes.length > 1 ? partes[1] : '';
 
-        parteEntera = parteEntera.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        parteEntera = parteEntera.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
-        let numeroFormateado = "$ " + parteEntera;
-        if (parteDecimal !== "") {
-          numeroFormateado += "," + parteDecimal;
+        let numeroFormateado = '$ ' + parteEntera;
+        if (parteDecimal !== '') {
+          numeroFormateado += ',' + parteDecimal;
         }
 
         return numeroFormateado;
       }
 
-      return res.render("products/product", {
-        title: "Superlative | Productos",
+      return res.render('products/product', {
+        title: 'Superlative | Productos',
         products,
-        css: "products.css",
+        css: 'products.css',
         req,
         formatNumber,
       });
     } catch (error) {
-      console.error("Error leyendo los productos:", error);
-      return res.status(500).send("Error interno del servidor");
+      console.error('Error leyendo los productos:', error);
+      return res.status(500).send('Error interno del servidor');
     }
   },
   detalle: async function (req, res, next) {
@@ -102,40 +107,45 @@ const productsController = {
       product = await db.Product.findByPk(req.params.id, {
         include: [
           {
-            association: "productSizes",
-            attributes: [],
+            association: 'productSizes',
+            include: [
+              {
+                association: 'size', // esto incluye el modelo Size
+                attributes: ['size'],
+              },
+            ],
           },
           {
-            association: "ProductCategory",
-            attributes: ["name"],
+            association: 'category',
+            attributes: ['name'],
           },
           {
-            association: "images",
-            attributes: ["url"],
+            association: 'images',
+            attributes: ['url'],
           },
         ],
       });
       if (!product) {
-        return res.status(404).send("Producto no encontrado");
+        return res.status(404).send('Producto no encontrado');
       }
 
-      return res.render("products/productDetail", {
-        title: "Superlative | Detalle",
-        css: "productDetail.css",
+      return res.render('products/productDetail', {
+        title: 'Superlative | Detalle',
+        css: 'productDetail.css',
         producto: product,
       });
     } catch (err) {
-      console.error("Error leyendo el archivo JSON:", err);
-      return res.status(500).send("Error interno del servidor");
+      console.error('Error leyendo el archivo JSON:', err);
+      return res.status(500).send('Error interno del servidor');
     }
   },
   dataNew: async function (req, res, next) {
     try {
-      const categoria = await db.ProductsCategories.findOne({
+      const categoria = await db.ProductCategorie.findOne({
         where: { name: req.body.category },
       });
 
-      const size = await db.Sizes.findOne({
+      const size = await db.Size.findOne({
         where: { size: req.body.size },
       });
 
@@ -143,44 +153,52 @@ const productsController = {
         title: req.body.name,
         price: parseFloat(req.body.price),
         stock: parseInt(req.body.stock),
-        category: categoria.id,
-        img: `/img/products/${req.body.category}/${req.file.filename}`,
+        category_id: categoria.id,
         description: req.body.description,
       };
 
-      const productoCreado = await db.Products.create(nuevoProducto);
+      const productoCreado = await db.Product.create(nuevoProducto);
 
-      await db.ProductSizes.create({
-        product: productoCreado.id,
-        size: size.id,
+      await db.ProductImg.create({
+        url: `/img/products/${req.body.category}/${req.file.filename}`,
+        product_id: productoCreado.id,
       });
 
-      return res.redirect("/productos");
+      await db.ProductSize.create({
+        product_id: productoCreado.id,
+        size_id: size.id,
+      });
+
+      return res.redirect('/productos');
     } catch (error) {
-      console.error("Error al crear producto:", error);
-      return res.status(500).send("Error al guardar el producto");
+      console.error('Error al crear producto:', error);
+      return res.status(500).send('Error al guardar el producto');
     }
   },
 
   dataEdit: async function (req, res, next) {
     try {
-      const categoria = await db.ProductsCategories.findOne({
+      const categoria = await db.ProductCategorie.findOne({
         where: { name: req.body.category },
       });
-      const product = await db.Products.findByPk(req.params.id);
-      const size = await db.Sizes.findOne({
+      const size = await db.Size.findOne({
         where: { size: req.body.size },
       });
+      const product = await db.Product.findByPk(req.params.id, {
+        include: [
+          {
+            association: 'images',
+            attributes: ['url'],
+          },
+        ],
+      });
 
-      await db.Products.update(
+      await db.Product.update(
         {
           title: req.body.name,
           price: parseFloat(req.body.price),
           stock: parseInt(req.body.stock),
-          category: categoria.id,
-          img: req.file
-            ? `/img/products/${req.body.category}/${req.file.filename}`
-            : product.img,
+          category_id: categoria.id,
           description: req.body.description,
         },
         {
@@ -190,39 +208,55 @@ const productsController = {
         }
       );
 
-      await db.ProductSizes.update(
-        { size: size.id },
+      await db.ProductImg.update(
+        {
+          url: req.file
+            ? `/img/products/${req.body.category}/${req.file.filename}`
+            : product.images[0].url,
+        },
         {
           where: {
-            product: req.params.id,
+            product_id: req.params.id,
           },
         }
       );
 
-      return res.redirect("/productos");
+      await db.ProductSize.update(
+        { size_id: size.id },
+        {
+          where: {
+            product_id: req.params.id,
+          },
+        }
+      );
+
+      return res.redirect('/productos');
     } catch (err) {
-      console.error("Error al editar producto:", err);
-      return res.status(500).send("Error al editar producto");
+      console.error('Error al editar producto:', err);
+      return res.status(500).send('Error al editar producto');
     }
   },
 
   delete: async function (req, res) {
     try {
-      await db.ProductSizes.destroy({
+      await db.ProductSize.destroy({
         where: {
-          product: req.params.id,
+          product_id: req.params.id,
         },
       });
-      await db.Products.destroy({
+      await db.ProductImg.destroy({
+        where: { product_id: req.params.id },
+      });
+      await db.Product.destroy({
         where: {
           id: req.params.id,
         },
       });
 
-      return res.redirect("/productos");
+      return res.redirect('/productos');
     } catch (err) {
-      console.error("Error al eliminar producto:", err);
-      return res.status(500).send("Error al eliminar producto");
+      console.error('Error al eliminar producto:', err);
+      return res.status(500).send('Error al eliminar producto');
     }
   },
 };

@@ -11,15 +11,24 @@ const cartController = {
   agregarDetalle: async function (req, res, next) {
     let cart = req.cookies.carrito ? JSON.parse(req.cookies.carrito) : [];
     let contador = Number(req.body.contador);
-    const productoAgregado = await db.Products.findByPk(req.params.id, {
+    const productoAgregado = await db.Product.findByPk(req.params.id, {
       include: [
         {
-          association: 'ProductCategory',
+          association: 'category',
           attributes: ['name'],
         },
         {
-          association: 'sizes',
-          through: { attributes: [] }, // Excluir atributos de la tabla intermedia
+          association: 'images',
+          attributes: ['url'],
+        },
+        {
+          association: 'productSizes',
+          include: [
+            {
+              association: 'size',
+              attributes: ['size'],
+            },
+          ],
         },
       ],
     });
@@ -33,7 +42,7 @@ const cartController = {
         id: productoAgregado.id,
         title: productoAgregado.title,
         price: productoAgregado.price,
-        img: productoAgregado.img,
+        img: productoAgregado.images[0].url,
         cantidad: contador,
       };
       cart.push(addedProduct);
@@ -50,22 +59,21 @@ const cartController = {
     try {
       let cart = req.cookies.carrito ? JSON.parse(req.cookies.carrito) : [];
 
-      const order = await db.Orders.create({
-        dateCreate: new Date(),
-        user: req.session.lastUser?.id || null,
+      const order = await db.Order.create({
+        user_id: req.session.lastUser?.id || null,
         total: cart.reduce((acc, product) => acc + product.price * product.cantidad, 0),
         items: cart.reduce((acc, prenda) => acc + prenda.cantidad, 0),
       });
       for (const product of cart) {
         // Crear el detalle de la orden
-        await db.OrdersDetails.create({
-          orders: order.id,
-          product: product.id,
+        await db.OrderDetail.create({
+          order_id: order.id,
+          product_id: product.id,
         });
 
         // Restar stock del producto
-        const productoDB = await db.Products.findByPk(product.id);
-        await db.Products.update(
+        const productoDB = await db.Product.findByPk(product.id);
+        await db.Product.update(
           { stock: productoDB.stock - product.cantidad },
           { where: { id: product.id } }
         );

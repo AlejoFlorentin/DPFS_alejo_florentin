@@ -15,11 +15,13 @@ const usersControllers = {
     try {
       //Me traigo todos los usuarios ya registrados
 
-      const users = await db.User.findAll({
-        attributes: { exclude: ['password', 'category_id'] },
-        include: [{ association: 'category', attributes: { exclude: ['id'] } }],
+      const user = await db.User.findOne({
+        where: { email: req.body.email },
+        include: [
+          { association: 'category', attributes: { exclude: ['id'] } },
+          { association: 'image', attributes: ['url'] },
+        ],
       });
-      const user = users.find(user => user.email == req.body.email);
 
       if (!user) {
         return res.redirect('/usuarios/login?error=email');
@@ -30,12 +32,12 @@ const usersControllers = {
       if (match) {
         req.session.lastUser = {
           id: user.id,
-          name: user.firstName,
-          lastName: user.lastName,
-          phone: user.telefono,
+          name: user.name,
+          lastName: user.last_name,
+          phone: user.phone,
           email: user.email,
-          category: user.UserCategory.name,
-          image: user.image,
+          category: user.category.name,
+          image: user.image?.url || '/img/users/default.jpg',
         };
 
         if (req.body.remember) {
@@ -49,19 +51,15 @@ const usersControllers = {
         return res.redirect('/usuarios/login?error=pass');
       }
     } catch (err) {
-      console.error('Error al registrar usuario:', err);
-      res.status(500).send('Error en el registro');
+      console.error('Error al iniciar sesión', err);
+      res.status(500).send('Error en el inicio de sesión');
     }
   },
   dataReg: async (req, res) => {
     try {
       //Me traigo todos los usuarios ya registrados
-      const users = await db.Users.findAll({
-        include: [{ association: 'UserCategory', attributes: ['name'] }],
-      });
-
-      const category = await db.UserCategories.findOne({
-        where: { name: req.body.category },
+      const users = await db.User.findAll({
+        include: [{ association: 'category', attributes: ['name'] }],
       });
 
       if (users.find(user => user.email === req.body.email)) {
@@ -71,16 +69,20 @@ const usersControllers = {
       const hashedPassword = await bcrypt.hash(req.body.password, 10); //encriptamos la contraseña con nivel de seguridad 10
 
       const newUser = {
-        firstName: req.body.name,
-        lastName: req.body.apellido,
-        telefono: req.body.telefono,
+        name: req.body.name,
+        last_name: req.body.apellido,
+        phone: req.body.telefono,
         email: req.body.email,
         password: hashedPassword,
-        category: 'User',
-        image: req.file ? '/img/users/' + req.file.filename : '/img/users/default.jpg',
+        category_id: 2,
       };
 
-      await db.Users.create(newUser);
+      const userCreated = await db.User.create(newUser);
+
+      await db.UserImg.create({
+        user_id: userCreated.id,
+        url: req.file ? '/img/users/' + req.file.filename : '/img/users/default.jpg',
+      });
 
       res.redirect('/usuarios/login');
     } catch (err) {

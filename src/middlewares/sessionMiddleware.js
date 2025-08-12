@@ -1,18 +1,21 @@
-let db = require("../database/models");
+let db = require('../database/models');
 module.exports = async (req, res, next) => {
   if (!req.session.lastUser && req.cookies.recordame) {
     const userId = parseInt(req.cookies.recordame, 10);
-    const user = await db.Users.findByPk(userId, {
-      include: [{ association: "UserCategory", attributes: ["name"] }],
+    const user = await db.User.findByPk(userId, {
+      include: [
+        { association: 'category', attributes: ['name'] },
+        { association: 'image', attributes: ['url'] },
+      ],
     });
-    console.log("🔎 Usuario encontrado por cookie:", user);
+    console.log('🔎 Usuario encontrado por cookie:', user);
     if (user) {
       req.session.lastUser = {
         id: user.id,
-        name: user.firstName,
+        name: user.name,
         email: user.email,
-        category: user.UserCategory.name,
-        image: user.image,
+        category: user.category.name,
+        image: user.image?.url || '/img/users/default.jpg',
       };
     }
   }
