@@ -1,39 +1,28 @@
-"use strict";
-const { Model } = require("sequelize");
+'use strict';
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     static associate(models) {
       this.belongsTo(models.ProductCategorie, {
-        foreignKey: "category_id",
-        as: "category",
+        foreignKey: 'category_id',
+        as: 'category',
       });
       this.hasMany(models.ProductImg, {
-        foreignKey: "product_id",
-        as: "images",
+        foreignKey: 'product_id',
+        as: 'images',
       });
       this.belongsToMany(models.Order, {
         through: models.OrderDetail,
-        foreignKey: "product_id",
-        otherKey: "order_id",
-        as: "orders",
-      });
-
-      // Relación directa con OrderDetail
-      this.hasMany(models.OrderDetail, {
-        foreignKey: "product_id",
-        as: "orderDetails",
+        foreignKey: 'product_id',
+        otherKey: 'order_id',
+        as: 'orders',
       });
 
       this.belongsToMany(models.Size, {
         through: models.ProductSize,
-        foreignKey: "product_id",
-        otherKey: "size_id",
-        as: "sizes",
-      });
-
-      this.hasMany(models.ProductSize, {
-        foreignKey: "product_id",
-        as: "productSizes",
+        foreignKey: 'product_id',
+        otherKey: 'size_id',
+        as: 'sizes',
       });
     }
   }
@@ -62,10 +51,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Product",
-      tableName: "products",
-      createdAt: "created_at",
-      updatedAt: "updated_at",
+      modelName: 'Product',
+      tableName: 'products',
+      createdAt: 'created_at',
+      updatedAt: 'updated_at',
     }
   );
 

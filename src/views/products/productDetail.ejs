@@ -16,9 +16,10 @@
           <h5>$ <%= producto.price.toFixed(2) %></h5>
           <p><b>$ <%= (producto.price * 0.9).toFixed(2) %></b> con Transferencia bancaria</p>
           <p>6 cuotas sin interes de $ <%= (producto.price / 6).toFixed(2) %></p>
-          <% producto.productSizes.forEach(ps => { %>
-          <p class="size"><b>Talle <%= ps.size.size %></b></p>
-          <% }) %>
+         
+          <p class="size"><b>Talle <%= producto.sizes[0].size %></b></p>
+          
+          <%if(locals.lastUser) { %>
           <form action="/carrito/agregar/detalle/<%= producto.id %>" method="POST">
             <div class="d-flex flex-column gap-2">
               <input type="hidden" name="contador" id="input-contador" value="1" />
@@ -39,6 +40,7 @@
               </button>
             </div>
           </form>
+          <% } %>
         </div>
       </section>
     </main>

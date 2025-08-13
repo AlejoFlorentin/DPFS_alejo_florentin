@@ -14,4 +14,6 @@ router.get('/perfil', authMiddleware, usersController.perfil);
 router.post('/login', usersController.dataLog);
 
 router.post('/registro', upload.single('image'), usersController.dataReg);
+
+router.post('/logout', usersController.logout);
 module.exports = router;

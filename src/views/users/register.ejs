@@ -37,7 +37,7 @@
               class="form-control"
               type="text"
               id="lastName"
-              name="apellido"
+              name="last_name"
               required
               autocomplete="off"
             />
@@ -51,7 +51,7 @@
               class="form-control"
               type="number"
               id="phone"
-              name="telefono"
+              name="phone"
               required
               autocomplete="off"
             />
@@ -117,7 +117,14 @@
           <!-- Imagen -->
           <div class="mt-2">
             <label class="form-label" for="image">Foto de perfil</label>
-            <input class="form-control" type="file" id="image" name="image" accept="image/*" />
+            <input
+              class="form-control"
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              multiple
+            />
           </div>
 
           <!-- Términos -->

@@ -6,7 +6,7 @@
 
     <main class="container mt-5">
       <div class="text-center">
-        <h1><%= lastUser.name %> <%= lastUser.lastName %></h1>
+        <h1><%= lastUser.name %> <%= lastUser.last_name %></h1>
         <img
           src="<%= lastUser.image %>"
           alt="Foto de perfil"
@@ -14,8 +14,11 @@
           style="width: 150px; height: 150px; object-fit: cover"
         />
         <p><strong>Email:</strong> <%= lastUser.email %></p>
-        <p><strong>Categoría:</strong> <%= lastUser.category %></p>
+        <p><strong>Teléfono:</strong> <%= lastUser.phone %></p>
         <a href="/" class="btn btn-secondary mt-3">Volver al inicio</a>
+        <form action="/usuarios/logout" method="POST">
+          <button type="submit" class="btn btn-danger mt-3">Cerrar Sesión</button>
+        </form>
       </div>
     </main>
 

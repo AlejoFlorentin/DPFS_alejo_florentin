@@ -43,7 +43,15 @@
               <% if(product.stock == 0) { %>
               <p class="text-danger fw-bold stock">Sin Stock</p>
               <%}%>
-              <img src="<%= product.images[0] ? product.images[0].url : '/img/default.png' %>" alt="<%= product.title %>">
+              <div id="carousel<%= product.id %>" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                <div class="carousel-inner">
+                  <% product.images.forEach((img, idx) => { %>
+                    <div class="carousel-item <%= idx === 0 ? 'active' : '' %>">
+                      <img src="<%= img.url %>" class="d-block w-100" alt="<%= product.title %>">
+                    </div>
+                <% }) %>
+                </div>
+              </div>
               <div class="product-info d-flex flex-column justify-content-center align-items-center gap-1">
                 <h6 class="text-center mt-2 mb-0"><%= product.title %></h6>
                 <div class="d-flex flex-column justify-content-center align-items-center gap-1">

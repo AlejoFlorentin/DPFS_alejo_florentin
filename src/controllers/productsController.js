@@ -11,13 +11,7 @@ const productsController = {
             attributes: ['name'],
           },
           {
-            association: 'productSizes',
-            include: [
-              {
-                association: 'size',
-                attributes: ['size'],
-              },
-            ],
+            association: 'sizes',
           },
         ],
       });
@@ -107,13 +101,7 @@ const productsController = {
       product = await db.Product.findByPk(req.params.id, {
         include: [
           {
-            association: 'productSizes',
-            include: [
-              {
-                association: 'size', // esto incluye el modelo Size
-                attributes: ['size'],
-              },
-            ],
+            association: 'sizes',
           },
           {
             association: 'category',
@@ -159,10 +147,11 @@ const productsController = {
 
       const productoCreado = await db.Product.create(nuevoProducto);
 
-      await db.ProductImg.create({
-        url: `/img/products/${req.body.category}/${req.file.filename}`,
+      const imgsToInsert = req.files.map(f => ({
+        url: `/img/products/${req.body.category}/${f.filename}`,
         product_id: productoCreado.id,
-      });
+      }));
+      await db.ProductImg.bulkCreate(imgsToInsert);
 
       await db.ProductSize.create({
         product_id: productoCreado.id,

@@ -22,13 +22,7 @@ const cartController = {
           attributes: ['url'],
         },
         {
-          association: 'productSizes',
-          include: [
-            {
-              association: 'size',
-              attributes: ['size'],
-            },
-          ],
+          association: 'sizes',
         },
       ],
     });

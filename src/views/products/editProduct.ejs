@@ -69,11 +69,11 @@
             <label for="size" class="form-label">Talle</label>
             <select name="size" id="size" class="form-select">
               
-              <% product.productSizes.forEach(ps => { %>
-              <option value='S' <%= ps.size.size === 'S' ? 'selected' : '' %>>S</option>
-              <option value='M' <%= ps.size.size === 'M' ? 'selected' : '' %>>M</option>
-              <option value='L' <%= ps.size.size === 'L' ? 'selected' : '' %>>L</option>
-              <option value='XL' <%= ps.size.size === 'XL' ? 'selected' : '' %>>XL</option>
+              <% product.sizes.forEach(ps => { %>
+              <option value='S' <%= ps.size === 'S' ? 'selected' : '' %>>S</option>
+              <option value='M' <%= ps.size === 'M' ? 'selected' : '' %>>M</option>
+              <option value='L' <%= ps.size === 'L' ? 'selected' : '' %>>L</option>
+              <option value='XL' <%= ps.size === 'XL' ? 'selected' : '' %>>XL</option>
           <% }) %>
               
             </select>

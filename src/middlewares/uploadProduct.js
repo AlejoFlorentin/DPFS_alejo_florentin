@@ -17,4 +17,15 @@ const storage = multer.diskStorage({
   },
 });
 
-module.exports = multer({ storage });
+const upload = multer({
+  storage,
+  limits: { files: 3, fileSize: 2 * 1024 * 1024 }, // hasta 3 imágenes, 2MB cada una
+  fileFilter: (req, file, cb) => {
+    if (!/^image\/(png|jpe?g|webp|gif)$/.test(file.mimetype)) {
+      return cb(new Error('Formato de imagen no permitido'), false);
+    }
+    cb(null, true);
+  },
+});
+
+module.exports = upload;

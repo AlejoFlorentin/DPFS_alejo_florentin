@@ -70,8 +70,8 @@ const usersControllers = {
 
       const newUser = {
         name: req.body.name,
-        last_name: req.body.apellido,
-        phone: req.body.telefono,
+        last_name: req.body.last_name,
+        phone: req.body.phone,
         email: req.body.email,
         password: hashedPassword,
         category_id: 2,
@@ -89,6 +89,12 @@ const usersControllers = {
       console.error('Error al registrar usuario:', err);
       res.status(500).send('Error en el registro');
     }
+  },
+
+  logout: function (req, res) {
+    req.session.destroy();
+    res.clearCookie('recordame');
+    return res.redirect('/');
   },
 };
 
