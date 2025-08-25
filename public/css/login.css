@@ -3,3 +3,9 @@
 .error {
   font-size: 13px;
 }
+
+.show-hide {
+  cursor: pointer;
+  font-size: 12px;
+  color: #007bff;
+}
