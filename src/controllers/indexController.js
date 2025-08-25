@@ -5,7 +5,7 @@ const indexController = {
     try {
       const products = await db.Product.findAll({
         attributes: {
-          exclude: ["id", "category_id"],
+          exclude: ["category_id"],
         },
         include: [
           {
