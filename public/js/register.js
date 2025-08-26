@@ -1,13 +1,10 @@
 document.getElementById('form').addEventListener('submit', submitFunction);
 
 function submitFunction(event) {
-  const query = new URLSearchParams(window.location.search);
-  const error = query.get('error');
   if (!formValidation()) {
     event.preventDefault(); //  se evita el envío si hay errores
     return;
   }
-  if (error) return;
 }
 
 function formValidation() {
@@ -101,16 +98,4 @@ function formValidation() {
   }
 
   return validation;
-}
-
-const query = new URLSearchParams(window.location.search);
-const error = query.get('error');
-
-if (error === 'email') {
-  Swal.fire({
-    icon: 'error',
-    title: 'Email ya registrado',
-    timer: 1500,
-    showConfirmButton: false,
-  });
 }

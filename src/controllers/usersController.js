@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 let db = require('../database/models');
+const { validationResult } = require('express-validator');
 
 const usersControllers = {
   login: function (req, res, next) {
@@ -13,7 +14,15 @@ const usersControllers = {
   },
   dataLog: async (req, res, next) => {
     try {
-      //Me traigo todos los usuarios ya registrados
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        console.log(errors.mapped());
+        return res.render('users/login', {
+          title: 'Superlative | Login',
+          css: 'login.css',
+          errors: errors.mapped(),
+        });
+      }
 
       const user = await db.User.findOne({
         where: { email: req.body.email },
@@ -22,10 +31,6 @@ const usersControllers = {
           { association: 'image', attributes: ['url'] },
         ],
       });
-
-      if (!user) {
-        return res.redirect('/usuarios/login?error=email');
-      }
 
       const match = await bcrypt.compare(req.body.password, user.password);
 
@@ -47,8 +52,6 @@ const usersControllers = {
         }
 
         return res.redirect('/');
-      } else {
-        return res.redirect('/usuarios/login?error=pass');
       }
     } catch (err) {
       console.error('Error al iniciar sesión', err);
@@ -57,7 +60,16 @@ const usersControllers = {
   },
   dataReg: async (req, res) => {
     try {
-      //Me traigo todos los usuarios ya registrados
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        console.log(errors.mapped());
+        return res.render('users/register', {
+          title: 'Superlative | Registro',
+          css: 'register.css',
+          errors: errors.mapped(),
+        });
+      }
+
       const users = await db.User.findAll({
         include: [{ association: 'category', attributes: ['name'] }],
       });

@@ -19,3 +19,8 @@ En este sprint se le dio mayor dinamismo al sitio , puediendo mostrar , crear ,e
 # Sprint 5
 
 En este sprint se logro la creacion y logeo de usuarios , se separo las rutas de los usuarios logeados y sin logear terminando de dar formato al sitio.
+
+# Sprint 6
+
+Un sprint donde el enfoque estuvO en la creacion de la BBDD en MySql Workbench y la coneccion de nuestro proyecto con dicha BBDD a traves del ORM de sequelize.
+Un sprint donde creo que hay que estar mas enfocados y concentrados para no cometer un error ya que puede hacer que nada funcione.
