@@ -1,30 +1,34 @@
 const multer = require('multer');
 const path = require('path');
 
-//Configuracion de multer
-
 const storage = multer.diskStorage({
-  //donde se guarda
   destination: (req, file, cb) => {
     const category = req.body.category;
     cb(null, path.join(__dirname, `../../public/img/products/${category}`));
   },
-  // con que nombre se guarda
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    const ext = path.extname(file.originalname);
+    const ext = path.extname(file.originalname).toLowerCase();
     cb(null, 'product-' + uniqueSuffix + ext);
   },
 });
 
+const allowedExts = new Set(['.jpg', '.jpeg', '.png', '.gif']);
+
 const upload = multer({
   storage,
-  limits: { files: 3, fileSize: 2 * 1024 * 1024 }, // hasta 3 imágenes, 2MB cada una
+  limits: { files: 3, fileSize: 2 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
-    if (!/^image\/(png|jpe?g|webp|gif)$/.test(file.mimetype)) {
-      return cb(new Error('Formato de imagen no permitido'), false);
+    const ext = path.extname(file.originalname).toLowerCase();
+    const mimetypeOk = /^image\/(jpe?g|png|gif)$/i.test(file.mimetype);
+    const extOk = allowedExts.has(ext);
+
+    if (mimetypeOk && extOk) {
+      return cb(null, true);
     }
-    cb(null, true);
+
+    req.fileValidationError = 'Invalid image format. Only JPG, JPEG, PNG, and GIF are allowed.';
+    return cb(null, false);
   },
 });
 

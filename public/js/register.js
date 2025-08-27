@@ -2,7 +2,7 @@ document.getElementById('form').addEventListener('submit', submitFunction);
 
 function submitFunction(event) {
   if (!formValidation()) {
-    event.preventDefault(); //  se evita el envío si hay errores
+    event.preventDefault();
     return;
   }
 }
@@ -14,6 +14,7 @@ function formValidation() {
   const inputPassword = document.getElementById('password');
   const inputRepeatPassword = document.getElementById('repeatPassword');
   const inputTerms = document.getElementById('termsAccept');
+  const inputFile = document.getElementById('image');
 
   let validation = true;
 
@@ -25,8 +26,8 @@ function formValidation() {
     if (field.value === '') {
       errorField.innerHTML = 'Campo incompleto';
       validation = false;
-    } else if (field.value.length < 3) {
-      errorField.innerHTML = 'Se necesita al menos 3 caracteres';
+    } else if (field.value.length < 2) {
+      errorField.innerHTML = 'Se necesita al menos 2 caracteres';
       validation = false;
     } else {
       errorField.innerHTML = '';
@@ -60,13 +61,13 @@ function formValidation() {
     errorPassword.innerHTML = 'Campo incompleto';
     validation = false;
   } else if (
-    inputPassword.value.length < 10 ||
+    inputPassword.value.length < 8 ||
     !/[A-Z]/.test(inputPassword.value) ||
     !/[0-9]/.test(inputPassword.value) ||
     !/[!@#$%^&*(),.?":{}|<>]/.test(inputPassword.value)
   ) {
     let errorMessage = 'La contraseña debe cumplir con los siguientes requisitos:<br>';
-    if (inputPassword.value.length < 10) errorMessage += 'Debe tener al menos 10 caracteres.<br>';
+    if (inputPassword.value.length < 8) errorMessage += 'Debe tener al menos 8 caracteres.<br>';
     if (!/[A-Z]/.test(inputPassword.value))
       errorMessage += 'Debe contener una letra mayúscula.<br>';
     if (!/[0-9]/.test(inputPassword.value)) errorMessage += 'Debe contener un número.<br>';
@@ -95,6 +96,18 @@ function formValidation() {
     validation = false;
   } else {
     errorTerms.innerHTML = '';
+  }
+
+  const errorImage = document.getElementById('errorImage');
+  if (inputFile.value) {
+    const validTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/jpg'];
+
+    if (!validTypes.includes(file.type)) {
+      errorImage.innerHTML = 'Formato de imagen no válido. Solo se permiten PNG, JPEG y GIF.';
+      validation = false;
+    } else {
+      errorImage.innerHTML = '';
+    }
   }
 
   return validation;

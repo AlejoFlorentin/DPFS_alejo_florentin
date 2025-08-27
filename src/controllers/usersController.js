@@ -16,7 +16,6 @@ const usersControllers = {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        console.log(errors.mapped());
         return res.render('users/login', {
           title: 'Superlative | Login',
           css: 'login.css',
@@ -73,10 +72,6 @@ const usersControllers = {
       const users = await db.User.findAll({
         include: [{ association: 'category', attributes: ['name'] }],
       });
-
-      if (users.find(user => user.email === req.body.email)) {
-        return res.redirect('/usuarios/registro?error=email');
-      }
 
       const hashedPassword = await bcrypt.hash(req.body.password, 10); //encriptamos la contraseña con nivel de seguridad 10
 

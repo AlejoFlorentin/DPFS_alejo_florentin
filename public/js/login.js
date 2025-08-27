@@ -23,7 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
     const emailValue = emailInput.value.trim(); // el trim lo que hace es eliminar espacios vacíos al comienzo y final del input
 
-    if (!emailRegex.test(emailValue)) {
+    if (!emailValue) {
+      errorEmail.innerHTML = 'Ingresa un email';
+      validation = false;
+    } else if (!emailRegex.test(emailValue)) {
       errorEmail.innerHTML = 'Ingresa un email válido';
       validation = false;
     } else {
@@ -32,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const passwordValue = passwordInput.value.trim();
 
-    if (passwordValue.length < 6) {
-      errorPassword.innerHTML = 'Ingresa una contraseña de al menos 6 caracteres';
+    if (!passwordValue) {
+      errorPassword.innerHTML = 'Ingresa una contraseña';
       validation = false;
     } else {
       errorPassword.innerHTML = '';

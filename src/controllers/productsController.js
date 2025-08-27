@@ -1,4 +1,5 @@
 let db = require('../database/models');
+const { validationResult } = require('express-validator');
 
 const productsController = {
   editar: async function (req, res, next) {
@@ -129,6 +130,15 @@ const productsController = {
   },
   dataNew: async function (req, res, next) {
     try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        console.log(errors.mapped());
+        return res.render('products/createProduct', {
+          title: 'Superlative',
+          css: 'createProduct.css',
+          errors: errors.mapped(),
+        });
+      }
       const categoria = await db.ProductCategorie.findOne({
         where: { name: req.body.category },
       });

@@ -28,7 +28,9 @@
               autocomplete="off"
             />
           </div>
-          <div class="error text-danger" id="errorName"></div>
+          <div class="error text-danger" id="errorName">
+            <%= typeof errors !== 'undefined' && errors.name ? 'Nombre inválido' : '' %>
+          </div>
 
           <!-- Apellido -->
           <div class="mt-2">
@@ -42,7 +44,9 @@
               autocomplete="off"
             />
           </div>
-          <div class="error text-danger" id="errorLastName"></div>
+          <div class="error text-danger" id="errorLastName">
+            <%= typeof errors !== 'undefined' && errors.last_name ? 'Apellido inválido' : '' %>
+          </div>
 
           <!-- Teléfono -->
           <div class="mt-2">
@@ -56,7 +60,9 @@
               autocomplete="off"
             />
           </div>
-          <div class="error text-danger" id="errorPhone"></div>
+          <div class="error text-danger" id="errorPhone">
+            <%= typeof errors !== 'undefined' && errors.phone ? 'Teléfono inválido' : '' %>
+          </div>
 
           <!-- Email -->
           <div class="mt-2">
@@ -70,7 +76,9 @@
               autocomplete="off"
             />
           </div>
-          <div class="error text-danger" id="errorEmail"></div>
+          <div class="error text-danger" id="errorEmail">
+            <%= typeof errors !== 'undefined' && errors.email ? 'Email ya registrado' : '' %>
+          </div>
 
           <!-- Repetir Email -->
           <div class="mt-2">
@@ -98,7 +106,9 @@
               autocomplete="off"
             />
           </div>
-          <div class="error text-danger" id="errorPassword"></div>
+          <div class="error text-danger" id="errorPassword">
+            <%= typeof errors !== 'undefined' && errors.password ? 'Contraseña inválida' : '' %>
+          </div>
 
           <!-- Repetir Contraseña -->
           <div class="mt-2">
@@ -124,9 +134,13 @@
               name="image"
               accept="image/*"
               multiple
+              required
             />
           </div>
-
+          <div class="error text-danger" id="errorImage">
+            <%= typeof errors !== 'undefined' && errors.image ? "Formato de imagen inválido " : ''
+            %>
+          </div>
           <!-- Términos -->
           <div class="terms mt-2">
             <input type="checkbox" name="aceptoTerminos" id="termsAccept" required />

@@ -5,13 +5,13 @@ const bcrypt = require('bcrypt');
 const loginValidator = [
   body('email')
     .notEmpty()
-    .withMessage('Email is required')
     .isString()
+    .withMessage('Email is required')
     .isEmail()
     .withMessage('Email should be a valid email address')
+    .bail()
     .custom(async email => {
-      const user = await db.User.findOne({ where: { email: email } });
-
+      const user = await db.User.findOne({ where: { email } });
       if (!user) {
         throw new Error('Email not found');
       }

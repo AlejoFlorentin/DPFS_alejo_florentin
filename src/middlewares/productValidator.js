@@ -19,9 +19,16 @@ const productValidator = [
     .isNumeric()
     .withMessage('Stock must be a number'),
   body('category').notEmpty().withMessage('Category is required').isString(),
-  body('image')
-    .matches(/^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/, 'i')
-    .withMessage('Image must be a valid URL (JPG, JPEG, PNG, GIF)'),
+  body('images').custom((_, { req }) => {
+    if (req.fileValidationError) {
+      throw new Error(req.fileValidationError);
+    }
+    if (!req.files || req.files.length === 0) {
+      throw new Error('At least one image is required');
+    }
+
+    return true;
+  }),
   body('description')
     .notEmpty()
     .withMessage('Description is required')
