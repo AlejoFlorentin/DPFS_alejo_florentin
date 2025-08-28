@@ -1,5 +1,5 @@
-let db = require('../database/models');
-const { validationResult } = require('express-validator');
+let db = require("../database/models");
+const { validationResult } = require("express-validator");
 
 const productsController = {
   editar: async function (req, res, next) {
@@ -8,29 +8,29 @@ const productsController = {
       let product = await db.Product.findByPk(id, {
         include: [
           {
-            association: 'category',
-            attributes: ['name'],
+            association: "category",
+            attributes: ["name"],
           },
           {
-            association: 'sizes',
+            association: "sizes",
           },
         ],
       });
-      console.log('Producto encontrado:', product);
-      return res.render('products/editProduct', {
-        title: 'Superlative',
-        css: 'editProduct.css',
+      console.log("Producto encontrado:", product);
+      return res.render("products/editProduct", {
+        title: "Superlative",
+        css: "editProduct.css",
         product,
       });
     } catch (error) {
-      console.error('Error leyendo el archivo de productos:', error);
-      return res.status(500).send('Error interno del servidor');
+      console.error("Error leyendo el archivo de productos:", error);
+      return res.status(500).send("Error interno del servidor");
     }
   },
   crear: function (req, res, next) {
-    return res.render('products/createProduct', {
-      title: 'Superlative',
-      css: 'createProduct.css',
+    return res.render("products/createProduct", {
+      title: "Superlative",
+      css: "createProduct.css",
     });
   },
 
@@ -45,54 +45,54 @@ const productsController = {
         products = await db.Product.findAll({
           include: [
             {
-              association: 'category',
+              association: "category",
             },
             {
-              association: 'images',
-              attributes: ['url'],
+              association: "images",
+              attributes: ["url"],
             },
           ],
-          where: { '$category.name$': categoria },
+          where: { "$category.name$": categoria },
         });
       } else {
         products = await db.Product.findAll({
           attributes: {
-            exclude: ['category_id'],
+            exclude: ["category_id"],
           },
           include: [
             {
-              association: 'images',
-              attributes: ['url'],
+              association: "images",
+              attributes: ["url"],
             },
           ],
         });
       }
 
       function formatNumber(numero) {
-        let partes = numero.toString().split('.');
+        let partes = numero.toString().split(".");
         let parteEntera = partes[0];
-        let parteDecimal = partes.length > 1 ? partes[1] : '';
+        let parteDecimal = partes.length > 1 ? partes[1] : "";
 
-        parteEntera = parteEntera.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        parteEntera = parteEntera.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-        let numeroFormateado = '$ ' + parteEntera;
-        if (parteDecimal !== '') {
-          numeroFormateado += ',' + parteDecimal;
+        let numeroFormateado = "$ " + parteEntera;
+        if (parteDecimal !== "") {
+          numeroFormateado += "," + parteDecimal;
         }
 
         return numeroFormateado;
       }
 
-      return res.render('products/product', {
-        title: 'Superlative | Productos',
+      return res.render("products/product", {
+        title: "Superlative | Productos",
         products,
-        css: 'products.css',
+        css: "products.css",
         req,
         formatNumber,
       });
     } catch (error) {
-      console.error('Error leyendo los productos:', error);
-      return res.status(500).send('Error interno del servidor');
+      console.error("Error leyendo los productos:", error);
+      return res.status(500).send("Error interno del servidor");
     }
   },
   detalle: async function (req, res, next) {
@@ -102,30 +102,30 @@ const productsController = {
       product = await db.Product.findByPk(req.params.id, {
         include: [
           {
-            association: 'sizes',
+            association: "sizes",
           },
           {
-            association: 'category',
-            attributes: ['name'],
+            association: "category",
+            attributes: ["name"],
           },
           {
-            association: 'images',
-            attributes: ['url'],
+            association: "images",
+            attributes: ["url"],
           },
         ],
       });
       if (!product) {
-        return res.status(404).send('Producto no encontrado');
+        return res.status(404).send("Producto no encontrado");
       }
 
-      return res.render('products/productDetail', {
-        title: 'Superlative | Detalle',
-        css: 'productDetail.css',
+      return res.render("products/productDetail", {
+        title: "Superlative | Detalle",
+        css: "productDetail.css",
         producto: product,
       });
     } catch (err) {
-      console.error('Error leyendo el archivo JSON:', err);
-      return res.status(500).send('Error interno del servidor');
+      console.error("Error leyendo el archivo JSON:", err);
+      return res.status(500).send("Error interno del servidor");
     }
   },
   dataNew: async function (req, res, next) {
@@ -133,9 +133,9 @@ const productsController = {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         console.log(errors.mapped());
-        return res.render('products/createProduct', {
-          title: 'Superlative',
-          css: 'createProduct.css',
+        return res.render("products/createProduct", {
+          title: "Superlative",
+          css: "createProduct.css",
           errors: errors.mapped(),
         });
       }
@@ -157,7 +157,7 @@ const productsController = {
 
       const productoCreado = await db.Product.create(nuevoProducto);
 
-      const imgsToInsert = req.files.map(f => ({
+      const imgsToInsert = req.files.map((f) => ({
         url: `/img/products/${req.body.category}/${f.filename}`,
         product_id: productoCreado.id,
       }));
@@ -168,15 +168,37 @@ const productsController = {
         size_id: size.id,
       });
 
-      return res.redirect('/productos');
+      return res.redirect("/productos");
     } catch (error) {
-      console.error('Error al crear producto:', error);
-      return res.status(500).send('Error al guardar el producto');
+      console.error("Error al crear producto:", error);
+      return res.status(500).send("Error al guardar el producto");
     }
   },
 
   dataEdit: async function (req, res, next) {
     try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        let id = req.params.id;
+        let product = await db.Product.findByPk(id, {
+          include: [
+            {
+              association: "category",
+              attributes: ["name"],
+            },
+            {
+              association: "sizes",
+            },
+          ],
+        });
+        return res.render("products/editProduct", {
+          title: "Superlative",
+          css: "editProduct.css",
+          errors: errors.mapped(),
+          product,
+        });
+      }
+
       const categoria = await db.ProductCategorie.findOne({
         where: { name: req.body.category },
       });
@@ -186,8 +208,8 @@ const productsController = {
       const product = await db.Product.findByPk(req.params.id, {
         include: [
           {
-            association: 'images',
-            attributes: ['url'],
+            association: "images",
+            attributes: ["url"],
           },
         ],
       });
@@ -207,18 +229,11 @@ const productsController = {
         }
       );
 
-      await db.ProductImg.update(
-        {
-          url: req.file
-            ? `/img/products/${req.body.category}/${req.file.filename}`
-            : product.images[0].url,
-        },
-        {
-          where: {
-            product_id: req.params.id,
-          },
-        }
-      );
+      const imgsToInsert = req.files.map((f) => ({
+        url: `/img/products/${req.body.category}/${f.filename}`,
+        product_id: product.id,
+      }));
+      await db.ProductImg.bulkCreate(imgsToInsert);
 
       await db.ProductSize.update(
         { size_id: size.id },
@@ -229,10 +244,10 @@ const productsController = {
         }
       );
 
-      return res.redirect('/productos');
+      return res.redirect("/productos");
     } catch (err) {
-      console.error('Error al editar producto:', err);
-      return res.status(500).send('Error al editar producto');
+      console.error("Error al editar producto:", err);
+      return res.status(500).send("Error al editar producto");
     }
   },
 
@@ -252,10 +267,10 @@ const productsController = {
         },
       });
 
-      return res.redirect('/productos');
+      return res.redirect("/productos");
     } catch (err) {
-      console.error('Error al eliminar producto:', err);
-      return res.status(500).send('Error al eliminar producto');
+      console.error("Error al eliminar producto:", err);
+      return res.status(500).send("Error al eliminar producto");
     }
   },
 };

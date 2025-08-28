@@ -13,6 +13,7 @@
           enctype="multipart/form-data"
           id="editProductForm"
           class="row mt-4 w-50 d-flex align-items-center justify-content-center"
+          novalidate
         >
           <div class="col-md-12 mb-3">
             <label for="name" class="form-label">Nombre del Producto</label>
@@ -23,7 +24,11 @@
               class="form-control"
               id="name"
               name="name"
+              required
             />
+            <div class="error text-danger" id="errorName">
+              <%= typeof errors !== 'undefined' && errors.name ? 'Nombre inválido' : '' %>
+            </div>
           </div>
           <div class="col-md-12 mb-3">
             <label for="price" class="form-label">Precio</label>
@@ -34,7 +39,11 @@
               class="form-control"
               id="price"
               name="price"
+              required
             />
+            <div class="error text-danger" id="errorPrice">
+              <%= typeof errors !== 'undefined' && errors.price ? 'Precio inválido' : '' %>
+            </div>
           </div>
           <div class="col-md-12 mb-3">
             <label for="stock" class="form-label">Cantidad</label>
@@ -42,32 +51,43 @@
               value="<%=product.stock %>"
               placeholder="Ejemplo: 10"
               type="number"
+              required
               class="form-control"
-              id="quantity"
+              id="stock"
               name="stock"
             />
+            <div class="error text-danger" id="errorStock">
+              <%= typeof errors !== 'undefined' && errors.stock ? 'Stock inválido' : '' %>
+            </div>
           </div>
           <div class="col-md-12 mb-3">
             <label for="category" class="form-label">Categoria</label>
-            <select name="category" id="category" class="form-select">
+            <select name="category" id="category" class="form-select" required>
               <option value="camisetas" <%= product.category.name === 'camisetas' ? 'selected' : '' %>>Camisetas</option>
               <option value="pantalones" <%= product.category.name == "pantalones" ? 'selected' : '' %> >Pantalones</option>
               <option value="bermudas" <%=product.category.name == "bermudas" ? 'selected' : '' %> >Bermudas</option>
               <option value="zapatillas" <%=product.category.name == "zapatillas" ? 'selected' : '' %> >Zapatillas</option>
             </select>
+            <div class="error text-danger" id="errorCategory">
+              <%= typeof errors !== 'undefined' && errors.category ? 'Categoría requerida' : '' %>
+            </div>
           </div>
           <div class="col-md-12 mb-3">
-            <label class="form-label" for="image">Foto de Producto</label>
+            <label class="form-label" for="image">Foto/s de Producto</label>
             <input
               class="form-control"
               type="file"  
-              id="image"
-              name="image"
-              accept="image/*" />
+              id="images"
+              multiple
+              name="images"
+              accept=".png,.jpg,.jpeg,.gif" />
+              <div class="error text-danger" id="errorImages">
+              <%= typeof errors !== 'undefined' && errors.images ? 'Formato invalido' : '' %>
+            </div>
           </div>
           <div class="col-md-12 mb-3">
             <label for="size" class="form-label">Talle</label>
-            <select name="size" id="size" class="form-select">
+            <select required name="size" id="size" class="form-select">
               
               <% product.sizes.forEach(ps => { %>
               <option value='S' <%= ps.size === 'S' ? 'selected' : '' %>>S</option>
@@ -77,6 +97,9 @@
           <% }) %>
               
             </select>
+            <div class="error text-danger" id="errorSize">
+              <%= typeof errors !== 'undefined' && errors.size ? 'Talle requerido' : '' %>
+            </div>
           </div>
           <div class="col-md-12 mb-3">
             <label for="description" class="form-label">Descripción</label>
@@ -84,13 +107,17 @@
               
               placeholder="Breve Descripción"
               type="text"
-              rows="4"
+              rows="4" 
+              required
               class="form-control"
               id="description"
               name="description"
             ><%=product.description %>
             </textarea
             >
+            <div class="error text-danger" id="errorDescription">
+              <%= typeof errors !== 'undefined' && errors.description ? 'Descripción requerida' : '' %>
+            </div>
           </div>
           <button type="submit" class="btn btn-dark w-25">Editar</button>
         </form>
@@ -98,7 +125,8 @@
     </main>
 
     <%- include('../partials/footer') %>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/editProduct.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
   </body>
 </html>

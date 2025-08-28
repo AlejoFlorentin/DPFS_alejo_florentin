@@ -1,7 +1,7 @@
 const { body } = require("express-validator");
 let db = require("../database/models");
 
-const productValidator = [
+const editProductValidator = [
   body("name")
     .notEmpty()
     .withMessage("Name is required")
@@ -28,9 +28,6 @@ const productValidator = [
     if (req.fileValidationError) {
       throw new Error(req.fileValidationError);
     }
-    if (!req.files || req.files.length === 0) {
-      throw new Error("At least one image is required");
-    }
 
     return true;
   }),
@@ -43,4 +40,4 @@ const productValidator = [
     .withMessage("Description must be at least 20 characters long"),
 ];
 
-module.exports = productValidator;
+module.exports = editProductValidator;

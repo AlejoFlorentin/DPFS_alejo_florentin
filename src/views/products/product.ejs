@@ -43,7 +43,7 @@
               <% if(product.stock == 0) { %>
               <p class="text-danger fw-bold stock">Sin Stock</p>
               <%}%>
-              <div id="carousel<%= product.id %>" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+              <div id="carousel<%= product.id %>" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
                 <div class="carousel-inner">
                   <% product.images.forEach((img, idx) => { %>
                     <div class="carousel-item <%= idx === 0 ? 'active' : '' %>">
