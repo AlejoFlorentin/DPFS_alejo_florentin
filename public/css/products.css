@@ -1,17 +1,6 @@
 /* PRODUCTS */
 
-.open {
-  display: block;
-}
-
-.stock {
-  font-size: 15px;
-  position: absolute;
-  top: 7px;
-  left: 170px;
-}
-
-.main-product {
+main {
   margin-top: 50px;
   padding-left: 100px;
   padding-right: 100px;
@@ -20,26 +9,25 @@
   gap: 20px;
 }
 
-.main-product .filter-btns {
+main .filter-btns {
   display: none;
 }
 
-.main-product aside {
+main aside {
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: start;
 }
 
-.main-product aside form div input {
+main aside form div input {
   cursor: pointer;
 }
 
-.main-product aside form div label {
+main aside form div label {
   font-size: 15px;
 }
-
-.main-product .product-filtered {
+main .product-filtered {
   padding-top: 10px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -48,32 +36,39 @@
   overflow-y: auto;
 }
 
-.main-product .product-filtered .product {
+main .product-filtered .product {
   border: rgba(216, 216, 216, 0.829) solid 1px;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
 }
 
-.main-product .product-filtered .product:hover {
+main .product-filtered .product:hover {
   transform: scale(1.01);
 }
 
-.main-product .product-filtered .product a img {
+main .product-filtered article a .stock {
+  font-size: 15px;
+  position: absolute;
+  top: 7px;
+  left: 170px;
+}
+
+main .product-filtered .product a img {
   height: 200px;
   width: 150px;
   border-radius: 5px;
 }
 
-.main-product .product-filtered .product a .product-info div .price {
+main .product-filtered .product a .product-info div .price {
   font-size: 14px;
 }
 
-.main-product .product-filtered .product a .product-info div .quotes {
+main .product-filtered .product a .product-info div .quotes {
   font-size: 12px;
   border-radius: 5px;
 }
 
-.main-product .product-filtered .product div a .btnAdmin {
+main .product-filtered .product div a .btn-admin {
   padding-left: 6px;
   padding-right: 6px;
   padding-bottom: 2px;
@@ -81,7 +76,7 @@
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.main-product .product-filtered .product div form .btnAdmin {
+main .product-filtered .product div form .btn-admin {
   padding-left: 6px;
   padding-right: 6px;
   padding-bottom: 2px;
@@ -89,26 +84,20 @@
   transition: box-shadow 0.2s ease-in-out;
 }
 
-.main-product .product-filtered .product div a .btnAdmin:hover {
+main .product-filtered .product div a .btn-admin:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.main-product .product-filtered .product div form .btnAdmin:hover {
+main .product-filtered .product div form .btn-admin:hover {
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
 }
 
-.main-product .product-filtered::-webkit-scrollbar {
+main .product-filtered::-webkit-scrollbar {
   display: none;
 }
 
 @media (max-width: 768px) {
-  .product-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-
-  .main-product {
+  main {
     margin-top: 0px;
     padding-left: 0px;
     padding-right: 0px;
@@ -116,8 +105,7 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
   }
-
-  .main-product .filter-btns {
+  main .filter-btns {
     position: fixed !important;
     top: 0;
     left: 0;
@@ -128,7 +116,7 @@
     height: 45px;
   }
 
-  .main-product aside {
+  main aside {
     position: fixed !important;
     top: 45px;
     left: 0;
@@ -139,24 +127,24 @@
     padding: 10px;
   }
 
-  .main-product aside form {
+  main aside form {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
   }
 
-  .main-product aside form h5 {
+  main aside form h5 {
     display: none;
   }
 
-  .main-product aside form div {
+  main aside form div {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
   }
 
-  .main-product .product-filtered {
+  main .product-filtered {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     max-height: max-content;
@@ -165,44 +153,44 @@
 }
 
 @media (max-width: 425px) {
-  .main-product {
+  main {
     margin-top: 0px;
     padding-left: 0px;
     padding-right: 0px;
   }
 
-  .main-product .product-filtered {
+  main .product-filtered {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin-top: 150x;
   }
 
-  .main-product aside form {
+  main aside form {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
   }
 
-  .main-product aside form div {
+  main aside form div {
     display: flex;
     justify-content: start;
   }
 }
 
 @media (max-width: 320px) {
-  .main-product {
+  main {
     margin-top: 0px;
     padding-left: 0px;
     padding-right: 0px;
   }
 
-  .main-product aside form {
+  main aside form {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
   }
 
-  .main-product .product-filtered {
+  main .product-filtered {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     padding-left: 20px;

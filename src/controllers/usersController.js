@@ -4,21 +4,19 @@ const { validationResult } = require('express-validator');
 
 const usersControllers = {
   login: function (req, res, next) {
-    return res.render('users/login', { title: 'Superlative | Login', css: 'login.css' });
+    return res.render('users/login');
   },
   registro: function (req, res, next) {
-    return res.render('users/register', { title: 'Superlative | Registro', css: 'register.css' });
+    return res.render('users/register');
   },
   perfil: function (req, res, next) {
-    return res.render('users/profile', { title: 'Superlative | Perfil', css: 'profile.css' });
+    return res.render('users/profile');
   },
   dataLog: async (req, res, next) => {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.render('users/login', {
-          title: 'Superlative | Login',
-          css: 'login.css',
           errors: errors.mapped(),
         });
       }
@@ -45,7 +43,7 @@ const usersControllers = {
         };
 
         if (req.body.remember) {
-          res.cookie('recordame', user.id, {
+          res.cookie('remember', user.id, {
             maxAge: 1000 * 60 * 60 * 24 * 7,
           });
         }
@@ -61,19 +59,12 @@ const usersControllers = {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        console.log(errors.mapped());
         return res.render('users/register', {
-          title: 'Superlative | Registro',
-          css: 'register.css',
           errors: errors.mapped(),
         });
       }
 
-      const users = await db.User.findAll({
-        include: [{ association: 'category', attributes: ['name'] }],
-      });
-
-      const hashedPassword = await bcrypt.hash(req.body.password, 10); //encriptamos la contraseña con nivel de seguridad 10
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
       const newUser = {
         name: req.body.name,
@@ -100,7 +91,7 @@ const usersControllers = {
 
   logout: function (req, res) {
     req.session.destroy();
-    res.clearCookie('recordame');
+    res.clearCookie('remember');
     return res.redirect('/');
   },
 };

@@ -2,16 +2,13 @@ let db = require('../database/models');
 
 const cartController = {
   carrito: function (req, res, next) {
-    return res.render('products/cart', {
-      title: 'Superlative | Carrito',
-      css: 'cart.css',
-    });
+    return res.render('products/cart');
   },
 
   agregarDetalle: async function (req, res, next) {
-    let cart = req.cookies.carrito ? JSON.parse(req.cookies.carrito) : [];
-    let contador = Number(req.body.contador);
-    const productoAgregado = await db.Product.findByPk(req.params.id, {
+    let cart = req.cookies.cart ? JSON.parse(req.cookies.cart) : [];
+    let counter = Number(req.body.counter);
+    const product = await db.Product.findByPk(req.params.id, {
       include: [
         {
           association: 'category',
@@ -30,19 +27,19 @@ const cartController = {
     const existingProduct = cart.find(product => product.id == req.params.id);
 
     if (existingProduct) {
-      existingProduct.cantidad += contador;
+      existingProduct.quantity += counter;
     } else {
       const addedProduct = {
-        id: productoAgregado.id,
-        title: productoAgregado.title,
-        price: productoAgregado.price,
-        img: productoAgregado.images[0].url,
-        cantidad: contador,
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        img: product.images[0].url,
+        quantity: counter,
       };
       cart.push(addedProduct);
     }
 
-    res.cookie('carrito', JSON.stringify(cart), {
+    res.cookie('cart', JSON.stringify(cart), {
       maxAge: 1000 * 60 * 60 * 24 * 7,
     });
 
@@ -51,29 +48,27 @@ const cartController = {
 
   comprar: async function (req, res, next) {
     try {
-      let cart = req.cookies.carrito ? JSON.parse(req.cookies.carrito) : [];
+      let cart = req.cookies.cart ? JSON.parse(req.cookies.cart) : [];
 
       const order = await db.Order.create({
         user_id: req.session.lastUser?.id || null,
-        total: cart.reduce((acc, product) => acc + product.price * product.cantidad, 0),
-        items: cart.reduce((acc, prenda) => acc + prenda.cantidad, 0),
+        total: cart.reduce((acc, product) => acc + product.price * product.quantity, 0),
+        items: cart.reduce((acc, item) => acc + item.quantity, 0),
       });
       for (const product of cart) {
-        // Crear el detalle de la orden
         await db.OrderDetail.create({
           order_id: order.id,
           product_id: product.id,
         });
 
-        // Restar stock del producto
-        const productoDB = await db.Product.findByPk(product.id);
+        const productDB = await db.Product.findByPk(product.id);
         await db.Product.update(
-          { stock: productoDB.stock - product.cantidad },
+          { stock: productDB.stock - product.quantity },
           { where: { id: product.id } }
         );
       }
 
-      res.clearCookie('carrito');
+      res.clearCookie('cart');
       res.redirect('/');
     } catch (error) {
       console.error('Error al crear la orden:', error);
@@ -82,15 +77,15 @@ const cartController = {
   },
 
   eliminar: function (req, res, next) {
-    res.clearCookie('carrito');
+    res.clearCookie('cart');
     return res.redirect('/');
   },
 
   eliminarItem: function (req, res, next) {
-    let cart = req.cookies.carrito ? JSON.parse(req.cookies.carrito) : [];
+    let cart = req.cookies.cart ? JSON.parse(req.cookies.cart) : [];
     const products = cart.filter(p => p.id != req.params.id);
-    res.clearCookie('carrito');
-    res.cookie('carrito', JSON.stringify(products), {
+    res.clearCookie('cart');
+    res.cookie('cart', JSON.stringify(products), {
       maxAge: 1000 * 60 * 60 * 24 * 7,
     });
     res.redirect('/carrito');

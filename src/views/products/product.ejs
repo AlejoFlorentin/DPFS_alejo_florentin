@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('../partials/head') %>
+  <%- include('../partials/head', { title: '| Productos', styles: 'products.css' }) %>
   <body>
     <%- include('../partials/header') %>
     
 
-    <main class="main-product mb-5 animate__animated animate__slideInDown">
+    <main class="mb-5 animate__animated animate__slideInDown">
       <button
       id="filter-btn"
       class="filter-btns border-0 bg-dark-subtle">
@@ -18,24 +18,24 @@
           <form method="get" action="/productos">
             <h5>Tipo de Prenda</h5>
             <div>
-              <input onchange="this.form.submit()" type="radio" name="categoria" value="camisetas" <%= (req.query.categoria === 'camisetas') ? 'checked' : '' %> />
+              <input onchange="this.form.submit()" type="radio" name="category" value="camisetas" <%= (req.query.category === 'camisetas') ? 'checked' : '' %> />
               <label for="camisetas">Camisetas</label>
             </div>
             <div>
-              <input onchange="this.form.submit()" type="radio" name="categoria" value="pantalones" <%= (req.query.categoria === 'pantalones') ? 'checked' : '' %> />
+              <input onchange="this.form.submit()" type="radio" name="category" value="pantalones" <%= (req.query.category === 'pantalones') ? 'checked' : '' %> />
               <label for="pantalones">Pantalones</label>
             </div>
             <div>
-              <input onchange="this.form.submit()" type="radio" name="categoria" value="bermudas" <%= (req.query.categoria === 'bermudas') ? 'checked' : '' %> />
+              <input onchange="this.form.submit()" type="radio" name="category" value="bermudas" <%= (req.query.category === 'bermudas') ? 'checked' : '' %> />
               <label for="bermudas">Bermudas</label>
             </div>
             <div>
-              <input onchange="this.form.submit()" type="radio" name="categoria" value="zapatillas" <%= (req.query.categoria === 'zapatillas') ? 'checked' : '' %> />
+              <input onchange="this.form.submit()" type="radio" name="category" value="zapatillas" <%= (req.query.category === 'zapatillas') ? 'checked' : '' %> />
               <label for="zapatillas">Zapatillas</label>
             </div>
           </form>
       </aside>
-      <div id="productsFiltered" class="product-filtered container">
+      <div id="products-filtered" class="product-filtered container">
           <% products.forEach(product => { %>
           <article class="product d-flex flex-column align-items-center p-3">
             <a class="d-flex flex-column align-items-center justify-content-center text-decoration-none text-black"
@@ -63,12 +63,12 @@
           <div class="d-flex gap-2 mt-2">
             <%if(locals.lastUser && locals.lastUser.category == 'Admin') {%>
             <a href="/productos/editar/<%= product.id %>">
-              <button title="Editar Producto" id="btnEdit" title="Editar" class="btnAdmin bg-black text-white rounded-2 border-0">
+              <button title="Editar Producto" id="btn-edit" title="Editar" class="btn-admin bg-black text-white rounded-2 border-0">
               <i class='bx bxs-pencil'></i>
               </button>
             </a>
-            <form class="formEliminarProducto" action="/productos/<%= product.id %>?_method=DELETE" method="POST" >
-              <button title="Eliminar Producto" class="btnAdmin bg-danger text-white rounded-2 border-0" type="submit"><i class='bx bxs-trash'></i></button>
+            <form class="form-delete-product" action="/productos/<%= product.id %>?_method=DELETE" method="POST" >
+              <button title="Eliminar Producto" class="btn-admin bg-danger text-white rounded-2 border-0" type="submit"><i class='bx bxs-trash'></i></button>
             </form>
             <%}%>
           </div>

@@ -8,43 +8,53 @@ function submitFunction(event) {
 }
 
 function formValidation() {
-  const inputsText = document.querySelectorAll('input[type="text"]');
+  const inputName = document.getElementById('name');
+  const inputLastName = document.getElementById('last-name');
   const inputEmail = document.getElementById('email');
-  const inputRepeatEmail = document.getElementById('repeatEmail');
+  const inputRepeatEmail = document.getElementById('repeat-email');
   const inputPassword = document.getElementById('password');
-  const inputRepeatPassword = document.getElementById('repeatPassword');
-  const inputTerms = document.getElementById('termsAccept');
+  const inputRepeatPassword = document.getElementById('repeat-password');
+  const inputTerms = document.getElementById('terms');
   const inputFile = document.getElementById('image');
 
   let validation = true;
 
-  inputsText.forEach(field => {
-    let errorField = document.getElementById(
-      'error' + field.id.charAt(0).toUpperCase() + field.id.slice(1)
-    );
-
-    if (field.value === '') {
-      errorField.innerHTML = 'Campo incompleto';
-      validation = false;
-    } else if (field.value.length < 2) {
-      errorField.innerHTML = 'Se necesita al menos 2 caracteres';
-      validation = false;
-    } else {
-      errorField.innerHTML = '';
-    }
-  });
-
-  const errorEmail = document.getElementById('errorEmail');
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (emailRegex.test(inputEmail.value)) {
-    errorEmail.innerHTML = '';
-  } else {
-    errorEmail.innerHTML = 'Ingrese un correo electrónico válido';
+  const errorName = document.getElementById('error-name');
+  if (inputName.value === '') {
+    errorName.innerHTML = 'Campo incompleto';
     validation = false;
+  } else if (inputName.value.length < 2) {
+    errorName.innerHTML = 'Se necesita al menos 2 caracteres';
+    validation = false;
+  } else {
+    errorName.innerHTML = '';
   }
 
-  const errorRepeatEmail = document.getElementById('errorRepeatEmail');
+  const errorLastName = document.getElementById('error-last-name');
+  if (inputLastName.value === '') {
+    errorLastName.innerHTML = 'Campo incompleto';
+    validation = false;
+  } else if (inputLastName.value.length < 2) {
+    errorLastName.innerHTML = 'Se necesita al menos 2 caracteres';
+    validation = false;
+  } else {
+    errorLastName.innerHTML = '';
+  }
+
+  const errorEmail = document.getElementById('error-email');
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (inputEmail.value === '') {
+    errorEmail.innerHTML = 'Campo incompleto';
+    validation = false;
+  } else if (!emailRegex.test(inputEmail.value)) {
+    errorEmail.innerHTML = 'Ingrese un correo electrónico válido';
+    validation = false;
+  } else {
+    errorEmail.innerHTML = '';
+  }
+
+  const errorRepeatEmail = document.getElementById('error-repeat-email');
   if (inputRepeatEmail.value === '') {
     errorRepeatEmail.innerHTML = 'Campo incompleto';
     validation = false;
@@ -55,7 +65,7 @@ function formValidation() {
     errorRepeatEmail.innerHTML = '';
   }
 
-  const errorPassword = document.getElementById('errorPassword');
+  const errorPassword = document.getElementById('error-password');
 
   if (inputPassword.value === '') {
     errorPassword.innerHTML = 'Campo incompleto';
@@ -79,7 +89,7 @@ function formValidation() {
     errorPassword.innerHTML = '';
   }
 
-  const errorRepeatPassword = document.getElementById('errorRepeatPassword');
+  const errorRepeatPassword = document.getElementById('error-repeat-password');
   if (inputRepeatPassword.value === '') {
     errorRepeatPassword.innerHTML = 'Campo incompleto';
     validation = false;
@@ -90,7 +100,7 @@ function formValidation() {
     errorRepeatPassword.innerHTML = '';
   }
 
-  const errorTerms = document.getElementById('errorTerms');
+  const errorTerms = document.getElementById('error-terms');
   if (!inputTerms.checked) {
     errorTerms.innerHTML = '¡Debes aceptar los términos y condiciones!';
     validation = false;
@@ -98,7 +108,7 @@ function formValidation() {
     errorTerms.innerHTML = '';
   }
 
-  const errorImage = document.getElementById('errorImage');
+  const errorImage = document.getElementById('error-image');
   if (inputFile.value) {
     const validTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/jpg'];
 

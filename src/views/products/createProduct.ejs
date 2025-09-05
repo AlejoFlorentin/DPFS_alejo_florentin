@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('../partials/head') %>
+  <%- include('../partials/head', { title: '| Crear Producto', styles: 'createProduct.css' }) %>
   <body>
     <%- include('../partials/header') %>
 
     <main class="animate__animated animate__slideInDown">
-      <div
-        class="mt-5 mb-5 d-flex flex-column justify-content-center align-items-center container">
+      <div class="mt-5 mb-5 d-flex flex-column justify-content-center align-items-center container">
         <h1>Crear Producto</h1>
         <form
-          id="createProductForm"
+          id="form"
           method="post"
           enctype="multipart/form-data"
           action="/productos/crear"
           class="row mt-4 w-50 d-flex align-items-center justify-content-center"
-          novalidate>
+          novalidate
+        >
           <div class="col-md-12 mb-3">
             <label for="name" class="form-label">Nombre del Producto</label>
             <input
@@ -23,10 +23,10 @@
               class="form-control"
               id="name"
               name="name"
-              required />
-            <div class="error text-danger" id="errorName">
-              <%= typeof errors !== 'undefined' && errors.name ? 'Nombre
-              inválido' : '' %>
+              required
+            />
+            <div class="error text-danger" id="error-name">
+              <%= typeof errors !== 'undefined' && errors.name ? 'Nombre inválido' : '' %>
             </div>
           </div>
 
@@ -38,10 +38,10 @@
               class="form-control"
               id="price"
               name="price"
-              required />
-            <div class="error text-danger" id="errorPrice">
-              <%= typeof errors !== 'undefined' && errors.price ? 'Precio
-              inválido' : '' %>
+              required
+            />
+            <div class="error text-danger" id="error-price">
+              <%= typeof errors !== 'undefined' && errors.price ? 'Precio inválido' : '' %>
             </div>
           </div>
 
@@ -53,10 +53,10 @@
               class="form-control"
               id="stock"
               name="stock"
-              required />
-            <div class="error text-danger" id="errorStock">
-              <%= typeof errors !== 'undefined' && errors.stock ? 'Stock
-              inválido' : '' %>
+              required
+            />
+            <div class="error text-danger" id="error-stock">
+              <%= typeof errors !== 'undefined' && errors.stock ? 'Stock inválido' : '' %>
             </div>
           </div>
 
@@ -69,9 +69,8 @@
               <option value="bermudas">Bermudas</option>
               <option value="zapatillas">Zapatillas</option>
             </select>
-            <div class="error text-danger" id="errorCategory">
-              <%= typeof errors !== 'undefined' && errors.category ? 'Categoría
-              requerida' : '' %>
+            <div class="error text-danger" id="error-category">
+              <%= typeof errors !== 'undefined' && errors.category ? 'Categoría requerida' : '' %>
             </div>
           </div>
 
@@ -84,9 +83,8 @@
               <option value="L">L</option>
               <option value="XL">XL</option>
             </select>
-            <div class="error text-danger" id="errorSize">
-              <%= typeof errors !== 'undefined' && errors.size ? 'Talle
-              requerido' : '' %>
+            <div class="error text-danger" id="error-size">
+              <%= typeof errors !== 'undefined' && errors.size ? 'Talle requerido' : '' %>
             </div>
           </div>
 
@@ -99,10 +97,10 @@
               id="images"
               name="images"
               multiple
-              accept=".png, .jpg, .jpeg,.gif" />
-            <div class="error text-danger" id="errorImages">
-              <%= typeof errors !== 'undefined' && errors.images ? 'Formato
-              invalido' : '' %>
+              accept=".png, .jpg, .jpeg,.gif"
+            />
+            <div class="error text-danger" id="error-images">
+              <%= typeof errors !== 'undefined' && errors.images ? 'Formato invalido' : '' %>
             </div>
           </div>
 
@@ -115,10 +113,11 @@
               class="form-control"
               id="description"
               name="description"
-              required></textarea>
-            <div class="error text-danger" id="errorDescription">
-              <%= typeof errors !== 'undefined' && errors.description ?
-              'Descripción requerida' : '' %>
+              required
+            ></textarea>
+            <div class="error text-danger" id="error-description">
+              <%= typeof errors !== 'undefined' && errors.description ? 'Descripción requerida' : ''
+              %>
             </div>
           </div>
 

@@ -1,43 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('../partials/head') %>
+  <%- include('../partials/head', { title: '| Carrito', styles: 'cart.css' }) %>
   <body>
     <%- include('../partials/header') %>
 
     <main class="container mt-5 animate__animated animate__slideInDown">
       <div class="main-cart">
-        <% if (carritoCantidad > 0) { %>
+        <% if (cartQuantity > 0) { %>
         <div class="products-cart mb-5">
-          <% carrito.forEach(producto => { %>
+          <% cart.forEach(product => { %>
           <article class="product">
-            <img src="<%= producto.img %>" alt="<%= producto.title %>" />
+            <img src="<%= product.img %>" alt="<%= product.title %>" />
             <div class="d-flex flex-row justify-content-evenly align-items-center w-100">
               <div class="quantity">
                 <p>Cantidad</p>
-                <p class="text-center"><%= producto.cantidad %></p>
+                <p class="text-center"><%= product.quantity %></p>
               </div>
               <div class="price">
                 <p>Precio</p>
-                <p>$ <%= producto.price %></p>
+                <p>$ <%= product.price %></p>
               </div>
               <div class="subtotal">
                 <p>Subtotal</p>
-                <p>$ <%= producto.price * producto.cantidad %></p>
+                <p>$ <%= product.price * product.quantity %></p>
               </div>
             </div>
-            <form
-              action="/carrito/eliminarItem/<%= producto.id %>?_method=DELETE"
-              method="POST"
-              onsubmit="return confirm('¿Estás seguro de que querés eliminar este producto?')"
-            >
+            <form action="/carrito/eliminarItem/<%= product.id %>?_method=DELETE" method="POST">
               <button type="submit" class="border-0 bg-white">
-                <i id="<%= producto.id %>" class="delete-btn bx bxs-trash-alt text-danger"></i>
+                <i id="<%= product.id %>" class="delete-btn bx bxs-trash-alt text-danger"></i>
               </button>
             </form>
           </article>
           <% }) %>
         </div>
-        <% } if (carritoCantidad > 0) { %>
+        <% } if (cartQuantity > 0) { %>
         <div class="cart-products-total d-flex flex-column align-items-center">
           <h4 class="text-center">Resumen</h4>
           <div class="d-flex flex-row justify-content-between border-top border-bottom pt-2 w-75">
@@ -47,32 +43,27 @@
               <p>Total</p>
             </div>
             <div class="resume-values d-flex flex-column align-items-end">
-              <p id="cantidad"><%=carritoCantidad%></p>
-              <p id="shipment"><%= carritoCantidad > 3 ? 'Gratis' : '$ 10.000' %></p>
-              <b id="totalBuy"
-                >$ <%= carrito.reduce((acc, prenda) => acc + prenda.price * prenda.cantidad, 0)
+              <p id="quantity"><%=cartQuantity%></p>
+              <p id="shipment"><%= cartQuantity > 3 ? 'Gratis' : '$ 10.000' %></p>
+              <b id="total-buy"
+                >$ <%= cart.reduce((acc, product) => acc + product.price * product.quantity, 0)
                 %></b
               >
             </div>
           </div>
           <div class="cart-btns d-flex mt-2">
             <form action="/carrito/comprar" method="POST" class="w-100">
-              <button id="buyCart" type="submit" class="btn btn-dark m-1">Comprar</button>
+              <button id="buy-cart" type="submit" class="btn btn-dark m-1">Comprar</button>
             </form>
-            <form
-              action="/carrito/eliminar?_method=DELETE"
-              method="POST"
-              class="w-100"
-              onsubmit="return confirm('¿Estás seguro de que querés vaciar el carrito?')"
-            >
-              <button id="deleteCart" type="submit" class="btn btn-dark m-1">Vaciar</button>
+            <form action="/carrito/eliminar?_method=DELETE" method="POST" class="w-100">
+              <button id="delete-cart" type="submit" class="btn btn-dark m-1">Vaciar</button>
             </form>
           </div>
         </div>
         <% } %>
       </div>
 
-      <% if (carritoCantidad === 0) { %>
+      <% if (cartQuantity === 0) { %>
       <div class="text-center mt-5">
         <i class="bx bxs-sad text-danger fs-1"></i>
         <p>No hay productos en el carrito.</p>

@@ -1,29 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
-  let contador = 1;
+  let counter = 1;
 
-  const btnSumar = document.getElementById('btn-sumar');
-  const btnRestar = document.getElementById('btn-restar');
-  const spanContador = document.getElementById('contador');
-  const btnAgregar = document.getElementById('agregarAlCarrito');
-  const inputContador = document.getElementById('input-contador');
-  const stock = spanContador.value;
-  btnSumar.addEventListener('click', () => {
-    if (contador < stock) {
-      contador++;
-      spanContador.innerText = contador;
-      inputContador.value = contador;
+  const btnSum = document.getElementById('btn-sum');
+  const btnRest = document.getElementById('btn-rest');
+  const spanCounter = document.getElementById('counter');
+  const btnAdd = document.getElementById('btn-add-product');
+  const inputCounter = document.getElementById('input-counter');
+  const stock = spanCounter.value;
+  btnSum.addEventListener('click', () => {
+    if (counter < stock) {
+      counter++;
+      spanCounter.innerText = counter;
+      inputCounter.value = counter;
     }
   });
 
-  btnRestar.addEventListener('click', () => {
-    if (contador > 1) {
-      contador--;
-      spanContador.innerText = contador;
-      inputContador.value = contador;
+  btnRest.addEventListener('click', () => {
+    if (counter > 1) {
+      counter--;
+      spanCounter.innerText = counter;
+      inputCounter.value = counter;
     }
   });
 
-  btnAgregar.addEventListener('click', () => {
+  btnAdd.addEventListener('click', () => {
     Toastify({
       text: 'Producto Agregado',
       duration: 2000,

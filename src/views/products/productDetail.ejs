@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('../partials/head') %>
+  <%- include('../partials/head', { title: '| Detalle', styles: 'productDetail.css' }) %>
   <body>
     <%- include('../partials/header') %>
 
     <main class="container animate__animated animate__slideInDown">
       <section>
-        <img src="<%= producto.images[0].url %>" alt="Imagen del producto" />
+        <img src="<%= product.images[0].url %>" alt="Imagen del producto" />
         <div class="d-flex flex-column align-items-center justify-content-center gap-0">
-          <% if(producto.stock === 0) { %>
+          <% if(product.stock === 0) { %>
           <p class="text-danger fw-bold">Sin Stock</p>
           <%}%>
-          <h2><%= producto.title %></h2>
-          <p class="text-center"><%= producto.description %></p>
-          <h5>$ <%= producto.price.toFixed(2) %></h5>
-          <p><b>$ <%= (producto.price * 0.9).toFixed(2) %></b> con Transferencia bancaria</p>
-          <p>6 cuotas sin interes de $ <%= (producto.price / 6).toFixed(2) %></p>
+          <h2><%= product.title %></h2>
+          <p class="text-center"><%= product.description %></p>
+          <h5>$ <%= product.price.toFixed(2) %></h5>
+          <p><b>$ <%= (product.price * 0.9).toFixed(2) %></b> con Transferencia bancaria</p>
+          <p>6 cuotas sin interes de $ <%= (product.price / 6).toFixed(2) %></p>
          
-          <p class="size"><b>Talle <%= producto.sizes[0].size %></b></p>
+          <p class="size"><b>Talle <%= product.sizes[0].size %></b></p>
           
           <%if(locals.lastUser) { %>
-          <form action="/carrito/agregar/detalle/<%= producto.id %>" method="POST">
+          <form action="/carrito/agregar/detalle/<%= product.id %>" method="POST">
             <div class="d-flex flex-column gap-2">
-              <input type="hidden" name="contador" id="input-contador" value="1" />
+              <input type="hidden" name="counter" id="input-counter" value="1" />
               <div class="btn-group w-100" role="group">
-                <button type="button" class="btn btn-dark" id="btn-sumar">+</button>
+                <button type="button" class="btn btn-dark" id="btn-sum">+</button>
                 <button
                   type="button"
-                  value="<%= producto.stock %>"
+                  value="<%= product.stock %>"
                   class="btn btn-light"
-                  id="contador"
+                  id="counter"
                 >
                   1
                 </button>
-                <button type="button" class="btn btn-dark" id="btn-restar">-</button>
+                <button type="button" class="btn btn-dark" id="btn-rest">-</button>
               </div>
-              <button <%= producto.stock === 0 ? 'disabled' : '' %>  class="btnAddProduct btn btn-dark" id="<%= producto.id %>">
+              <button <%= product.stock === 0 ? 'disabled' : '' %>  class="btn-add-product btn btn-dark" id="<%= product.id %>">
                 Agregar al carrito
               </button>
             </div>

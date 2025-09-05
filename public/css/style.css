@@ -64,27 +64,27 @@ footer {
   background-color: black;
 }
 
-.payments .method {
+footer .payments .method {
   width: 200px;
 }
 
-.payments .method img {
+footer .payments .method img {
   width: 50px;
   height: 30px;
 }
 
-.ubi iframe {
+footer .ubi iframe {
   width: 250px;
   height: 150px;
 }
 
-.copy {
+footer .copy {
   height: auto;
   background-color: rgb(218, 211, 211);
   font-size: 15px;
 }
 
-.wspSticky {
+.wsp-sticky {
   position: fixed;
   bottom: 50px;
   right: 30px;
@@ -93,7 +93,7 @@ footer {
   transition: transform 0.2s ease-in-out box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
-.wspSticky:hover {
+.wsp-sticky:hover {
   transform: scale(1.02);
   border-color: #28a745;
   box-shadow: 0 0 10px rgba(6, 59, 19, 0.6);

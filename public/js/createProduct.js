@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const form = document.getElementById('createProductForm');
+  const form = document.getElementById('form');
 
   form.addEventListener('submit', async function (event) {
     if (!formValidation()) {
@@ -19,13 +19,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const inputFiles = document.getElementById('images');
     const description = document.getElementById('description');
 
-    const errName = document.getElementById('errorName');
-    const errPrice = document.getElementById('errorPrice');
-    const errStock = document.getElementById('errorStock');
-    const errCategory = document.getElementById('errorCategory');
-    const errSize = document.getElementById('errorSize');
-    const errImages = document.getElementById('errorImages');
-    const errDescription = document.getElementById('errorDescription');
+    const errName = document.getElementById('error-name');
+    const errPrice = document.getElementById('error-price');
+    const errStock = document.getElementById('error-stock');
+    const errCategory = document.getElementById('error-category');
+    const errSize = document.getElementById('error-size');
+    const errImages = document.getElementById('error-images');
+    const errDescription = document.getElementById('error-description');
 
     if (!inputName.value.trim()) {
       errName.textContent = 'Campo incompleto';

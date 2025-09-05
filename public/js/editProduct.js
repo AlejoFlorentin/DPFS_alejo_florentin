@@ -1,7 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("editProductForm");
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('form');
 
-  form.addEventListener("submit", async function (event) {
+  form.addEventListener('submit', async function (event) {
     if (!formValidation()) {
       event.preventDefault();
       return;
@@ -11,87 +11,80 @@ document.addEventListener("DOMContentLoaded", function () {
   function formValidation() {
     let valid = true;
 
-    const inputName = document.getElementById("name");
-    const price = document.getElementById("price");
-    const stock = document.getElementById("stock");
-    const category = document.getElementById("category");
-    const size = document.getElementById("size");
-    const inputFiles = document.getElementById("images");
-    const description = document.getElementById("description");
+    const inputName = document.getElementById('name');
+    const price = document.getElementById('price');
+    const stock = document.getElementById('stock');
+    const category = document.getElementById('category');
+    const size = document.getElementById('size');
+    const inputFiles = document.getElementById('images');
+    const description = document.getElementById('description');
 
-    const errName = document.getElementById("errorName");
-    const errPrice = document.getElementById("errorPrice");
-    const errStock = document.getElementById("errorStock");
-    const errCategory = document.getElementById("errorCategory");
-    const errSize = document.getElementById("errorSize");
-    const errImages = document.getElementById("errorImages");
-    const errDescription = document.getElementById("errorDescription");
+    const errName = document.getElementById('error-name');
+    const errPrice = document.getElementById('error-price');
+    const errStock = document.getElementById('error-stock');
+    const errCategory = document.getElementById('error-category');
+    const errSize = document.getElementById('error-size');
+    const errImages = document.getElementById('error-images');
+    const errDescription = document.getElementById('error-description');
 
     if (!inputName.value.trim()) {
-      errName.textContent = "Campo incompleto";
+      errName.textContent = 'Campo incompleto';
       valid = false;
     } else if (inputName.value.trim().length < 5) {
-      errName.textContent = "El nombre debe tener al menos 5 caracteres";
+      errName.textContent = 'El nombre debe tener al menos 5 caracteres';
       valid = false;
     } else {
-      errName.textContent = "";
+      errName.textContent = '';
     }
 
-    if (price.value === "" || Number(price.value) <= 0) {
-      errPrice.textContent = "Precio inválido";
+    if (price.value === '' || Number(price.value) <= 0) {
+      errPrice.textContent = 'Precio inválido';
       valid = false;
     } else {
-      errPrice.textContent = "";
+      errPrice.textContent = '';
     }
 
-    if (stock.value === "" || Number(stock.value) < 0) {
-      errStock.textContent = "Stock inválido";
+    if (stock.value === '' || Number(stock.value) < 0) {
+      errStock.textContent = 'Stock inválido';
       valid = false;
     } else {
-      errStock.textContent = "";
+      errStock.textContent = '';
     }
 
     if (!category.value) {
-      errCategory.textContent = "Categoría requerida";
+      errCategory.textContent = 'Categoría requerida';
       valid = false;
     } else {
-      errCategory.textContent = "";
+      errCategory.textContent = '';
     }
 
     if (!size.value) {
-      errSize.textContent = "Talle requerido";
+      errSize.textContent = 'Talle requerido';
       valid = false;
     } else {
-      errSize.textContent = "";
+      errSize.textContent = '';
     }
 
     const files = Array.from(inputFiles.files);
 
-    const allowed = new Set([
-      "image/png",
-      "image/jpeg",
-      "image/jpg",
-      "image/gif",
-    ]);
-    const bad = files.find((f) => !allowed.has(f.type));
+    const allowed = new Set(['image/png', 'image/jpeg', 'image/jpg', 'image/gif']);
+    const bad = files.find(f => !allowed.has(f.type));
     if (bad) {
-      errImages.textContent =
-        "Formato de imagen no válido. Solo JPG, JPEG, PNG y GIF.";
+      errImages.textContent = 'Formato de imagen no válido. Solo JPG, JPEG, PNG y GIF.';
       valid = false;
     } else {
-      errImages.textContent = "";
+      errImages.textContent = '';
     }
 
     const desc = description.value.trim();
     if (!desc) {
-      errDescription.textContent = "Campo incompleto";
+      errDescription.textContent = 'Campo incompleto';
       valid = false;
     } else if (desc.length < 20) {
-      errDescription.textContent =
-        "La descripción debe tener al menos 20 caracteres";
+      errDescription.textContent = 'La descripción debe tener al menos 20 caracteres';
       valid = false;
     } else {
-      errDescription.textContent = "";
+      errDescription.textContent = '';
     }
 
     return valid;

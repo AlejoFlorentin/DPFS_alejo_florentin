@@ -1,41 +1,17 @@
-// Agregar eventos de clic a los botones de "Agregar al carrito"
-document.addEventListener("DOMContentLoaded", () => {
-  let btnAddProduct = document.querySelectorAll(".btnAddProduct");
-
-  btnAddProduct.forEach((button) => {
-    button.addEventListener("click", addProduct);
-  });
-
-  function addProduct(e) {
-    Toastify({
-      text: "Producto Agregado",
-      duration: 2000,
-      gravity: "top",
-      position: "right",
-      offset: {
-        x: 20,
-        y: 150,
-      },
-      stopOnFocus: true,
-      style: {
-        background: "black",
-      },
-    }).showToast();
-  }
-
-  document.querySelectorAll(".formEliminarProducto").forEach((form) => {
-    form.addEventListener("submit", function (e) {
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.form-delete-product').forEach(form => {
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
       Swal.fire({
-        title: "¿Estás seguro?",
-        text: "¡Esta acción eliminará el producto!",
-        icon: "warning",
+        title: '¿Estás seguro?',
+        text: '¡Esta acción eliminará el producto!',
+        icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: "#d33",
-        cancelButtonColor: "#3085d6",
-        confirmButtonText: "Sí, eliminar",
-        cancelButtonText: "Cancelar",
-      }).then((result) => {
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+      }).then(result => {
         if (result.isConfirmed) {
           form.submit();
         }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('../partials/head') %>
+  <%- include('../partials/head', { title: '| Editar Producto', styles: 'editProduct.css' }) %>
   <body>
     <%- include('../partials/header') %>
 
@@ -11,7 +11,7 @@
           action="/productos/dataEditProd/<%=product.id %>?_method=PUT"
           method="POST"
           enctype="multipart/form-data"
-          id="editProductForm"
+          id="form"
           class="row mt-4 w-50 d-flex align-items-center justify-content-center"
           novalidate
         >
@@ -26,7 +26,7 @@
               name="name"
               required
             />
-            <div class="error text-danger" id="errorName">
+            <div class="error text-danger" id="error-name">
               <%= typeof errors !== 'undefined' && errors.name ? 'Nombre inválido' : '' %>
             </div>
           </div>
@@ -41,7 +41,7 @@
               name="price"
               required
             />
-            <div class="error text-danger" id="errorPrice">
+            <div class="error text-danger" id="error-price">
               <%= typeof errors !== 'undefined' && errors.price ? 'Precio inválido' : '' %>
             </div>
           </div>
@@ -56,7 +56,7 @@
               id="stock"
               name="stock"
             />
-            <div class="error text-danger" id="errorStock">
+            <div class="error text-danger" id="error-stock">
               <%= typeof errors !== 'undefined' && errors.stock ? 'Stock inválido' : '' %>
             </div>
           </div>
@@ -68,7 +68,7 @@
               <option value="bermudas" <%=product.category.name == "bermudas" ? 'selected' : '' %> >Bermudas</option>
               <option value="zapatillas" <%=product.category.name == "zapatillas" ? 'selected' : '' %> >Zapatillas</option>
             </select>
-            <div class="error text-danger" id="errorCategory">
+            <div class="error text-danger" id="error-category">
               <%= typeof errors !== 'undefined' && errors.category ? 'Categoría requerida' : '' %>
             </div>
           </div>
@@ -81,7 +81,7 @@
               multiple
               name="images"
               accept=".png,.jpg,.jpeg,.gif" />
-              <div class="error text-danger" id="errorImages">
+              <div class="error text-danger" id="error-images">
               <%= typeof errors !== 'undefined' && errors.images ? 'Formato invalido' : '' %>
             </div>
           </div>
@@ -97,7 +97,7 @@
           <% }) %>
               
             </select>
-            <div class="error text-danger" id="errorSize">
+            <div class="error text-danger" id="error-size">
               <%= typeof errors !== 'undefined' && errors.size ? 'Talle requerido' : '' %>
             </div>
           </div>
@@ -115,7 +115,7 @@
             ><%=product.description %>
             </textarea
             >
-            <div class="error text-danger" id="errorDescription">
+            <div class="error text-danger" id="error-description">
               <%= typeof errors !== 'undefined' && errors.description ? 'Descripción requerida' : '' %>
             </div>
           </div>

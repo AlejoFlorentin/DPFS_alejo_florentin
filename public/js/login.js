@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const formLogin = document.getElementById('formLogin');
+  const formLogin = document.getElementById('form');
   const emailInput = document.getElementById('email');
   const passwordInput = document.getElementById('password');
   const showHide = document.getElementById('show-hide');
-  const errorEmail = document.getElementById('errorEmail');
-  const errorPassword = document.getElementById('errorPassword');
+  const errorEmail = document.getElementById('error-email');
+  const errorPassword = document.getElementById('error-password');
 
   formLogin.addEventListener('submit', submitLog);
 

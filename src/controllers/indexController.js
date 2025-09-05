@@ -1,39 +1,35 @@
-let db = require("../database/models");
+let db = require('../database/models');
 
 const indexController = {
   index: async function (req, res) {
     try {
       const products = await db.Product.findAll({
         attributes: {
-          exclude: ["category_id"],
+          exclude: ['category_id'],
         },
         include: [
           {
-            association: "images",
-            attributes: ["url"], // solo la URL de cada imagen
+            association: 'images',
+            attributes: ['url'],
           },
         ],
       });
 
-      console.log(products);
-      // Mezclar productos y tomar los primeros 8
-      const destacados = products.sort(() => 0.5 - Math.random()).slice(0, 8);
+      const featured = products.sort(() => 0.5 - Math.random()).slice(0, 8);
 
-      return res.render("index", {
-        title: "Superlative",
-        destacados,
-        css: "index.css",
+      return res.render('index', {
+        featured,
       });
     } catch (error) {
-      console.error("Error al leer productos:", error);
-      return res.status(500).send("Error al cargar productos");
+      console.error('Error al leer productos:', error);
+      return res.status(500).send('Error al cargar productos');
     }
   },
   faq: function (req, res) {
-    return res.render("faq", { title: "Superlative | Faq", css: "faq.css" });
+    return res.render('faq');
   },
   us: function (req, res) {
-    return res.render("us", { title: "Superlative | Nosotros", css: "us.css" });
+    return res.render('us');
   },
 };
 
