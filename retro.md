@@ -22,5 +22,9 @@ En este sprint se logro la creacion y logeo de usuarios , se separo las rutas de
 
 # Sprint 6
 
-Un sprint donde el enfoque estuvO en la creacion de la BBDD en MySql Workbench y la coneccion de nuestro proyecto con dicha BBDD a traves del ORM de sequelize.
+Un sprint donde el enfoque estuvo en la creacion de la BBDD en MySql Workbench y la coneccion de nuestro proyecto con dicha BBDD a traves del ORM de sequelize.
 Un sprint donde creo que hay que estar mas enfocados y concentrados para no cometer un error ya que puede hacer que nada funcione.
+
+# Sprint 7
+
+Este sprint mejoro rotundamente la seguridad de los formularios al implementar validacion tanto en el back como en el front, permitiendo que los datos lleguen bien a la BBDD.
