@@ -44,3 +44,5 @@ Sitio web muy facil de encontrar lo que se quiere buscar y con un excelente resp
 Excelente diseño minimalista y colores sobrios , ademas de su calidad de ropa.
 
 [Trello](https://trello.com/b/LXmYZLZ4/ecommerce-dh)
+
+[DashboardReact](https://github.com/AlejoFlorentin/DPFS_Florentin_Dashboard.git)
