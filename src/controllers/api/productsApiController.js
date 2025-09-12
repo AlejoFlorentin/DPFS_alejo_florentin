@@ -11,14 +11,23 @@ const productsApiController = {
           { association: 'sizes', attributes: ['size'], through: { attributes: [] } },
         ],
       });
+
+      const productsWithUrl = products.map(product => {
+        return {
+          ...product.toJSON(),
+          detail: `/products/${product.id}`,
+        };
+      });
       const countByCategory = {};
       products.forEach(product => {
         const category = product.category.name;
         countByCategory[category] = (countByCategory[category] || 0) + 1;
       });
-      return res
-        .status(200)
-        .json({ count: products.length, countByCategory: countByCategory, products: products });
+      return res.status(200).json({
+        total: productsWithUrl.length,
+        countByCategory: countByCategory,
+        products: productsWithUrl,
+      });
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

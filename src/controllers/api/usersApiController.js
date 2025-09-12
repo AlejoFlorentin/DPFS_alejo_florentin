@@ -4,17 +4,18 @@ const usersApiController = {
   getAll: async (req, res) => {
     try {
       const users = await db.User.findAll({
-        attributes: { exclude: ['password', 'created_at', 'updated_at', 'category_id', 'phone'] },
+        attributes: { exclude: ['password', 'updated_at', 'category_id'] },
+        include: [{ association: 'image', attributes: ['url'] }],
       });
 
       const usersWithUrl = users.map(user => {
         return {
           ...user.toJSON(),
-          detail: `/api/users/${user.id}`,
+          detail: `/users/${user.id}`,
         };
       });
       return res.status(200).json({
-        count: usersWithUrl.length,
+        total: usersWithUrl.length,
         users: usersWithUrl,
       });
     } catch (error) {
